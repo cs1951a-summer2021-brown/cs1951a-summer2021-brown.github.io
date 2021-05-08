@@ -1,108 +1,232 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="author" content="CS1951A">
-  <meta name="description" content="Website for Brown CS1951A">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./../js/bootstrap.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        document.getElementById("labs-nav").className += ' active';
-    });
-  </script>
-  <link rel="stylesheet" type="text/css" href="./../style/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="./../style/main.css">
-  <title>CS1951A | Labs</title>
-</head>
-<body>
-  <div id="page-container">
-  <div id="other-content-container">
-  <!-- Header-->
-  <div class="container-fluid" id="header">
-    <!-- Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="#navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <a class="navbar-brand" href="./../">cs1951a</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="CS1951A" />
+    <meta name="description" content="Website for Brown CS1951A" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+      integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        document.getElementById("labs-nav").className += " active";
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="../style/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../style/main.css" />
+    <title>CS1951A | Labs</title>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="other-content-container">
+        <!-- Header-->
+        <div class="container-fluid" id="header">
+          <!-- Navbar-->
+          <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button
+              class="navbar-toggler navbar-toggler-right"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+              aria-controls="#navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">cs1951a</a>
 
-      <div class="collapse navbar-collapse" id="navbar">
-          <div class="navbar-nav">
-              <a class="nav-item nav-link" id="home-nav" href="./../index.html">home</a>
-              <a class="nav-item nav-link" id="slides-nav" href="./../slides/index.html">lectures</a>
-              <a class="nav-item nav-link" id="assignments-nav" href="./../assignments/index.html">assignments</a>
-              <a class="nav-item nav-link" id="labs-nav" href="./../labs/index.html">labs</a>
-              <a class="nav-item nav-link" id="staff-nav" href="./../staff/index.html">staff</a>
-              <a class="nav-item nav-link" id="hours-nav" href="./../hours/index.html">hours</a>
-              <a class="nav-item nav-link" id="resources-nav" href="./../resources/index.html">documents</a>
-              <a class="nav-item nav-link" id="blogs-nav" href="./../projects/index.html">final projects</a>
+            <div class="collapse navbar-collapse" id="navbar">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" id="home-nav" href="../index.html"
+                  >home</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="resources-nav"
+                  href="../resources/index.html"
+                  >resources</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="slides-nav"
+                  href="../slides/index.html"
+                  >lectures</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="assignments-nav"
+                  href="../assignments/index.html"
+                  >assignments</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="labs-nav"
+                  href="../labs/index.html"
+                  >labs</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="staff-nav"
+                  href="../staff/index.html"
+                  >staff</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="hours-nav"
+                  href="../hours/index.html"
+                  >hours</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../projects/index.html"
+                  >final projects</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../archive/index.html"
+                  >archive</a
+                >
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="container" id="copy">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>labs</h1>
+              <p>
+                Labs are designed to help with assignments and the deliverables
+                for the final project.
+              </p>
+
+              <p>
+                Every student will be assigned a lab slot during shopping
+                period. Details for lab checkoff and attendance can be found in
+                the syllabus.
+              </p>
+              <p>
+                All labs will happen on Gather.town
+                <a
+                  class="red"
+                  href="https://www.google.com/url?q=https%3A%2F%2Fgather.town%2Fapp%2FIeSSTcA5QuYtSf4G%2FData%2520Science%2520Lab%25F0%259F%2590%25BC&sa=D&ust=1612235309771000&usg=AOvVaw0Livk0HJe7M7Y_tpzFl0JO"
+                  target="_blank"
+                  >here</a
+                >, password being "pandas". Please use
+                <a
+                  class="red"
+                  href="https://signmeup.cs.brown.edu/"
+                  target="_blank"
+                  >Signmeup</a
+                >
+                to ask questions and get checked off for labs. Please refer to
+                our
+                <a
+                  class="red"
+                  href="https://docs.google.com/document/d/1fy2q5LKX69DUR_Ly4rWHnza3wAEXJ91zlmvj6L-1Qtc"
+                  target="_blank"
+                  >Lab Guide</a
+                >
+                if you want more information on how to open Google Colab.
+              </p>
+
+              <table class="table table-hover" id="labs-table">
+                <thead>
+                  <tr>
+                    <th>Week</th>
+                    <th>Topic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>January 28 – Febuary 5</td>
+                    <td class="out">
+                      <a
+                        href="https://drive.google.com/drive/folders/1DvZ_kh83Q1G1Xq57Op9F9pdXhLn5ep4o?usp=sharing"
+                        target="_blank"
+                        >Intro to SQL</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>February 6 – February 12</td>
+                    <td class="out">
+                      <a
+                        href="https://drive.google.com/drive/folders/1vFs1Jk8eqkPF9InL5H9YDDfIsmSKIcOQ?usp=sharing"
+                        target="_blank"
+                        >Pandas/Numpy Lab</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>February 20 – February 26</td>
+                    <td class="out">
+                      <a href="https://drive.google.com/drive/folders/1c5pm57Nv2cZ9-0JJgBOKczAOy-eOYvTP?usp=sharing">Intro to MapReduce</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>February 27 – March 5</td>
+                    <td class="out">
+                      <a href="https://drive.google.com/drive/folders/1baEgwxWXBfpsTJp9TcFL8UMm8ACBGDXu?usp=sharing">Stats Part 1</a>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                    <td>February 27 – March 5</td>
+                    <td>
+                      <a href="#">Stats Part 2</a>
+                    </td>
+                  </tr> -->
+                  <tr>
+                    <td>March 13 – March 19</td>
+                    <td class="out">
+                      <a href="https://drive.google.com/drive/folders/1y2PlM_eLcN_coZmefMinmDT2pCZ_9bW-?usp=sharing">Intro to Viz</a>, <a href="https://drive.google.com/drive/folders/1S4kWESc2Rj0SIZIvtrpjd8UyOchmcyu5?usp=sharing" target="_blank">Part 2 (Extension) Solution</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- <td>March 20 – March 26</td> -->
+                    <td class="out">N/A</td>
+                    <td class="out">
+                      <a href="https://drive.google.com/drive/folders/1B-bhoumxJf7eoPAQjy6nzIUCk-udpguo?usp=sharing">ML Fairness (with solution)</a>
+                    </td>
+                  </tr>
+                  <!-- <tr>
+                    <td>March 27 – April 2</td>
+                    <td>
+                      <a href="#">Matrix Factorization</a>
+                    </td>
+                  </tr> -->
+                  <!-- <tr>
+                    <td>April 3 – April 9</td>
+                    <td>
+                      <a href="#">Data Privacy</a>
+                    </td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
       </div>
-    </nav>
-  </div>
-  <div class="container" id="copy">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>labs</h1>
-        <p>
-	      Labs are designed to help with assignments and the deliverables for the final project.
-              <br>
-	      <br>
-	      Every student will be assigned a lab slot during shopping period. Details for lab checkoff and attendance can be found
-	      in the syllabus.
-        </p>
 
-        <table class="table table-hover" id="labs-table">
-          <thead>
-            <tr>
-              <th>Week</th>
-              <th>Topic</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>January 27 – Febuary 1</td>
-	      <td><a href = "https://drive.google.com/open?id=1n3-kpH4nYBDPa5dXIs1dsIDzYW2Vanxz">Intro to SQL</a></td>
-            </tr>
-            <tr>
-		      <td>Feburary 9 – Febuary 15</td>
-		      <td><a href= "https://drive.google.com/drive/folders/1k7Jr5hpLKXU-F-8xoEBKtXvjwFvYBQuo?usp=sharing">Pandas/Numpy Lab</a></td>
-            </tr>
-            <tr>
-              <td>Feburary 23 – Febuary 29</td>
-			  <td><a href="https://drive.google.com/drive/folders/1ZJMUTbULNaEv7gOV4h2kDjQ0NtoA76i3?usp=sharing">Intro to MapReduce</a></td>
-            </tr>
-            <tr>
-              <td>March 2 – March 7</td> 
-	      <td><a href="https://colab.research.google.com/drive/18dB28EwTU03h9vZ9ALXg0bNknClKoKI_?usp=sharing">Intro to Stats</a></td>
-            </tr>
-            <tr>
-              <td>April 1 Release</td>
-	      <td><a href="https://drive.google.com/drive/folders/1Bf1bbPqHyM2Dnpl2ycoKuqK_rg0Tijkj?usp=sharing">ML Fairness</a></td>
-	    </tr>
-            <tr>
-              <td>April 1 Release</td>
-	      <td><a href="https://drive.google.com/drive/folders/13VNpOtzhJQ57C3CjzoM7U4wXd_ZVXdIS?usp=sharing">Intro to Viz</a></td>
-            </tr>
-            <tr>
-              <td>April 1 Release</td>
-	      <td><a href="https://drive.google.com/drive/folders/1IJ38QyWEX3J14gUFBCw6vN3dBr49tsOR?usp=sharing">Matrix Factorization</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="container-fluid" id="footer">
+        <div class="container">
+          <p>
+            &copy; 2020 CS1951A Staff | Computer Science Department | Brown
+            University
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-
-
-  <div class="container-fluid" id="footer">
-    <div class="container">
-      <p>&copy; 2020 CS1951A Staff | Computer Science Department | Brown University </p>
-    </div>
-  </div>
-  </div>
-
-</body>
+  </body>
 </html>

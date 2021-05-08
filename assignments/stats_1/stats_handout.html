@@ -1,0 +1,358 @@
+<html>
+<!-- FILL IN EVERYTHING SURROUNDED BY CURLY BRACES UNLESS OTHERWISE SPECIFIED -->
+
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Assignment 4 &laquo; Statistics and Regression &raquo;</title>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1> Assignment 4 <small>&laquo; Statistics and Regression &raquo;</small></h1>
+            </div>
+
+            <h2>Due: 11:59pm March 9, 2021 (ET)</h2>
+            <!-- don't worry about filling in this part yet! -->
+            <p>
+                <img src="regression_meme.jpg" alt="Regression Joke">
+            </p>
+            <br><hr><br>
+
+            <h2>Overview</h2>
+            <p>In this assignment you will
+                implement simple linear regression and analyze multiple linear regression. Check out
+                <a href="https://seeing-theory.brown.edu/"> Seeing Theory</a> for help understanding these concepts!
+            </p>
+            <br><hr><br>
+            <div id="Setting Up">
+                <h2>Setting Up</h2><br>
+                <h3>Getting the Stencil</h3><br>
+                <p>
+                    You can click <a href="https://classroom.github.com/a/lgKol0A1">here</a> to get the stencil code for Homework 4. Reference <a
+                        href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this
+                        guide</a> for more information about Github and Github Classroom.
+                </p>
+                <p>
+                    The data is located in the data folder. To ensure compatibility with the autograder, you should not
+                    modify the stencil unless instructed otherwise. For this assignment, please write your solutions in
+                    the respective <code>.py</code> files. Failing to do so may hinder with the autograder and result in
+                    a low grade.
+                </p>
+                <br>
+
+                <h3>Running Stats</h3><br>
+                <ul>
+                    <li>
+                        <h3>Option 1: Department Machine</h3>
+                    </li>
+                    <p> <strong>Write Code:</strong> Use whatever editer or IDE you like.</p>
+                    <p><strong>Execute Code:</strong> First,
+                        <code>ssh</code> into the department machine by running
+                        <code>ssh [cs login]@ssh.cs.brown.edu</code> and typing your password when
+                        prompted. Then, navigate to
+                        the assignment directory and activate the
+                        course virtual environment by running
+                        <code>source /course/cs1951a/venv/bin/activate</code>. You can now run your code for the
+                        assignment. To deactivate this virtual environment,
+                        simply type <code>deactivate</code>.
+                    </p>
+
+                    <li>
+                        <h3>Option 2: Your Own Device</h3>
+                    </li>
+                    <p><strong>Python requirements:</strong> Python 3.7.x. Our Gradescope Autograder uses Python 3.7.9.
+                        Using some other version of Python might lead to issues installing the dependencies for the
+                        assignment.</p>
+                    <p><strong>Virtual environment:</strong></p>
+                    <ul>
+                        <li>
+                            If you have properly installed a virtual environment using the <code>create_venv.sh</code>
+                            script in Homework 1, activate your virtual environment using <code>cs1951a_venv</code> or
+                            <code>source ~/cs1951a_venv/bin/activate</code> anywhere from your terminal. If you have
+                            installed your virtual environment elsewhere, activate your environment with
+                            <code>source PATH_TO_YOUR_ENVIRONMENT/bin/activate</code>.
+                        </li>
+                        <li>
+                            If you have not installed our course's virtual environment, you can refer to our course's <a
+                                href="https://docs.google.com/document/d/1qf0SQcVL3tjsf9iCAtNWz8vwS24l6XAq_x0hqMTJa0k/edit">virtual
+                                environment guide</a>.
+                        </li>
+                    </ul>
+                    <br>
+
+
+                    <p><strong>Write Code:</strong> Use whatever editor or IDE you like.</p>
+                    <p><strong>Execute Code:</strong> Activate the virtual environment and run your program in the
+                        command
+                        line.</p>
+
+                </ul>
+                <br>
+
+            </div>
+            <br><hr><br>
+
+            <h2>Assignment</h2><br>
+            <p>
+                <!-- <br><br> -->
+
+                You will modify <code>util.py</code>, <code>simple_regression.py</code>, and <code>multiple_regression.py</code> using
+                <code>bike_sharing.csv</code>. You will be implementing most parts of the regressions from scratch. 
+                Here are some restrictions on the use of Python libraries for this assignment:
+                <p>
+                <li>You cannot use sklearn.</li>
+                <li>For simple linear regression, you are allowed to use statsmodel and numpy <b>only for calculating the MSE</b>.</li>
+                <li>You can use statsmodel for multiple linear regression.</li>
+                <li>Pandas is only allowed for loading the dataset.</li> 
+            </p>
+             <!-- <br><br> -->
+                You will also submit <code>written_questions.txt</code> with your answers to the questions
+                for Part 3.
+                </ol>
+            </p>
+            <!--             make sure to use <hr> tags to separate each problem part -->
+            <br><hr><br>
+            <h2>Simple and Multiple Linear Regression</h2><br>
+
+
+            <h4>Linear Regression </h4><br>
+            <p>Regression is used to predict numerical values given inputs. Linear regression attempts
+                to model the line of best fit that explains the relationship between two or more variables
+                by fitting a linear equation to observed data.
+                One or more variables are considered to be the independent (or explanatory) variables,
+                and one variable is considered to be a dependent (or response) variable.
+                In simple linear regression, there is one independent variable
+                and in multiple linear regression, there are two or more independent variables.
+            </p>
+
+            <p>Before attempting to fit a linear model to observed data, a modeler should first determine whether or
+                not there is a linear relationship between the variables of interest. This does not necessarily imply
+                that one variable causes the other. Remember, <i>correlation does not necessarily imply causation</i>.
+                For example, moderate alcohol consumption is correlated to longevity. This doesn’t necessarily mean that
+                moderate alcohol consumption causes longevity. Another independent characteristic of moderate drinkers
+                (extrovert lifestyle) might be responsible for longevity. Regardless, there is some association between
+                the two variables.
+                The goal in linear regression is to tease apart whether a correlation is likely to be a causal
+                relationship, by controlling for these other variables/characteristics that might be confounding the
+                analysis.
+            </p>
+
+            <p>In simple linear regression, <a href="http://www.stat.yale.edu/Courses/1997-98/101/scatter.htm"> scatter
+                    plot</a> can be a helpful
+                tool in visually determining the strength of the relationship between two variables. The independent
+                variable is
+                typically plotted on the x-axis and the dependent variable is typically plotted on the y-axis. If there
+                appears to be
+                no association between the proposed explanatory and dependent variables (i.e., the scatter plot does not
+                indicate any
+                clear increasing or decreasing trends), then fitting a linear regression model to the data probably will
+                likely not provide a useful model. (Note this is not always the case--just as confounding variables
+                might lead a correlation to appear stronger than it is, it might also lead a relationship to appear
+                weaker than it is.)
+            </p>
+
+            <p>Shown in the picture below, in simple regression, we have a single feature x and weights w0 for the
+                intercept and w1 for slope of the line. Our goal is to find the line that minimizes the vertical
+                offsets, otherwise known as residuals.
+                In other words, we define the best-fitting line as the line that minimizes the residual sum of squares
+                (SSR or RSS) between our target variable y and our predicted output over all samples i in our training
+                examples n.
+            </p>
+
+            <img src="simple_regression.png">
+            <p>A valuable numerical measure of association between two variables is the <a
+                    href="http://www.stat.yale.edu/Courses/1997-98/101/correl.htm"> correlation coefficient </a>, which
+                is a value between -1 and 1 indicating the strength of the association of the observed data for the two
+                variables. A simple linear regression line has an equation of the form <b>Y = a + bX</b>, where <b>X</b>
+                is the independent (explanatory) variable and <b>Y</b> is the dependent variable. The slope of the line
+                is <b>b</b>, and <b>a</b> is the intercept (the value of y when x = 0). A multiple linear regression
+                line has an equation of the form <b>Y = a + b_1X_1 + b_2 X_2 + … + b_n X_n</b> for n independent
+                variables.</p>
+            <p>Another useful metric is the <b>R-squared</b> value. This tells us how much of the variation in Y can be
+                explained by the variation in X. The value for R-squared ranges from 0 to 1, and the closer to 1, the
+                greater proportion of the variability in Y is explained by the variability in X.
+                For more explanation on R-squared and how to calculate it, read <a
+                    href="https://online.stat.psu.edu/stat501/lesson/1/1.5"> here </a> (this will be very helpful
+                in Part 2!) </p>
+
+            <p>Do not confuse correlation and regression. Correlation is a numerical value that quantifies the degree to
+                which two variables are related. Regression is a type of predictive analysis that uses a <b>best fit
+                    line (Y = a + bX)</b> that predicts Y given the value of X).</p>
+                    <br><h4>Part I: Data Preprocessing (18 Points)</h4><br>
+            <h5> Data & Functions Overview</h5><br>
+            <p>Inside the data folder, <code>bike_sharing.csv</code> contains data of a two-year historical log corresponding to years 2011
+                and 2012
+                from Capital Bikeshare system, Washington D.C., USA. There are 11 different independent variables that
+                you are attempting to predict
+                and one dependent variable (the Count of Use of Bike). More information on the dataset can be found in
+                <code>README_data.txt</code>.
+
+                <p>The data functions described below are in <code>util.py</code>and
+                     can be used for both simple and multilple linear regressions.</p>
+                
+
+            </p><br>
+            <h5> Load Data</h5><br>
+            <p>In <code>util.py</code>, first implement <code>load_data</code>, which should load the data into X, and y variables using pandas.
+                Make sure to load the correct dependent and independent variables when implementing and calling this function.
+            </p><br>
+            <h5> Train/Test Split</h5><br>
+            <p> Then, fill in the functions <code>split_data_randomly</code> and <code>train_test_split</code> to randomly split the data
+                into train and test datasets.
+                You should create the following variables:<code>X_train</code>, <code>X_test</code>,
+                <code>y_train</code>, <code>y_test</code>.
+
+
+                A common convention in data science is to make 80% of the data the training data and 20% the test data.
+                In <code>train_test_split</code>, we have provided <code>test_pct = 0.2</code>; use this in your <code>split_data_randomly</code> function to obtain this 80/20 split.
+                You will train your model on the training data and test it on the test data. 
+                
+                </p>
+                <p>Note that we expect you
+                to distribute the data randomly, look into
+                how you can use <a href="https://docs.python.org/3/library/random.html"> Python random.random </a> to do
+                this. In <code>simple_regression.py</code> and <code>multiple_regression.py</code>, we set <code>random.seed(1)</code> to guarrantee that we obtain the same
+                split on every run. Please do not change this.</p> 
+                <p>
+                Lastly, when splitting data make sure that
+                X,y pairs remain intact, that is, every X and its corresponding Y should both be in the same list(either
+                test or train) and at the same index to make sure your model
+                is accurate. To do this, we recommend using <a
+                    href="https://docs.python.org/3.3/library/functions.html"> Python zip </a>to form pairs before
+                splitting the data into train and test sets.
+            </p>
+                <p>Note: <code>calculate_r_squared</code> function is for the next section, and you don't need to implement it at this stage.</p>
+            
+            <br>
+            <h4>Part II: Simple Linear Regression (22 points)</h4><br>
+            <p> The management team of Capital Bikeshare system wants to know how much weather conditions can
+                predict bikesharing use. Please open <code>simple_regression.py</code> and implement simple
+                linear regression model that predicts the number of total rental bikes per day (cnt) given the
+                weather conditions (weathersit).
+                
+                <br><br>
+                Fill in the helper functions for mean, variance and covariance. When calculating variance and covariance, you should use (n-1) as the denominator to make the estimator
+                unbiased. (Note: n is the sample size.)
+                <br><br>
+                You cannot use numpy functions for these
+                calculations. Use this in your train function to calculate the (a,b) of your regression model.
+                
+                <br><br>
+                Then, you need to go back to <code>util.py</code> and implement <code>calculate_r_squared</code>, 
+                which will be used for testing both your simple and multiple linear regressions. 
+                You should use r-squared = 1 - SSE / SSTO, 
+                and refer to <a
+                href="https://online.stat.psu.edu/stat501/lesson/1/1.5"> this page </a> for an explanation on
+            how to calculate SSE and SSTO.
+            <br><br>
+                Lastly, fill in the test function which is used to evaluate your model. Here you should calculate and
+                return your training
+                and testing mean squarred error, and your testing r-squared. 
+                
+                </p>
+
+                <p>Note that you can use <a href="https://www.statsmodels.org/stable/_modules/statsmodels/tools/eval_measures.html">StatsModels and numpy</a> to calculate the MSE.</p>
+            </p><br>
+            <h4>Part III: Multiple Regression (20 points)</h4><br>
+            <p>Wait, the management team realized that there are many more variables that affect bikesharing use in
+                addition to weather conditions. They are concerned that by ignoring these variables, your simple linear
+                regression might be over or underestimating the effect of weather on useage.</p>
+            <p>Please open <code>multiple_regression.py</code> and using <a
+                    href="https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html">StatsModels </a>,
+                implement a multiple linear regression. From the given 11 different independent variables, your job is
+                to select the ones that could help the prediction model. See how the R-squared value changes as you
+                include different independent variables to your regression model.</p>
+            <p>Calling function <code>summary</code> on the results returned by the regression model will print out the
+                report containing the value of each coefficient and its corresponding p-value. See the StatsModels docs
+                for more details. At the end, please return your training-MSE, testing-MSE, and testing R-squared value.
+            </p><br>
+            <h4> Part IV: Written Questions (40 Points)</h4><br>
+            <p><b>Answer the following in <code>written_questions.txt</code></b></p>
+
+            <ol>
+                <!--li>What do the p-values mean?</li-->
+                <li>Interpret the co-efficient for weathersit according to the simple linear regression. Using plain
+                    English, what does this coefficient mean?
+                <li>Compare the co-efficient on weathersit in the simple regression to the coefficient in the multiple
+                    regression that included all variables. Did the coefficient go up or down? Why do you think this is
+                    the case?
+                <li>In the multiple regression, which variable would you say is "most important" for predicting usage?
+                    Defend your choice.
+                <li>What does the R-squared value imply about the multiple linear regression models when compared to the
+                    simple linear regression model? Do higher R-squared always mean that the model is better? How should
+                    you best utilize R-squared to examine the goodness of fit of your linear model?</li>
+                <li>Is there a difference between training and testing MSE? Why is comparing this important?</li>
+
+                <h3>Same Data, Different Story</h3>
+                While performing regression analysis, data scientists make several choices that require more than the data alone. Understanding the context of data is necessary to avoid statistical misinterpretation (along with many other issues!).
+        <br>
+        <br>
+        The goal of the following questions is to: 
+        <ul>
+        <li> Recognize how the analysis of the same data can lead to different conclusions
+        </li>
+        <li> Demonstrate the importance of context to decisions during the data analysis process 
+        </li>
+        </ul>
+        <br>
+        <p style="font-style: italic;">Your responses should be thoughtful, provide justification for your claims, and be concise but complete. See the <a href="https://docs.google.com/document/d/1hXGxoW8DQzIBh1yW2989fZhOIBgJ4w8BMN6lXjbnY-U/edit">response guide</a> for more guidance.</p>
+        
+        <h4> Questions </h4>
+        
+                <li> Read <a href="https://towardsdatascience.com/simpsons-paradox-how-to-prove-two-opposite-arguments-using-one-dataset-1c9c917f5ff9">this article</a> explaining a statistical phenomenon called Simpson's Paradox. Explain how Simpson's Paradox occurs in the context of the exercise vs. disease example. Why should we choose to separate the data into 2 groups for this specific dataset/question?</li>
+                <li> 
+                    Read <a href="https://www.urban.org/urban-wire/three-ways-bikeshare-can-counteract-not-reinforce-dcs-disparities">“Three ways bikeshare can counteract, not reinforce, DC's disparities”</a> and answer the questions below. 
+                    If you’re interested in more context, (optionally) read <a href="https://www.bloomberg.com/news/articles/2017-07-14/explaining-the-diversity-and-equity-gap-in-bike-sharing">this analysis of the lack of diversity in bikeshare programs</a> and <a href="https://d21xlh2maitm24.cloudfront.net/wdc/cabi-2012surveyreport.pdf?mtime=20161206135939%20">this 2012 Capital Bikeshare Member Survey Report</a>.
+                <ol type = "a">
+                    <li> 
+                        What factors might be influencing the bike_sharing.csv data that are not being shown in the dataset? List at least 3 possible factors. The factors could be additional variables or factors that are not quantifiable. 
+                    </li>
+                    <li> 
+                        List one category for which it could be helpful to separate the bike_sharing.csv data into groups before analyzing it. This category may or may not be represented in the existing dataset. Describe a context (project, question, goals, etc.) for which separating the data by that category is important and explain why separating the data is the right choice for that context. 
+                    </li>
+                    <li> 
+                        Explain at least one way that information in the bikeshare reading impacts how you should interpret bike_sharing.csv or present your findings.
+                    </li>
+                </ol>
+                </li> 
+                <li>Fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeA_BVtmfkIDMRHlkLI_5fOBBqc9tp2hVgbzDoN8PaqZRRq2g/viewform?usp=sf_link">this <b>anonymous</b> mid-semester feedback form</a> for the Socially Responsible Computing (SRC) component of assignments. Follow instructions at the end of the form to get credit for filling it out.</li>                     
+                    
+            </ol>
+            </hr>
+
+
+            <br>
+            <hr><br>
+            <h2>Handing In</h2><br>
+            <p>After finishing the assignment, run <code>python3 zip_assignment.py</code> in the command line from your
+                assignment directory, and fix any issues brought up by the script.</p>
+            <p>
+                After the script has been run successfully, you should find the file
+                <code>stats1-submission-1951A.zip</code> in your assignment directory. Please submit this zip file on
+                Gradescope under the respective assignment.
+            </p>
+            <br>
+            <hr><br>
+
+            <h2>Credits</h2>
+            <p>
+                Adapted from the previous TA staff for CS1951a.
+            </p>
+            <p>
+                Bike Sharing Dataset: Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and
+                background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg,
+                doi:10.1007/s13748-013-0040-3.
+            </p>
+            <div class="col-md-2"></div>
+            <br><br>
+        </div>
+
+</body>
+
+</html>

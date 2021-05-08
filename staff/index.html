@@ -7,7 +7,7 @@
   <meta name="description" content="Website for Brown CS1951A">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./../js/bootstrap.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
   <script type="text/javascript">
     function swap(img) {
         var old = img.attr('src');
@@ -22,8 +22,8 @@
             .mouseleave(function() { swap($(this)); });
     });
   </script>
-  <link rel="stylesheet" type="text/css" href="./../style/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="./../style/main.css">
+  <link rel="stylesheet" type="text/css" href="../style/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../style/main.css">
   <title>CS1951A | Staff</title>
 </head>
 <body>
@@ -34,18 +34,64 @@
     <!-- Navbar-->
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="#navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <a class="navbar-brand" href="./../">cs1951a</a>
+      <a class="navbar-brand" href="../index.html">cs1951a</a>
       <div class="collapse navbar-collapse" id="navbar">
-          <div class="navbar-nav">
-              <a class="nav-item nav-link" id="home-nav" href="./../index.html">home</a>
-              <a class="nav-item nav-link" id="slides-nav" href="./../slides/index.html">lectures</a>
-              <a class="nav-item nav-link" id="assignments-nav" href="./../assignments/index.html">assignments</a>
-              <a class="nav-item nav-link" id="labs-nav" href="./../labs/index.html">labs</a>
-              <a class="nav-item nav-link" id="staff-nav" href="./../staff/index.html">staff</a>
-              <a class="nav-item nav-link" id="hours-nav" href="./../hours/index.html">hours</a>
-              <a class="nav-item nav-link" id="resources-nav" href="./../resources/index.html">documents</a>
-              <a class="nav-item nav-link" id="blogs-nav" href="./../projects/index.html">final projects</a>
-          </div>
+        <div class="navbar-nav">
+          <a
+            class="nav-item nav-link"
+            id="home-nav"
+            href="../index.html"
+            >home</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="resources-nav"
+            href="../resources/index.html"
+            >resources</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="slides-nav"
+            href="../slides/index.html"
+            >lectures</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="assignments-nav"
+            href="../assignments/index.html"
+            >assignments</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="labs-nav"
+            href="../labs/index.html"
+            >labs</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="staff-nav"
+            href="../staff/index.html"
+            >staff</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="hours-nav"
+            href="../hours/index.html"
+            >hours</a
+          >
+          <a
+            class="nav-item nav-link"
+            id="blogs-nav"
+            href="../projects/index.html"
+            >final projects</a
+          >
+          <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../archive/index.html"
+                  >archive</a
+                >
+        </div>
       </div>
     </nav>
   </div>
@@ -58,7 +104,7 @@
 
             <div id = "staff-description">
                 <p>You may contact the Head TAs at
-				    <a href="mailto:cs1951aheadtas@lists.brown.edu">cs1951aheadtas@lists.brown.edu</a>.
+				    <a class="red" href="mailto:cs1951aheadtas@lists.brown.edu">cs1951aheadtas@lists.brown.edu</a>.
                 </p>
 
                 <p>To email an individual TA, use
@@ -74,11 +120,11 @@
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                  src="./../res/img/ellie/ellie_cover.jpg"
-                  hsrc="./../res/img/ellie/ellie_profile.jpg">
+                  src="../res/img/ld9/me_small.jpg"
+                  hsrc="../res/img/panda_default.jpg">
 
-                <p class="name">Ellie Pavlick</p>
-                <p class="login">(ellie)</p>
+                <p class="name">Lorenzo De Stefani</p>
+                <p class="login">(ld9)</p>
               </div>
             </div>
         </div>
@@ -88,24 +134,24 @@
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/dmutako/dmutako_cover.png"
-                  hsrc="./../res/img/dmutako/dmutako_profile.jpg">
-                <p class="name">Diane Mutako</p>
-                <p class="login">(dmutako)</p>
+                   src="../res/img/ndo3/ndo3.jpg"
+                  hsrc="../res/img/ndo3/ndo3_panda.jpg">
+                <p class="name">Nam Do</p>
+                <p class="login">(ndo3)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/jlevin1/jlevin1_cover.png"
-                  hsrc="./../res/img/jlevin1/jlevin1_profile.jpeg">
-                <p class="name">Josh Levin</p>
-                <p class="login">(jlevin1)</p>
+                   src="../res/img/naldroub/naldroub.jpg"
+                  hsrc="../res/img/naldroub/naldroub_panda.jpg">
+                <p class="name">Nazem Aldroubi</p>
+                <p class="login">(naldroub)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/szitter/szitter_cover.png"
-                  hsrc="./../res/img/szitter/szitter_profile.png">
-                <p class="name">Sol Zitter</p>
-                <p class="login">(szitter)</p>
+                   src="../res/img/ydeng11/ydeng11.jpg"
+                  hsrc="../res/img/ydeng11/ydeng11_panda.jpg">
+                <p class="name">Sunny Deng</p>
+                <p class="login">(ydeng11)</p>
               </div>
             </div>
         </div>
@@ -115,142 +161,136 @@
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/ayalava2/ayalava2_cover.png"
-                  hsrc="./../res/img/ayalava2/ayalava2_profile.jpg">
-                <p class="name">Arvind Yalavarti</p>
-                <p class="login">(ayalava2)</p>
+                   src="../res/img/dcivita1/dcivita1.jpg"
+                  hsrc="../res/img/dcivita1/dcivita1_panda.jpg">
+                <p class="name">Daniel Civita Ramirez</p>
+                <p class="login">(dcivita1)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/bgershuny/bgershuny_cover.jpg"
-                  hsrc="./../res/img/bgershuny/bgershuny_profile.jpg">
-                <p class="name">Ben Gershuny</p>
-                <p class="login">(bgershun)</p>
+                   src="../res/img/panda_default.jpg"
+                  hsrc="../res/img/panda_default.jpg">
+                <p class="name">Dharam Madnani</p>
+                <p class="login">(dmadnani)</p>
               </div>
 
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/houyang1/houyang1_cover.jpg"
-                  hsrc="./../res/img/houyang1/houyang1_profile.jpg">
-                <p class="name">Huayu Ouyang</p>
-                <p class="login">(houyang1)</p>
+                   src="../res/img/panda_default.jpg"
+                  hsrc="../res/img/panda_default.jpg">
+                  <p class="name">Tiffany Nguyen</p>
+                  <p class="login">(tnguye72)</p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/jweissko/jweissko_cover.jpg"
-                  hsrc="./../res/img/jweissko/jweissko_profile.jpg">
-                <p class="name">Jonathan Weisskoff</p>
-                <p class="login">(jweissko)</p>
+                   src="../res/img/ihasan2/ihasan2.jpg"
+                  hsrc="../res/img/ihasan2/ihasan2_panda.jpg">
+                <p class="name">Ishan Hasan</p>
+                <p class="login">(ihasan2)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/jchampa/jchampa_cover.jpeg"
-                  hsrc="./../res/img/jchampa/jchampa_profile.jpg">
+                   src="../res/img/jchampa/jchampa.jpg"
+                  hsrc="../res/img/jchampa/jchampa_panda.jpg">
                 <p class="name">JP Champa</p>
                 <p class="login">(jchampa)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/jchoi8/jchoi8_cover.jpg"
-                  hsrc="./../res/img/jchoi8/jchoi8_profile.jpg">
-                <p class="name">Juho Choi
-                  <p class="login">(jchoi8)</p>
+                   src="../res/img/panda_default.jpg"
+                  hsrc="../res/img/panda_default.jpg">
+                <p class="name">Kei Nawa</p>
+                  <p class="login">(knawa)</p>
                 </p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/kfeng2/kfeng2_cover.png"
-                  hsrc="./../res/img/kfeng2/kfeng2_profile.jpg">
-                <p class="name">Karlly Feng</p>
-                <p class="login">(kfeng2)</p>
+                   src="../res/img/panda_default.jpg"
+                  hsrc="../res/img/panda_default.jpg">
+                  <p class="name">Yuchen Hua</p>
+                  <p class="login">(yhua12)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/mwu27/mwu27_cover.jpg"
-                  hsrc="./../res/img/mwu27/mwu27_profile.JPG">
-                  <p class="name">Maggie Wu</p>
-                  <p class="login">(mwu27)</p>
+                   src="../res/img/mdong5/mdong5.jpg"
+                  hsrc="../res/img/mdong5/mdong5_panda.jpg">
+                  <p class="name">Mary Dong</p>
+                  <p class="login">(mdong5)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/mkolasze/mkolasze_cover.png"
-                  hsrc="./../res/img/mkolasze/mkolasze_profile.JPG">
-                  <p class="name">Marcin Kolaszewski</p>
-                  <p class="login">(mkolasze)</p>
+                   src="../res/img/mlunghi/matteo.jpg"
+                  hsrc="../res/img/mlunghi/mlunghi_panda.jpg">
+                  <p class="name">Matteo Lunghi</p>
+                  <p class="login">(mlunghi)</p>
               </div>
           </div>
 
           <div class = "row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/mkimurat/minna_cover.png"
-                  hsrc="./../res/img/mkimurat/minna_profile.jpg">
-                  <p class="name">Minna Kimura-Thollander</p>
-                  <p class="login">(mkimurat)</p>
+                   src="../res/img/nmahaja1/nmahaja1.jpg"
+                  hsrc="../res/img/nmahaja1/nmahaja1_panda.jpg">
+                  <p class="name">Neal Mahajan</p>
+                  <p class="login">(nmahaja1)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/mdandu/mounika_cover.png"
-                  hsrc="./../res/img/mdandu/mounika_profile.jpg">
-                  <p class="name">Mounika Dandu</p>
-                  <p class="login">(mdandu)</p>
+                   src="../res/img/rhill6/rhill6.jpg"
+                  hsrc="../res/img/rhill6/rhill6_panda.jpg">
+                  <p class="name">Richard Hill</p>
+                  <p class="login">(rhill6)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/ndo3/ndo3_cover.png"
-                  hsrc="./../res/img/ndo3/ndo3_profile.PNG">
-                  <p class="name">Nam Do</p>
-                  <p class="login">(ndo3)</p>
+                   src="../res/img/spark108/spark108.jpg"
+                  hsrc="../res/img/spark108/spark108_panda.jpg">
+                  <p class="name">Suhye Park</p>
+                  <p class="login">(spark108)</p>
               </div>
           </div>
 
           <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/ndelwort/ndelwort_cover.png"
-                  hsrc="./../res/img/ndelwort/ndelwort_profile.png">
-                  <p class="name"> Natalie Delworth</p>
-                  <p class="login">(ndelwort)</p>
+                   src="../res/img/panda_default.jpg"
+                  hsrc="../res/img/panda_default.jpg">
+                  <p class="name"> Sara Syed</p>
+                  <p class="login">(ssyed6)</p>
               </div>
+
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/naldroub/naldroub_cover.jpg"
-                  hsrc="./../res/img/naldroub/naldroub_profile.jpg">
-                  <p class="name">Nazem Aldroubi</p>
-                  <p class="login">(naldroub)</p>
-              </div>
-              <div class="col-md-4 staff">
-                  <img class="profile img-fluid"
-                   src="./../res/img/nsehgal/nsehgal_cover.png"
-                  hsrc="./../res/img/nsehgal/nsehgal_profile.jpg">
-                  <p class="name">Neil Sehgal</p>
-                  <p class="login">(nsehgal)</p>
+                   src="../res/img/dkuwanad/dkuwanad.jpg"
+                  hsrc="../res/img/dkuwanad/dkuwanad_panda.jpg">
+                  <p class="name">Daniela Haidar</p>
+                  <p class="login">(dkuwanad)</p>
               </div>
           </div>
 
-          <div class = "row">
+          <!-- <div class = "row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/ssinha11/ssinha11_cover.png"
-                  hsrc="./../res/img/ssinha11/ssinha11_profile.JPG">
+                   src=""
+                  hsrc="">
                   <p class="name">Shash Sinha</p>
                   <p class="login">(ssinha11)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/szhu35/shunjia_cover.png"
-                  hsrc="./../res/img/szhu35/shunjia_profile.jpeg">
+                   src="https://cs.brown.edu/courses/csci1951-a/res/img/szhu35/shunjia_cover.png"
+                  hsrc="https://cs.brown.edu/courses/csci1951-a/res/img/szhu35/shunjia_profile.jpeg">
                   <p class="name">Shunjia Zhu</p>
                   <p class="login">(szhu35)</p>
               </div>
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/ydeng11/ydeng11_cover.jpeg"
-                  hsrc="./../res/img/ydeng11/ydeng11_profile.jpg">
+                   src="https://cs.brown.edu/courses/csci1951-a/res/img/ydeng11/ydeng11_cover.jpeg"
+                  hsrc="https://cs.brown.edu/courses/csci1951-a/res/img/ydeng11/ydeng11_profile.jpg">
                   <p class="name">Sunny Deng</p>
                   <p class="login">(ydeng11)</p>
               </div>
@@ -259,31 +299,31 @@
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/wglaser/wglaser_cover.png"
-                  hsrc="./../res/img/wglaser/wglaser_profile.png">
+                   src="https://cs.brown.edu/courses/csci1951-a/res/img/wglaser/wglaser_cover.png"
+                  hsrc="https://cs.brown.edu/courses/csci1951-a/res/img/wglaser/wglaser_profile.png">
                 <p class="name">Will Glaser</p>
                 <p class="login">(wglaser)</p>
               </div>
-            </div>
+            </div> -->
         </div>
 
 
         <div class="etas">
-            <h2>ETAs</h2>
+            <h2>STAs</h2>
             <div class="row">
               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/bvu3/bvu3_cover.png"
-                  hsrc="./../res/img/bvu3/bvu3_profile.jpg">
-                <p class="name">Ben Vu</p>
-                <p class="login">(bvu3)</p>
+                   src="../res/img/lcohen16/lcohen16.jpg"
+                  hsrc="../res/img/lcohen16/lcohen16_panda.jpg">
+                <p class="name">Lena Cohen</p>
+                <p class="login">(lcohen16)</p>
               </div>
-              <div class="col-md-4 staff">
+               <div class="col-md-4 staff">
                   <img class="profile img-fluid"
-                   src="./../res/img/houyang1/houyang1_cover.jpg"
-                  hsrc="./../res/img/houyang1/houyang1_profile.jpg">
-                <p class="name">Huayu Ouyang</p>
-                <p class="login">(houyang1)</p>
+                   src="../res/img/gsharma6/gsharma6.jpg"
+                  hsrc="../res/img/gsharma6/gsharma6_panda.jpg">
+                <p class="name">Guarav Sharma</p>
+                <p class="login">(gsharma6)</p>
               </div>
             </div>
         </div>

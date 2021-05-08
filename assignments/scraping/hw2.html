@@ -1,0 +1,281 @@
+<html>
+<!-- FILL IN EVERYTHING SURROUNDED BY CURLY BRACES UNLESS OTHERWISE SPECIFIED -->
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 &laquo; Data Scraping and Cleaning &raquo;</title>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1>Assignment #2 <small>&laquo; Data Scraping and Cleaning &raquo;</small></h1>
+            </div>
+            <h3>Due: 11:59pm 02/16/2021 ET</h3>
+            <!-- <h2>Brief</h2> -->
+            <!-- don't worry about filling in this part yet! -->
+                <!-- <p>
+                    <ul>
+                        <li>Due date: February 16, 2021 at 11:59pm EST</li>
+                        <li>Stencil: <code> Github Link </code></li>
+                        <li>Handin: <code> Gradescope Link </code></li>
+                        <li>Files to submit: <code>assignment.py</code>, <code>written_questions.txt</code>, and all SQL queries</li>
+                    </ul>
+                </p>
+            <hr> -->
+
+            <h2>Overview</h2>
+
+            <img src="images/aa.png" alt="stonks" align="middle" width="400">
+
+            <br>
+            <br>
+
+            <p>For this assignment, you'll collect some stock data. We'll make use of investing.com to collect information on the most active stocks in the market, through web scraping. We'll supplement this with historical data about these stocks gathered through API requests.</p>
+
+            <p>You'll then be responsible for cleaning the data, creating a database from it, and analyzing stocks by querying your database.</p>
+
+            <hr>
+
+            <h2>Setting Up</h2><br>
+            <h3>Getting the Stencil</h3>
+            <br>
+                <p>
+                  You can click <a href = https://classroom.github.com/a/ZaNR_VVA>here</a> to get the stencil code for Homework 2. Reference <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this guide</a> for more information about Github and Github Classroom.
+                </p>
+                
+                <p>
+                  The data is located in the data folder. To ensure compatibility with the autograder, you should not modify the stencil unless instructed otherwise. For this assignment, please write your solutions in the respective <code>.py</code> and <code>.sql</code> files. Failing to do so may hinder with the autograder and result in a low grade.
+                </p>
+                <hr><br>
+            <!-- <h2>Assignment</h2>
+                <p>First, you'll need to collect some stock data. We'll make use of investing.com to collect information on the most active stocks in the market, collecting this data through web scraping. We'll supplement this with historical data about these stocks gathered through API requests.</p>
+
+                <p>You'll then be responsible for cleaning the data, creating a database from it, and analyzing stocks by querying your database.</p>
+
+                <p>If you are developing from a department machine, you will need to use the course virtual environment to import the <code>requests</code> and BeautifulSoup <code>bs4</code> libraries. The venv can be activated by typing <code>source /course/cs1951a/venv/bin/activate</code>. To deactivate this virtual environment, simply type <code>deactivate</code>.</p>
+
+                <p>If you are working remotely, your final handin should still work in the course virtual environment.</p>
+                <hr> -->
+                <h2>Part 1: Web Scraping </h2>
+                <h3>35 points</h3>
+                    <p>
+                        To get started, we’re going to want to collect some data on the most active stocks in the market. Conveniently, investing.com <a href="https://www.investing.com/equities/most-active-stocks">publishes this exact data</a>. To collect this data, you’ll make use of web scraping.
+                    </p>
+                    <p>
+                        For purposes of this assignment, we've made a copy of this page to keep the data static. Note, some of the data in our static copy is intentionally modified from real stock data to ensure you've cleaned your data and handled edge cases. As such, you will scrape from this URL: <a href="https://cs1951a-s21-brown.github.io/resources/stocks_scraping_2021.html">https://cs1951a-s21-brown.github.io/resources/stocks_scraping_2021.html</a>
+                    </p>
+
+                    <p>Before scraping, you'll need your code to access this webpage.
+                    You should make use of the <code>requests</code> library to make an HTTP request and collect the HTML. If you're not familar with the <code>requests</code> library, you can read about it <a href="https://2.python-requests.org/en/master/">here</a>.<p>
+
+                    <p>Once you have accessed the HTML and assigned it to some variable, you'll want to scrape it, collecting the following for each stock in the table and storing it in a data structure.
+                        <ul>
+                            <li>company name</li>
+                            <li>stock symbol</li>
+                            <li>price</li>
+                            <li>change percentage</li>
+                            <li>volume</li>
+                            <li>HQ state</li>
+                        </ul>
+                    </p>
+                    <p>You'll use Beautiful Soup, a Python package, to scrape the HTML. This will require looking at the HTML structure of the investing.com page. You can select various HTML elements on a page by tag name, class name, and/or id. Using <a href="https://zapier.com/blog/inspect-element-tutorial/">inspect element</a> on your web browser, you can check what HTML tags and classes contain the relevant information.</p>
+                    <p><strong>Note:</strong> You should collect information from the 50 most active stocks in the investing.com table. This is what the investing.com HTML will contain by default.</p>
+
+		    <p><strong>Hint:</strong> All extracted information will be strings. You’ll want to make sure the price and percent change are floats (i.e., "24.5%" should become the float 24.5), and volume is an integer. You should also parse the percent change to be a decimal, rather than a percentage. Lastly, make sure to fix the HQ state capitalization (i.e. California and california should be interpreted the same way).</p>
+		    <p><strong>Another Hint:</strong> You will probably want to look ahead to the queries you will ultimately ask in Part 4--this will affect the type of cleaning you need to do.
+                    </p>
+
+                <h3>A web scraping example</h3>
+                    <p>Consider the following simple HTML page with an unordered lists:</p>
+<pre>
+&lthtml>
+    &ltbody>
+        &lth1>Welcome to My Website</h1>
+        &ltul>
+            &ltli>Coffee</li>
+            &ltli>Tea</li>
+            &ltli>Coke</li>
+        &lt/ul>
+    &lt/body>
+&lt/html>
+</pre>
+                <p>Imagine we want to get the items in the list. The <code>ul</code> tag indicates an unordered list. We’ll then want to get each list item (list items are in <code>li</code> tags). Specifically, we’ll want to extract the text inside each list item. To do this, we’ll use the following code, where <code>page.text</code> is the HTML of the page.</p>
+
+<pre>
+soup = BeautifulSoup(page.text, 'html.parser')
+items = soup.find(ul).find_all("li")
+</pre>
+
+                <p>You’ll notice that <code>items</code> is a list of three items, since there are three list items in the unordered list. You’ll also see that <code>items[0].text</code> will give you the text of the first list item!</p>
+
+            <br><hr><br>
+<!--             make sure to use <hr> tags to separate each problem part -->
+
+            <h2>Part 2: API Requests</h2>
+
+            <h3>30 points</h3>
+
+            <p>Rather than using web scraping to collect this data, we’ll make use of an API.
+              You’ll make requests to this API using Python’s <code>requests</code> library.
+              IEX Trading offers an API with various endpoints that offer information about stocks.
+              <a href="hw_create_account.html">Click here for a walkthrough</a> on creating a free account.</p>
+              <p><strong>Note: </strong>You have a limited number of API calls you can make with a free account. You'll start receiving 402 errors if you reach the limit - if this happens, use a different email address to make a new (free) account (A sneaky trick is to add a suffix to your email address using a "+". For example, if your email is lorenzo_destefani@brown.edu, you can sign up with lorenzo_destefani+1@brown.edu, lorenzo_destefani+2@brown.edu, and so on. This means you don't have to make any new email accounts for this, you can just use the one you already have to generate infinitely many new free accounts.). You probably won't reach the limit, but to check if you're close, you can click the "Message Use" tab on the left side of the API console site. Free accounts give you 50,000 messages - 1 API call usually costs more than 1 message.</p>
+
+            <p>We’re going to want to collect two pieces of information for each stock in investing.com's most active stock table:</p>
+
+            <ul>
+                <li>the average closing price of each of the most active stocks over the last 5 days</li>
+                <li>the number of articles recently written about each stock</li>
+            </ul>
+
+            <p>To do this, you’ll want to make use of the <a href="https://iexcloud.io/docs/api/#historical-prices">chart endpoint</a> to collect the historical stock pricing.
+              Then, you will want to parse through the data and average the closing price for each stock.
+            <strong>IMPORTANT:</strong> Set the parameter "chartCloseOnly" to <code>True</code> when you request from the chart endpoint to avoid immediately reaching your API call limit! (Read about URL parameters <a href="https://en.wikipedia.org/wiki/Query_string">here</a>.)</p>
+
+            <p>Using the <a href="https://iexcloud.io/docs/api/#news">news endpoint</a>, you should get the articles for a specific stock. Then, you should count how many articles were returned by the API.
+                We will define recently as <strong>since February 1, 2021 00:00:00 (GMT) </strong>. The news API includes
+                the unix epoch time for each article in <strong>milliseconds</strong>. You should calculate the epox time of February 1, 2021 00:00:00 (GMT) and convert to milliseconds (multiply by 1000).
+                Feel free to hardcode this value and use websites to calculate it rather than calculate it by hand.
+            </p>
+
+            <p><strong>Hint:</strong> Some stocks from investing.com are not listed on major stock exchanges, and thus the IEX Trading API does not have data on them. In this case, the IEX Trading API will return a <a href="https://en.wikipedia.org/wiki/HTTP_404">404 status code</a>. Your program should handle this error by disregarding stocks from investing.com if they are not present in the IEX Trading API. That is, these stocks should not be added to the database. You can check the status code of a request by checking <code>requests.get(...).status_code</code></p>
+
+            <p><strong>Another Hint:</strong> When calculating average closing price for the last 5 days, make sure to only include the stocks that have data for at least one of the past five days. (i.e. if a stock doesn't list any of the closing prices for the past five days, including that stock might give you an error.)
+                        </p>
+
+                        <br><hr><br>
+            <h2>Part 3: Databases</h2>
+            <h3>15 points</h3>
+
+            <p>You now realize that to truly harness the data, you need to turn it into a database you can query. Using the provided stencil, create a database with these tables:</p>
+
+            <ul>
+              <li><strong>companies</strong>
+                <ul>
+                  <li><code>symbol</code>, a string of the stock symbol that is the primary key of this table</li>
+                  <li><code>name</code>, a string of the company name</li>
+                  <li><code>location</code>, a string of the company's HQ location</li>
+                </ul>
+              </li>
+              <li><strong>quotes</strong>
+                <ul>
+                  <li><code>symbol</code>, a string of the stock symbol that is the primary key of this table</li>
+                  <li><code>price</code>,  the current stock price, a number</li>
+                  <li><code>avg_price</code>, the average closing price over the last five days, a number</li>
+                  <li><code>num_articles</code>, the number of recent articles about this stock</li>
+                  <li><code>volume</code>, the volume of this stock as a number</li>
+                  <li><code>change_pct</code>, the percent change in the stock’s price today, as a decimal</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Working with databases in Python</h3>
+            <p>To create a connection to the database, and a cursor, we include the following lines in the stencil:</p>
+<pre>
+# Create connection to database
+conn = sqlite3.connect('data.db')
+c = conn.cursor()
+</pre>
+            <p>We also prepare the database for you by clearing out relevant tables if they already exist. This allows you to run your code multiple times and replace your old version of data.</p>
+
+<pre>
+# Delete tables if they exist
+c.execute('DROP TABLE IF EXISTS "companies";')
+c.execute('DROP TABLE IF EXISTS "quotes";')
+</pre>
+
+            <p>To create a database table, you'd do something like this:</p>
+<pre>
+c.execute('CREATE TABLE person(person_id int not null, name text')
+conn.commit()
+</pre>
+
+
+
+            <p>To insert a row into a table, you'd do something like this:</p>
+<pre>
+c.execute('INSERT INTO person VALUES (?, ?)', (some_variable, another_variable))
+</pre>
+
+            <p>The data is saved into the data.db file. If you want to take a look at it, one way is to use a website such as <a href="https://inloop.github.io/sqlite-viewer/">https://inloop.github.io/sqlite-viewer/</a> where you can load the file and query data from the tables. </p>  
+            <br><hr><br>
+            <h2>Part 4: Queries</h2>
+            <h3>20 points</h3>
+            <p>Each SQL statement should be stored in its own file: <code>query1.sql</code>, <code>query2.sql</code>, etc.
+
+            <ul>
+                <li>Write a SQL statement to return the symbol and name of the stock with the biggest percent gain relative to its five day average price. This should be calculated as the current price divided by the average price.</li>
+                <li>Write a SQL statement to return the name of the stock with the highest price that has less than 10 articles.</li>
+                <li>Write a SQL statement to return the symbol and name of all stocks with prices above $35 and where the absolute difference between the current price and 5 day average price is less than $5. Your results should be sorted by the absolute difference between current price and 5 day average price, in ascending order. </li>
+                <li>Write a SQL statement to return each state and number of companies headquartered in that state (no need to include states not in your dataset). Order alphabetically by state (A -> Z).</li>
+            </ul>
+
+            <br><hr><br>
+            <h2>Part 5: Socially-Responsible Web Scraping</h2>
+            <h3> 10 points </h3>
+		CS1951a wants to help you identify and grapple with societal consequences at each stage of the data lifecycle. There are many ethical considerations data scientists should take into account before 		collecting data through web scraping, even if the data is publicly available.
+        <br> 
+        <br>
+        The goal of this section is to: 
+            <ul>
+		<li> Reflect on the relationship between user expectations of privacy and the ethics of collecting public data </li>
+		<li> Examine contextual factors to make decisions about collecting and using data from different sites </li>
+	    </ul>
+	    <h4> Task </h4>
+		<ul>
+		<li> Read <a href="https://cfiesler.medium.com/spiders-and-crawlers-and-scrapers-oh-my-law-and-ethics-of-researchers-violating-terms-of-service-27496894f6de">Spiders and crawlers and scrapers, oh my! The law and ethics of researchers violating terms of service</a> </li>
+		<li> Read <a href="https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135">Scientists Like Me Are Studying Your Tweets—Are You OK With That?</a></li>
+		<li> Answer the questions below in <code>writeup.txt</code>. Each response should be thoughtful, provide justification for your claims, and be concise but complete. See the <a href="https://docs.google.com/document/d/1hXGxoW8DQzIBh1yW2989fZhOIBgJ4w8BMN6lXjbnY-U/edit">response guide</a> for more guidance. </li>
+		</ul>
+	    <h4> Questions </h4>
+		<ol>
+		<li> List one quote from each article that data scientists should read before web scraping or collecting public data.</li>
+		<li> Choose <b>two</b> websites from the list below:
+		<ul>
+		<li> <a href=https://www.inspire.com>Inspire</a>: a social network for health</li>
+		<li> <a href=https://nextdoor.com>NextDoor</a>: a social network for neighborhoods</li>
+		<li> <a href=https://www.tripadvisor.com>TripAdvisor</a>: a site for finding travel deals and reviews</li>
+		<li> <a href=https://www.reddit.com>Reddit</a>: a network of online discussion communities based on people's interests</li>
+        <li> <a href=https://venmo.com>Venmo</a>: a mobile payment service with a social networking component</li>
+        <li> A site with user-generated content that you think has interesting social and ethical considerations for web scraping</li>
+		</ul>
+		Research the different uses, sections, and users of each site. Search online for any social context or controversies surrounding the sites. <b>Based on your exploration of both sites, answer the following questions for each site:</b>
+		<ol type="a">
+		<li> What do you imagine a user might expect about the privacy of their personal data on the site? Does the expectation of privacy vary across different sections or types of data on the site? </li>
+		<li> Identify one vulnerable user group for whom data scientists scraping data should exercise more caution. </li>
+		<li> Describe one project or use case where scraping data from this site could cause harm. Describe one project or use case where scraping data from this site could be beneficial. </li>
+		<li> What types of data on the site should data scientists be especially cautious about collecting? If any, what types of data on the site should not be scraped by data scientists?
+		<ol type = "i">
+		<li> Consider the creator of the data, specific content of the data, user expectations of privacy, and biases that shape the data. </li>
+		<li> Data types could be specific, like usernames and dates, or general, like posts about a certain subject or posts from certain user groups.</li>
+		</ol> 
+		</li>
+		</ol>		
+		</li>
+		</ol>
+
+            <br><hr><br>
+            <!-- To be updated -->
+            <h2>Handing In</h2><br>
+                <p>After finishing the assignment (and any assignment in the future), run <code>python3 zip_assignment.py</code> in the command line from your assignment directory, and fix any issues brought up by the script. </p>
+                <p>After the script has been run successfully, you should find the file <code>scraping-submission-1951A.zip</code> in your assignment directory. Please submit this zip file on Gradescope under the respective assignment.
+                  (If you have not signed up for Gradescope already, please refer to this <a href="https://docs.google.com/document/d/1X_SAAVeGNcZW9HbaM-ev8h9RrhLWtlTSYfMkE8jWVdQ/edit#heading=h.lnyy1apmgq9k">guide</a>.)
+                </p>
+                <p><b>Note:</b> Please make sure that the autograder works properly after you have submitted your zip file, just to make sure that you don't run out of your API call allotment exactly at the moment of submission. Failure to ensure that the autograder works properly on your code will result in a low grade.</p>
+                <br><hr><br>
+
+
+            <h2>Credits</h2>
+                <p>
+                    Made with &hearts; by Jacob Meltzer and Tanvir Shahriar (2019 TAs), updated by Natalie Delworth and Nazem Aldroubi (2020 TAs), and again by Daniela Haidar, Daniel Civita Ramirez, JP Champa and Nam Do (2021 TAs).
+                </p>
+        <div class="col-md-2"></div>
+        <br><br>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,378 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 &laquo; SQL &raquo;</title>
+</head>
+
+<body>
+
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1>Assignment 1 <small>&laquo; SQL &raquo;</small></h1>
+            </div>
+
+            <h3>Due: 11:59pm 02/11/2021 ET</h3>
+            <p>
+                <img src="sql_clause.jpeg" alt="SQL Joke">
+            </p>
+            <hr><br>
+          <h2>Setting Up</h2><br>
+          <h3>Getting the Stencil</h3>
+          <br>
+              <p>
+                You can click <a href = "https://classroom.github.com/a/nUzpTaxZ">here</a> to get the stencil code for Homework 1. Reference <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this guide</a> for more information about Github and Github Classroom.
+              </p>
+              
+              <p>
+                The data is located in the data folder. To ensure compatibility with the autograder, you should not modify the stencil unless instructed otherwise. For this assignment, please write each of your queries to its corresponding SQL file. Failing to do so may hinder with the autograder and result in a low grade. 
+              </p>
+              <br>
+          
+              <h3>Virtual Environment</h3>
+              <br>
+              <h4>1. Linux/OSX</h4>
+              <p>You need to set up a virtual environment to run Python assignments, if you want to work on your local machine.</p>
+              <p>Our Gradescope Autograder, virtual environment guide and <code>create_venv.sh</code> script in your stencil code <b>runs on Python 3.7</b>. You might run into strange issues setting up the virtual environment / working on future assignments if you don't have the right version of Python. Please refer to <a href="https://docs.google.com/document/d/1qf0SQcVL3tjsf9iCAtNWz8vwS24l6XAq_x0hqMTJa0k/edit#" target="_blank">this guide</a> for instructions to check whether you have the right Python version and how to install the correct one if you do not.</p>
+              <p>You can run <code>./create_venv.sh</code> (or <code>bash create_venv.sh</code>) from your assignment directory to create the virtual environment. Run <code>chmod 775 create_venv.sh</code> if you get a permission denied error.</p>
+              <p>If nothing is printed out in your terminal besides the message <i>"created cs1951a environment"</i>, congratulations! You have successfully installed the virtual environment for the course on your machine! If any error message is printed out, please utilize TA Hours / Piazza as a resource to resolve the issue(s).</p>
+              <p>From now on, whenever you want to activate your virtual environment for our assignments, you can simply type the following in your terminal:</p>
+              <ul>
+                <li> <b>Working locally</b>:
+                  <code>cs1951a_venv</code> (or <code>source ~/cs1951a_venv/bin/activate</code>).</li>
+                <li><b>Working on a department machine through ssh</b>:
+                  <code>source /course/cs1951a/venv/bin/activate</code></li>
+              </ul>
+              <p>You can refer to this <a href="https://docs.google.com/document/d/1qf0SQcVL3tjsf9iCAtNWz8vwS24l6XAq_x0hqMTJa0k/edit#" target="_blank">guide</a> for more information about installing our course's virtual environment.
+                If you have successfully executed our <code>create_venv.sh</code> script above and have the right Python version, you should not worry about reading in-depth into this resource.
+              </p>
+              <br>
+              <h4>2. Windows</h4>
+              <p>If you use a Windows machine, as there are different ways students use Terminal/File Transfer to complete assignments, we unfortunately <b>do not</b> have a robust, uniform script/guide to install a virtual environment locally on Windows machines.</p>
+              <p>We strongly recommend running your assignment on the department machine. Git is installed on the department machines, so you should also be able to <code>git clone</code> your assignments onto the department machine.</p>
+              <p>The recommended workflow is to work on your assignment locally, and either (1) use version control, or (2) use SCP/PuTTY to transfer your files to the department machine. To run your assignments on the department machine, make sure to enable the course virtual environment (using <code>source /course/cs1951a/venv/bin/activate</code></li>) before running any Python code! Refer to this <a href="https://docs.google.com/document/d/1Opd4438n_BH1GfGwx69wfkfFGolhacOiOlCvGD-HcfE/edit#" target="_blank">resource</a> for more support regarding file transfer, and <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/" target="_blank">this</a> with respect to version control.</p>
+              <p><b>If you have successfully installed a Python3.7 Virtual Environment on your machine in the past:</b> We have included the <code>requirements.txt</code> dependencies file on the course website (<a href="https://cs1951a-s21-brown.github.io/resources/requirements.txt" target="_blank">here</a>). If it is helpful, we also have a virtual environment setup guide <a href="https://docs.google.com/document/d/1qf0SQcVL3tjsf9iCAtNWz8vwS24l6XAq_x0hqMTJa0k/edit" target="_blank">here</a>.</p>
+            <br>
+            <h3>SQLite</h3>
+            <br>
+                <p>
+                    If you are working locally, you can check if SQLite is installed already by running <code>sqlite3 -version</code> in your terminal.
+                    You can refer to <a href="https://www.tutorialspoint.com/sqlite/sqlite_installation.htm">this guide</a> to install SQLite on your machine. 
+                    SQLite is installed on all department machines. It can be accessed from the command line using <code>sqlite3</code>.
+                    </p>
+                    <p>Running <code>sqlite3 somedb.db</code> from your terminal will launch an environment that will allow you to type your SQL queries directly into the terminal. You can exit this environment by pushing Ctrl+D or by typing <code>.exit</code> and pressing enter.</p>
+                <p>
+                    As a more explicit example, to open a sql environment where you can query the <code>movies.db</code> database, you can type:
+                </p>
+                <p>
+                <code>$ sqlite3 movies.db</code>
+                </p>
+                <p>To execute a SQL statement that you have saved in a solution file, you can run the following command:</p>
+                    <code>$ sqlite3 movies.db &lt; sql_solutions.sql</code><br><br>
+                <p>
+                    For more information on using SQLite from the command line, see <a href="http://www.sqlite.org/sqlite.html">http://www.sqlite.org/sqlite.html</a>. Additionally, we have provided very helpful hints for most of the problems; you should be able to use these as a starting point if you get stuck before looking up additional information online.
+                </p>
+                <br>
+                <h3>Database</h3>
+                <br>
+                <p>Some useful tools you can use to view the content in a database: <a href="http://sqliteviewer.flowsoft7.com/">SQLite Viewer</a> and 
+                <a href="https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools">SQLTools</a> + <a href="https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite">SQLite</a> 
+                packages (if you are developing on <a href="https://code.visualstudio.com/">VS Code</a>).</p>
+
+                <br><hr><br>
+                <h2>Part 1: Starting Off!</h2>
+                <h3>20 points</h3>
+                <br>
+                    <p>This part of the assignment builds off the exercises you completed in the lab. <b>If you have not yet completed the lab, please do so before starting this assignment. 
+                      There are some really useful hints and examples you can borrow from the lab for this assignment.</b>
+                      The database and schema are described again below, but are the same from the lab.</p>
+
+                    <p>
+                        We have provided a database named <code>people.db</code> with the name, age, ID, and occupation of some Brown students and alumni.
+                        Here is the schema: </p>
+                        <pre>people_main(<strong>ID</strong> INTEGER, <strong>name</strong> TEXT, <strong>occupation</strong> TEXT, <strong>age</strong> INTEGER)
+people_likes(<strong>ID1</strong> INTEGER, <strong>ID2</strong> INTEGER)
+people_friends(<strong>ID1</strong> INTEGER, <strong>ID2</strong> INTEGER)</pre>
+
+                    <p>In the <strong>people_main</strong> table, <strong>ID</strong> is a unique identifier for a particular student or alumni. <strong>name</strong>, <strong>occupation</strong> and <strong>age</strong> correspond to the person's first name, occupation and age.
+                    <p>In the <strong>people_friends</strong> table, each (<strong>ID1</strong>, <strong>ID2</strong>) pair indicates that the particular person with <strong>ID1</strong> is friends with the person with <strong>ID2</strong> (and vice versa). The friendship is mutual, and if (<strong>ID1</strong>, <strong>ID2</strong>) is in the table, it is guaranteed that (<strong>ID2</strong>, <strong>ID1</strong>) exists in the table.</p>
+                    <p>In the <strong>people_likes</strong> table, each (<strong>ID1</strong>, <strong>ID2</strong>) pair indicates that the student or alumni with <strong>ID1</strong> likes the person with <strong>ID2</strong>. The (<strong>ID1</strong>, <strong>ID2</strong>) pair in the table does not guarantee that the (<strong>ID2</strong>, <strong>ID1</strong>) pair also exists in the table.</p>
+
+                    <p>
+                      Your job is to write SQL queries for the data being requested:
+                    </p>
+                    <ol type="1">
+                      <li>
+                          (4 points) Write a SQL statement that returns the  <strong>name</strong> and number of people that like each person. Results should be ordered by count (descending), and then by name (A-Z). Save the query to <code>part1_problem1.sql</code>
+                          <p>
+                              Hint: Use a <code>LEFT JOIN</code>! The following website is quite useful: <a href="http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/">http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/</a>
+                          </p>
+                      </li>
+                      <li>
+                              (4 points) Write a SQL statement that returns the two <strong>occupations</strong> that have the lowest count of popular people. Consider popular people as people who are liked by at least one other person. Return the two occupations and the counts. Results should be ordered by <strong>occupation</strong> (A-Z). Save the query to <code>part1_problem2.sql</code>                          <p>
+                              Hint: The <code>LIMIT</code> statement will come in handy!
+                          </p>
+                      </li>
+
+                      <li>
+                          (4 points) Write a SQL statement that returns the  <strong>name</strong> and  <strong>occupation</strong> of all people who have more than 3 friends. Results should be ordered by  <strong>name</strong> (A-Z). Save the query to <code>part1_problem3.sql</code>
+                          <p>
+                              Hint: You'll need to take a look at the <code>HAVING</code> function.
+                          </p>
+                      </li>
+
+                      <li>
+                          (4 points) Write a SQL statement that returns the distinct  <strong>name</strong> and <strong>age</strong> of all people who are liked by anyone younger than them. Results should be ordered by <strong>name</strong> (A-Z). Save the query to <code>part1_problem4.sql</code>.
+                      </li>
+
+                      <li>
+                          (4 points) Write a SQL statement to find pairs (A, B) such that person A likes person B, but A is not friends with B. The query should return 4 columns:  <strong>ID</strong> of person 1, <strong>name</strong> of person 1, <strong>ID</strong> of person 2 and <strong>name</strong> of person 2. Results should be ordered by <strong>ID1</strong> (ascending), then <strong>ID2</strong> (ascending). Save the query to <code>part1_problem5.sql</code>
+                      </li>
+                  </ol>
+                  <br><p>Time to join stuff!</p><br>
+
+                  <p>
+                      <img src="bar_joke.jpeg" alt="SQL Joke" height="600" width="330">
+                  </p>
+
+                  <br><hr><br>
+<!--             make sure to use <hr> tags to separate each problem part -->
+
+            <h2>Part 2: Getting Harder!</h2>
+            <h3>60 points</h3>
+            <br>
+              <p>
+                For this part of the assignment, you will be using the TMDB Movie Dataset, which has been exported to the <code>movies.db</code> database. The database
+                schema is as follows:</p>
+                <pre>movies(<strong>budget</strong> INTEGER, <strong>homepage</strong> TEXT, <strong>id</strong> INTEGER, <strong>original_language</strong> TEXT, <strong>original_title</strong> TEXT, <strong>overview</strong> TEXT, <strong>popularity</strong> REAL, <strong>release_date</strong> TEXT, <strong>revenue</strong> REAL, <strong>runtime</strong> INTEGER, <strong>status</strong> TEXT, <strong>tagline</strong> TEXT, <strong>title</strong> TEXT, <strong>vote_average</strong> REAL, <strong>vote_count</strong> INTEGER)
+scores(<strong>review</strong> TEXT, <strong>min_score</strong> INTEGER, <strong>max_score</strong> INTEGER)</pre>
+
+              <p>
+                We encourage you to use the <code>WITH</code> operator, which lets you divide your query into separate queries. As an example, we can define a subquery and
+                use it in another query as follows (there is also an example in the lab!):</p>
+                <pre>WITH subquery AS (
+SELECT
+  original_title, vote_average
+FROM
+  movies
+)
+
+SELECT
+  original_title
+FROM
+  subquery
+);</pre>
+                <br>
+                  <ol type="1">
+                    <li>
+                      (10 points) Write a SQL query to find the <strong>original_title</strong>, <strong>budget</strong> and  <strong>release_date</strong> of the movie "John Carter"
+                      and append to that the movie  <strong>original_title</strong>,  <strong>budget</strong> and  <strong>release_date</strong> of the movie that was released
+                      9 days after "John Carter".
+                      <p>
+                        You can add days to a particular day
+                        by using the <code>date</code> function.
+                        For example, in order to add 3 days to to '2012-07-16', you can use <code>date('2012-07-16', '+3 days')</code>
+                      </p>
+                    </li>
+                    <p>
+                      Hint: The <code>UNION</code> statement should come in handy.
+                    </p>
+                    <li>
+                      (10 points) Write a SQL query to count the number of movies that start with "The", end with a "2" or contain the word "shark".
+                      Your query should be case insensitive and return one column with one entry. You should return a single value.
+                    </li>
+                    <p>
+                      Hint: You may want to look into <code>CASE</code> statements and the <code>LIKE</code> operator. (Lab!)
+                    </p>
+                    <li>
+                      (10 points) Write a SQL query to select the <strong>original_title</strong> of all movies and a column where there is a 1 if there exists another movie that has the
+                      same vote average and the same runtime as that movie, and a 0 otherwise. Results should be ordered by <strong>original_title</strong> (A-Z).
+                    </li>
+                    <p>
+                      Hint: You may want to look into the <code>EXISTS</code> operator. Additionally, think about possible edge cases.
+                    <li>
+                      (10 points) Write a SQL query that returns the <strong>original_title</strong>, <strong>vote_average</strong> and <strong>review</strong> of every movie. The reviews depends on the vote_average
+                      as described described in the <code>scores</code> table. For example, movies with a vote average between 2 and 3.9 (inclusive) are reviewed as 'poor',
+                      whereas movies with a vote average between 9 and 10 (inclusive) are reviewed as 'excellent'.
+
+                      If a movie is reviewed as 'awful' or 'poor' then <strong>original_title</strong> should read 'do not watch'.
+                      Results should be ordered by <strong>id</strong> (ascending).
+
+                      For example, the output should have the following format:
+                      <pre>
+'Snow White'   | 8.7 | 'great'
+'Toy Story'    | 9.3 | 'must see'
+'do not watch' | 2.3 | 'poor'
+</pre>
+                    <p>
+                      Hint: Look into the <code>BETWEEN</code> statement and how it can be used in a join.
+                    </p>
+                    <p>
+                      Another Hint: Do not modify the current database by using <code>UPDATE</code>. Take a look at the <code>CASE</code> operation example from the lab. 
+                    </p>
+
+                    <li>
+                      (10 points) Write a SQL query that finds the <strong>original_title</strong>, <strong>release_date</strong> and <strong>revenue</strong>
+                      of all the movies whose revenue exceeded the average revenue of all the movies released on the same day (including itself). Results should be ordered by <strong>release_date</strong> (ascending), and then <strong>revenue</strong> (descending).
+                    </li>
+                  </br>
+                    <li>
+                      <p>
+                        (10 points) Write a SQL query that, <strong>for each original_language</strong> that has <strong>more than 2 movies </strong> , finds the number of movies that were reviewed as 'poor' and the number of movies that were reviewed as 'good'.
+                      </p>
+                      <p>
+                        Like in the 4th question, you will need to look at the <code>scores</code> table to see what the review categories are and use the <strong>vote_average</strong> field of a movie to determine which review category it falls under. 
+                        Your query should return 3 columns (<strong>original_language</strong>, <strong>num_poor</strong> which is the number of 'poor' movies for that language, and <strong>num_good</strong> which should be the number of 'good' movies for the language). 
+                        Your results should be <strong>ordered</strong> by number of 'good' movies (descending) and then number of 'poor' movies (ascending). Remember to only include languages that have more than 2 movies!
+                      </p>
+
+                      <p>
+                        Hint: Refer to the examples from the lab! 
+                      </p>
+              
+
+                    </li>
+
+                  </ol>
+
+                  <br><hr><br>
+            <h2> Part 3: Optimization </h2>
+            <h3> 10 points </h3>
+            <br>
+            <p>
+              We have provided you with the <code>athletes.db</code> database, although querying it is not necessary at all. The schema is as follows:
+            </p>
+            <pre>school_athletes(<strong>ID</strong> INTEGER, <strong>name</strong> TEXT, <strong>school</strong> TEXT, <strong>performance_score</strong> INTEGER, <strong>division</strong> TEXT)</pre>
+           </br>
+            <p>
+              <strong>For the query below</strong>, explain why the given query might not be the most efficient way to accomplish the task. Write out an optimized version of the query in <code>writeup.txt</code>. Explain what steps you took to optimize it and why your version would be more efficient.
+            </p>
+
+            <ol type="1">
+              <li>
+                <p>
+                  (6 points) The SQL query to optimize is as follows:
+                </p>
+
+                <pre>SELECT ID, name
+      FROM school_athletes AS athletes
+      WHERE school = 'Brown' and performance_score > (
+        SELECT AVG(performance_score)
+        FROM school_athletes
+        WHERE division = athletes.division
+      ); </pre></li>
+
+        <li>
+                <p>
+                    (4 points) Consider two tables. Table A is very long with 1 billion rows and
+                    5 columns. Table B is very wide with 1000 rows and 10,000 columns. If we
+                    were to join the two tables and want to make sure the join is performant,
+                    how should we best filter the tables? Assume that we can select
+                    from each table and then join the results. Specifically, state the table
+                    in which we should use WHERE heavily and the table in which we should be careful
+                    about what values we use in our SELECT.
+                </p>
+          </li>
+          </ol>
+        <br>
+          <hr><br>
+            <h2> Part 4: Datasets & Society</h2>
+                <h3>10 points</h3>
+                <br>
+            	 <p> 
+	     	   CS1951a wants to help you identify and grapple with societal consequences at each stage of the data lifecycle. 
+		   The design, construction, and socio-historical context of a dataset have social implications that data scientists 
+		   must consider when creating and using it.
+		
+		    <br><br> The goal of this section is to:
+		      <ul>
+			<li> Demonstrate how the design of database schemas can embed social values and/or inflict harm </li>
+			<li> Highlight a proposed process for dataset creators that raises a wide range of social and ethical concerns </li>
+			<li> Reflect on the possibilities and limitations of this process </li>
+		      </ul>
+		
+			<h3> Task: </h3>
+			  <ul>
+			    <li> Read <a href = "https://slate.com/technology/2019/10/gender-binary-nonbinary-code-databases-values.html">
+		     		 When Binary Code Won’t Accommodate Nonbinary People</a></li>
+			    <li> Read Section 1 (Introduction and Objectives), Section 3 (Questions and Workflow), and Section 4 (Impact and Challenges) 
+		     		 of the paper <a href = "https://arxiv.org/pdf/1803.09010.pdf">Datasheets for Datasets </a>.</li>
+			    <li> Answer the questions below in <code>writeup.txt</code>. Each response should be thoughtful, provide justification for your 
+		     		claims, and be concise but complete. See the <a href="https://docs.google.com/document/d/1hXGxoW8DQzIBh1yW2989fZhOIBgJ4w8BMN6lXjbnY-U/edit?usp=sharing">response guide</a> for more guidance. </li> 
+			  </ul>       
+          	</p>
+
+          <h3> Questions </h3>
+            <p>
+              <ol type="1">
+                <li> (2 points)
+                  Think about the assumptions and possibilities embedded in the design of people.db. Your answers to each of the following questions should be about 1 sentence.
+                  <ol type="a"> 
+                    <li> Provide an example of a person or situation that would be more difficult to include in people.db if the occupation column of people_main did not accept null values.
+                    <li> Imagine that people.db is used by an employer to create a list of people to contact about a job opening. What is one insight an employer could gain by querying people.db that would be <b>unfair</b> for them to use for recruiting purposes? 
+                    <li> Name one context for which it would be beneficial to add a column to people_likes that measures the strength of the feelings or add a column to people_friends that measures the strength of the friendship. Name one context for which those additions could be harmful.
+                  </ol> 
+                </li>
+                <li> (4 points) Which datasheet questions stood out to you? Pick three questions that are in different stages of the dataset lifecycle. For each question, provide a specific example
+		     real or hypothetical) of a negative societal consequence that the question could help a dataset user or creator to identify and/or prevent. If you find a real example online,
+		     provide a link to cite your source.
+         <br>
+         <ul>
+			<li><i><b> For example: </b> The questions “What mechanisms or procedures were used to collect the data? How were these mechanisms or procedures validated?” could have helped 
+			       identify and prevent errors in automatic COVID-19 data collection in England. Public Health England used an outdated Excel file format in their automatic process to pull
+			       COVID-19 data together, leading nearly 16,000 coronavirus cases to go unreported. If the dataset creator had thought of procedures to validate this process ahead of
+ 			       time, they could have identified the loss of data earlier and prevented the threat to public health efforts. (Source: <a href="https://www.bbc.com/news/technology-54423988"> 
+              https://www.bbc.com/news/technology-54423988</a>)
+      </i></li>
+    </ul>
+
+                </li>
+                <li> (4 points) Identify a social, ethical, or political issue that is raised in “When Binary Code Won’t Accomodate Nonbinary People” but is not addressed by the proposed datasheet
+                      system. Propose a modification or addition to the datasheet system that helps address this issue. Your proposal could involve new sections, questions, external infrastructure,
+                       incentives, and more! Explain how your proposal would help address the issue you identified.
+                </li>
+              </ol>
+            </p>
+	<h3> Additional Information </h3>
+	  <p>
+      Timnit Gebru, the creator of Datasheets for Datasets, is a leader in the field of AI ethics and an advocate for marginalized and underrepresented communities in tech. 
+      On December 2nd, Google fired her from her role as co-lead of the company's Ethical Artificial Intelligence team. 
+      Gebru said she was fired for sending an email criticizing Google's treatment of marginalized employees.
+      Google's treatment of Gebru has been widely criticized by those within and outside of the tech community, and has sparked discussions about racism in the tech industry, industry censorship of critical research, and corporate diversity efforts.
+      Check out these articles for additional information:
+      <ul>
+        <li><a href=https://www.washingtonpost.com/technology/2020/12/03/timnit-gebru-google-fired/>Google’s star AI ethics researcher, one of a few Black women in the field, says she was fired for a critical email
+        </a></li>
+        <li><a href=https://www.wired.com/story/timnit-gebru-exit-google-exposes-crisis-in-ai/>Timnit Gebru’s Exit From Google Exposes a Crisis in AI 
+        </a></li>
+        <li><a href=https://www.npr.org/2020/12/17/947719354/ousted-black-google-researcher-they-wanted-to-have-my-presence-but-not-me-exactl>
+          Ousted Black Google Researcher: 'They Wanted To Have My Presence, But Not Me Exactly'</a></li>
+      </ul>
+    </p>
+    <br><hr><br>
+            <!-- To be updated -->
+            <h2>Handing In</h2><br>
+                <p>After finishing the assignment (and any assignment in the future), run <code>python3 zip_assignment.py</code> in the command line from your assignment directory, and fix any issues brought up by the script. </p>
+                <p>After the script has been run successfully, you should find the file <code>sql-submission-1951A.zip</code> in your assignment directory. Please submit this zip file on Gradescope under the respective assignment.</p>
+                <p>(If you have not signed up for Gradescope already, please refer to this <a href="https://docs.google.com/document/d/1X_SAAVeGNcZW9HbaM-ev8h9RrhLWtlTSYfMkE8jWVdQ/edit#heading=h.lnyy1apmgq9k">guide</a>.)</p>
+                <br><hr><br>
+            <h2>Credits</h2><br>
+                <p>
+                    Made with &hearts; by Jens and Esteban, updated for Spring 2021 by Yuchen, Sunny and Nazem.
+                </p>
+
+                <p>
+                  The socially responsible computing component was designed by Lena and Gaurav.
+                </p>
+                <p>
+                    Movie Database from: <a href="https://www.kaggle.com/tmdb/tmdb-movie-metadata">https://www.kaggle.com/tmdb/tmdb-movie-metadata</a>
+                </p>
+        <div class="col-md-2"></div>
+        <br><br>
+    </div>
+
+</body>
+</html>

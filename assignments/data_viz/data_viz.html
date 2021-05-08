@@ -1,0 +1,413 @@
+
+<html>
+<!-- FILL IN EVERYTHING SURROUNDED BY CURLY BRACES UNLESS OTHERWISE SPECIFIED -->
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6 &laquo; Data Visualization &raquo;</title>
+</head>
+
+<body>
+
+<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1>Assignment 6 <small>&laquo; Data Visualization &raquo;</small></h1>
+            </div>
+            <div id="assignment-header">
+                <h2>Due: 11:59pm March 27, 2021 (ET)</h2>
+                <p>Bad Data Viz can be found everywhere.
+                    So, please let us indulge by listing just a few examples here:
+                </p>
+                <img src="dataviz_meme.png" alt="bad visualization" style="width:auto; height: 220px">
+                <img src="economy.png" alt="bad visualization" style="width:auto; height: 220px">
+                <br>
+                <marquee><img src="strong_with_the_dataviz.jpeg" alt="bad visualization" style="width:auto; height: 220px"></marquee>
+            </div>
+            <hr>
+
+            <!-- <h2>Brief</h2>
+                <p>
+                    <ul>
+                        <li>Due date: 11:59pm 3/23/2021 </li>
+                        <li>Stencil: <code> Github Link </code> (Github instructions can be found <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit?usp=sharing">here</a>)</li>
+                        <li>Handin: <code> Gradescope Link </code></li>
+                        <li>Files to submit: <code>dashboard.html</code>, <code>main.js</code>, <code>main.css</code>, <code>README.txt</code></li>
+                    </ul>
+                </p>
+            <hr> -->
+        
+        <div id="overview">
+            <br>
+            <h2>Overview</h2>
+            <br>
+                <p>In this assignment, you will use <a href="http://d3js.org/">D3</a>, an interactive visualization library,
+                    to develop your own data dashboard. D3 is extremely powerful and can be used to make very specific,
+                    informative diagrams. We <strong>highly</strong> recommend that you complete the D3 + JavaScript
+                    lab before you attempt this assignment. We have a ton of explanation and introduction to D3
+                    in the lab.</p>
+                    
+                <p>To illustrate the capabilities of D3, here are some stunning examples of visualizations created with it:</p>
+                <ul>
+                    <li><a href="http://polygraph.cool/hamilton/">Every line in Hamilton, visualized</a></li>
+                    <li><a href="http://projects.flowingdata.com/life-expectancy/">Life Expectancy</a></li>
+                    <li><a href="http://air.nullschool.net/">Tokyo Wind Speeds</a></li>
+                    <li><a href="http://www.koalastothemax.com/">Koala to the Max</a></li>
+                </ul>
+
+          <p>
+              We know that D3 code is easy to find online.
+              Even if we provide you with reference implementations, <b>do not copy any code.</b>
+          </p>
+        </div>
+        <br><hr><br>
+        <div id="prerequisite">
+            <h2>Before you begin</h2>
+            <br>
+            <h4>Do the Intro to Viz Lab!</h4>
+            <p>
+                Many students find this assignment to be one of the most challenging in the class.
+                This is because JavaScript is a new language and framework for many, and we don't formally teach it.
+                We <strong>HIGHLY</strong> recommend you walk through the Data Visualization lab listed
+                <a href="https://cs1951a-s21-brown.github.io/labs/index.html" target="_blank">here</a> before you begin.
+            </p>
+            <p>
+                Since this project is more free-form than previous assignment, there is no solution code for this assignment.
+                We will do our best to debug your dashboard during TA hours, but TAs at hours can only be so helpful
+                debugging your particular project.
+
+                A few tips:
+                <ul>
+                    <li>Start early!</li>
+                    <li>Do/review the D3 lab and refer to the solution code for part 2 for certain features (i.e. colors, tooltips, etc.)</li>
+                    <li>Look for resources online <strong>(DO NOT COPY!)</strong> and do your best</li>
+                </ul>
+            </p>
+            <br>
+            <h4>Accessible Data Visualization</h4>
+            <p>Before you start designing your dashboard, read 
+                <ul>
+                    <li><a href="https://medium.com/nightingale/accessibility-is-at-the-heart-of-data-visualization-64a38d6c505b">“Why Accessibility Is at the Heart of Data Visualization,”</a> paying particular attention to the “Design equivalent experiences for all your readers” section.
+                    </li>
+                    <li><a href="https://www.betterment.com/resources/accessible-data-visualization/">“A Comprehensive Guide to Accessible Data Visualization,”</a> which provides specific suggestions to make data visualizations accessible to people with visual impairments. 
+                    </li>
+                </ul>
+                Keep the principles from the readings in mind as you design and implement your dashboard. You aren’t required to implement these best practices in your dashboard, but note the times during your design and implementation process where you could act on suggestions in the readings. You’ll answer questions about your observations after completing the dashboard.
+            </p>
+            <br>
+            <p>We hope for some this will be a fun assignment and closely resemble future data science work!</p>
+        </div>
+        <br><hr><br>
+        <div id="setting-up">
+            <h2>Setting Up</h2>
+            <br>
+            <h3>Getting the Stencil</h3>
+            <p>
+                You can click <a href="https://classroom.github.com/a/Q3h0AXUj">here</a> to get the stencil code for Homework 4. Reference <a
+                    href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this
+                    guide</a> for more information about Github and Github Classroom.
+            </p>
+            <p>
+                The only stencil requirement that we have is that your code must consist of <code>index.html</code>, <code>main.js</code>, <code>main.css</code>, and relevant files.
+                Please refer to the submission section of this handout for submission specifications.
+            </p>
+            <h3>Run Specifications</h3>
+            <p>
+                To view your visualization in the browser, we're going to load the webpage via a local web server. Navigate
+                to the directory containing your <code>index.html</code> file, and run
+                <pre>python3 -m http.server 8000</pre>
+            </p>
+            <p>
+                You then can open a browser to the url <code>http://localhost:8000/index.html</code> to view your
+                dashboard.
+            </p>
+            <p>If you are using the department machine to code and run your python server, you can refer to <a href="https://docs.google.com/document/d/1Opd4438n_BH1GfGwx69wfkfFGolhacOiOlCvGD-HcfE/edit?usp=sharing" target="_blank">this instruction</a> 
+                to learn how to view your product locally.</p>
+        </div>
+        <br><hr><br>
+        <div id="assignment">
+            <h2>Assignment</h2>
+            <br>
+            <p>
+                Your task is to create your own informative D3 dashboard! This assignment, in particular,
+                is very flexible. There are no strictly correct or incorrect answers since visualization is inherently
+                subjective. That said, we will evaluate your work on a number of requirements listed below.
+                Further, we expect that you incorporate concepts that Lorenzo has discussed in class like
+                color palettes, font types/sizing, orientation, clarity, organization, and informativeness.
+            </p>
+            <br>
+            <h3>Dashboard</h3>
+            <h5>68 points</h5>
+            <h4>Datasets</h4>
+            <h5>(5 points! Just for using the right data...)</h5>
+            <p>
+                You must use data from one of the following datasets.
+                Each dataset has a series of leading questions you may use as inspiration.
+                You should make sure that your dashboard answers these questions.
+                Imagine your boss gives you 2 weeks to build a dashboard on these issues.
+            </p>
+            <p>
+                <b>Note:</b> All 3 datasets are provided in the <code>data</code> directory. Each topic includes a link to a Kaggle site with more information about the dataset.
+            </p>
+            <ol>
+                <li>
+                    <strong>Video Game Sales</strong> | <a href="https://www.kaggle.com/gregorut/videogamesales" target="_blank">Kaggle</a>
+                    <h5>Questions:</h5>
+                    <ol>
+                        <li>Your boss wants to know the top 10 video games of all time <i>or</i> top 10 for a specific year.</li>
+                        <li>Your boss wants to understand which genre is most popular. We'd like to see genre sales
+                        broken out per region. (This question can be answered by showing the top genre in each
+                        region if you want to implement a map, otherwise you should show genre sales broken down by
+                        region in bar/scatter/line/pie etc.)</li>
+                        <li>Lastly, your boss wants to know which publisher to pick based on which
+                        genre a game is. Your chart should provide a clear top publisher for each genre
+                            (could be interactive or statically show).</li>
+                    </ol>
+                </li>
+                <br/>
+                <li>
+                    <strong>International Football Results</strong> | <a href="https://www.kaggle.com/martj42/international-football-results-from-1872-to-2017" target="_blank">Kaggle</a>
+                    <h5>Questions:</h5>
+                    <ol>
+                        <li>Your boss wants to know the number of football games by year.
+                            You should show at minimum 5 years, but you can choose which years to show.</li>
+                        <li>Your boss wants to understand the top winning nations. We would like to
+                        see a winning percentage for the top 10 nations. You can show this in a map form if you
+                        would like to.</li>
+                        <li>Lastly, we are trying to bet on which team will win the world cup 2022.
+                        Over the last <strong>2</strong> world cups, which teams were top performing.
+                        You can decide how to interpret "top performing". A few approaches we would reccomend:
+                        winning percentage in the world cup, victory strength, strength of opponent. You
+                        may show any combination of those. We don't have a specific answer we expect,
+                        and you should explain your choice in the written questions.</li>
+                    </ol>
+                </li>
+                <br/>
+                <li>
+                    <strong>Neflix Collection</strong> | <a href="https://www.kaggle.com/shivamb/netflix-shows" target="_blank">Kaggle</a>
+                    <h5>Questions:</h5>
+                    <ol>
+                        <li>Your boss wants to know the number of titles per genre on Netflix.</li>
+                        <li>Your boss wants to understand the average runtime of movies by release year.</li>
+                        <li>Lastly, we want to learn about the cast and directors. You have two choices here:
+                            1) the top director + actor pairs by number of movies made
+                            2) a flow chart where each actor is a node, and a link refers to a movie they both acted in
+                                (just the connection, no need to specify number of movies made together or which movies those are)
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+            <br>
+            <h4>Dashboard Requirements</h4>
+            <p>
+                Please put your dashboard in <code>index.html</code> with your JavaScript D3 code in <code>main.js</code>
+                and any custom styling in <code>main.css</code>. Feel free to add new JavaScript files if you want.
+            </p>
+            <h5>Graph Structure</h5>
+            <h5>(35 points)</h5>
+            <ul>
+                <li>
+                    You must have <strong>3</strong> graphs <b>(10 points each)</b>
+                </li>
+                <li>There must be <strong>2</strong> unique graphs <b>(5 points)</b>
+                    <blockquote>Unique graphs are bar, line, scatter plot, heatmap, density, area, etc.
+                    You can see examples <a href="https://www.d3-graph-gallery.com/">here</a>.
+                    In our stencil we have setup three boxes for you to place your graphs, but you can feel free to adjust
+                    these based on your graph selection.
+                    </blockquote>
+                </li>
+            </ul>
+
+            <h5>Interactivity</h5>
+            <h5>(10 points)</h5>
+            <ul>
+                <li>
+                    You must have <strong>1</strong> filter/toggle/interactive element of your dashboard. <b>(5 points)</b>
+                    <blockquote>We define this as a clickable/writeable element that updates the graphs/look of the
+                    dashboard.
+                    </blockquote>
+                </li>
+                <li>
+                    You must have <strong>1</strong> tooltip for a graph on your dashboard. <b>(5 points)</b>
+                    <blockquote>We define this as information which appears when users hover over a data point&hyphen; this can be
+                    combined with your clickable element, but a tooltip <strong>alone</strong> is
+                    <strong>not</strong> considered interactive.
+                    </blockquote>
+                </li>
+            </ul>
+
+            <h5>Style</h5>
+            <h5>(8 points)</h5>
+            <ul>
+                <li>
+                    Make sure to write graph/dashboard titles/units/axis/tooltips where appropriate.
+                </li>
+                <li>
+                    Your dashboard should properly use color.
+                    If it's all black, that's bad. If it's a rainbow that's bad.
+                    This is also an area to consider the accessibility of your dashboard.
+                    Picking color schemes that are color blind friendly is a great habit and something which is
+                    very easy. Online tools (e.g. https://coolors.co/) can help show if you colors are color blind
+                    friendly. This is not a requirement, but if your colors do not complement your visualization (distracting, unnecessary, confusing) we will deduct points.
+                </li>
+            </ul>
+
+            <h5>Communication</h5>
+            <h5>(15 points)</h5>
+            <ul>
+                <li>
+                    You use the provided data <b>(5 points)</b>
+                </li>
+                <li>
+                    Graphs address questions for each data set <b>(10 points)</b>
+                    <blockquote>We will evaluate your graph communication two-fold.
+                        Each graph will assessed 1) how well it communicates the information of the graph
+                        2) how well it answers the question.
+                    </blockquote>
+                </li>
+            </ul>
+            <br>
+            <h3>Extra Credit</h3>
+            <h5>(Up to +30 points!)</h5>
+            We think D3 is really cool, and some of you probably agree. We don't want to limit any of your
+            creative impulses and therefore are offering bonus points for this assignment. Simply put, your
+            final grade can be over 100% for this assignment.
+
+            Here are some ways to earn bonus points:
+            <ol>
+                <li>
+                    <p>You implement some form of dynamic stats calculation. By dynamic, we mean that it updates
+                    depending on which data is being shown. Our example dashboard calculates a regression line,
+                    but you can show box plot whiskers, calculate percentiles, calculate a t-test.</p>
+                    <p>If you choose to add this, please add a note below your dashboard and written answers which
+                    in 1-3 sentences explains what you did and why it's statistical. <b>(10 points)</b></p>
+                </li>
+                <br>
+                <li>
+                    <p>You may attempt one or both of these and get up to an additional 20 points!</p>
+                    
+                    <p>For some of the provided data sets and questions, we ask about geographic impact.
+                    One way to show this is with a bar/scatter/line graph.
+                    Another possibility is to show this on a geographic map!
+                    If one of your graphs is a "Map type" (https://www.d3-graph-gallery.com/) you earn an additional <b>10 points</b>.</p>
+                    
+                    <p>For other data sets we discuss the relationship between particular data points,
+                    particularly in a graph way. i.e. how many hops between 2 actors on Netflix.
+                    You can use D3 to make and visualize this graph!
+                    If one of your graphs is a a "Flow type" (https://www.d3-graph-gallery.com/) you earn an additional <b>10 points</b>.</p>
+                    
+                    <p>If you have any questions about whether a particular chart qualifies for either of these, please ask on piazza.</p>
+                </li>
+            </ol>
+            <br>
+            <h3>Example Dashboard</h3>
+            <p>Created by CS1951A Spring 2020's Arvind Yalavarti, we have an example D3 dashboard <a href="dashboard/dashboard.html" target="_blank">here</a>
+            using the TA dataset from the D3 lab. Our dashboard goes above and beyond our expectations for you, but we though it would be helpful for reference, especially for
+            those of you who want to go above and beyond.</p>
+            <br>
+            <h3>Use of External Libraries</h3>
+            <p>
+                We've already included D3 and Bootstrap in the stencil code provided. To perform statistical calculations
+                take a look at <a href="https://github.com/jstat/jstat"><code>jStat</code></a> and <code>d3-regression</code>.
+            </p>
+            <p>
+                If you would like to use either of these libraries, add the following lines to your <code>index.html</code>
+                file:
+            </p>
+            <ul>
+                <li><code> &lt;script&gt; type="text/javascript" src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js">&lt;/script&gt;</code></li>
+                <li><code>&lt;script&gt; type="text/javascript" src="https://unpkg.com/d3-regression@1.3.4/dist/d3-regression.min.js"> &lt;/script&gt;</code></li>
+            </ul>
+            <p>
+                If you would like to use other external libraries, please <b>ask on Piazza first</b>! There will be a deduction
+                for using not allowed JavaScript libraries which potentially trivialize the assignment.
+            </p>
+        </div>
+        <br><hr><br>
+        <div id="written-questions">
+            <h2>Written Questions</h2>
+            <h4>32 points</h4>
+            <p>
+                Write answers to the following questions below your dashboard in <code>index.html</code>:
+            </p>
+            <ol>
+                <li>Describe how your dashboard answers the questions presented. You don't have to address
+                every question directly, but should at a high level address the main questions. (10 points)</li>
+                <li>List 3 reasons why D3 was helpful and improved your visualization (6 points)</li>
+                <li>List 3 reasons why D3 would <strong>not</strong> be the best tool for creating a visualization (6 points)</li>
+
+                <h3>Accessible Data Visualization (10 points)</h3>
+                <li>Evaluate the accessibility of your dashboard based on the readings in the “Before you begin” section. What kinds of users might find this dashboard accessible and who might have more difficulty? What additional actions might you take to make this dashboard more accessible to all audiences? Your response should refer to at least one of the readings and be about 1 paragraph.
+                </li>
+                <li>Reflect on the stages of your design and implementation process when you could have taken steps to make your dashboard more accessible to all audiences. What are some factors that kept you from taking these steps? (a few sentences)
+                </li>
+            </ol>
+            <br>
+            <h4>
+                Additional Information
+            </h4>
+            <ul>
+                <li> If you’re interested in more considerations surrounding the social impact of data visualizations, check out the “Design Process Questions” and “Design Output Questions” for each principle in Section 3 of <a href="https://dspace.ceid.org.tr/xmlui/bitstream/handle/1/955/Feminist_Data_Visualization.pdf?sequence=1&isAllowed=y">"Feminist Data Visualization."</a>
+                </li>
+                <li> If you’re interested in the relationship between data analysis, visualization, and COVID-19 misinformation, check out <a href="http://vis.csail.mit.edu/covid-story">“The Data Visualizations Behind COVID-19 Skepticism.”</a>
+                </li>
+            </ul>
+
+        </div>
+            <!-- <h3>Working Locally</h3>
+            Instructions on working locally for this assignment can be found <a href="https://docs.google.com/document/d/1Opd4438n_BH1GfGwx69wfkfFGolhacOiOlCvGD-HcfE/edit?usp=sharing">here</a>. -->
+        <br><hr><br>
+        <div id="handing-in">
+            <h2>Handing In</h2>
+            <br>
+            <p>After finishing the assignment, run <code>python3 zip_assignment.py</code> in the command line from your assignment directory, and fix any issues brough up by the script.
+                <b>It is crucial that you use the script provided to zip up the assignment.</b> Our script generates an anonymous link which will be used to grade your assignment, and pushes
+                your code to your repository at the moment of zipping to make sure that whatever you submit to Gradescope is the same as those that we see when grading your code.
+            </p>
+            <p>This zipping script uses some Python packages that have yet been installed in the virtual environment. If you run into "No module named ...", use <code>python3 -m pip install [MODULE-NAME-HERE]</code> to fix your problem and zip up the assignment.</p>
+            <p>Somewhere in our zipping script, we call git commands (<code>git add .</code>, <code>git commit</code>, and <code>git push</code>) to push your code to your Github repository. The script should notify you if these actions fail: in which case,
+                please manually push all your work onto your Github repository <b>in addition to</b> submitting your zip file (<code>dataviz-submission-1951A.zip</code>) onto Gradescope.
+            </p>
+        </div>
+
+        <div id="grading">
+            <h2>Grading</h2>
+            <p>
+                After the late submission deadline, we will send out instructions for everyone to set up the Github Pages site of their assignment, so your work can be seen by us (and the public). This is crucial for us to grade your assignment, and we expect everyone to set up their Github Page within 48 hours of our notification (by <b>March 20th, 11:59PM ET</b>).
+            </p>
+            <h3>Important!</h3>
+            <ul>
+                <li>
+                    <p>
+                        Please do not make your Github repository public or set up your Github Pages site before the late 
+                        submission deadline has passed. Doing so will be treated as a violation of the collaboration policy, 
+                        as your code will be visible to other members of the course.
+                    </p>
+                    <li><p>
+                        Please make sure that your code that you submitted on Gradescope is the same as your code that is on your Github repository (we have tried to do so by calling git commands in <code>zip_assignment.py</code>).
+                        During grading, we check the equality of your files to make sure that no changes have been made after your submission.
+                    </p></li>
+                    <li><p>Make sure your code runs on your machine before handing in.</p></li>
+                    <li><p>Make sure you're using the correct relative path when referencing any of the js/html files in your handin.
+                        There will be a deduction if there are problems viewing your visualization due to incorrect file paths.</p></li>
+                </li>
+            </ul>
+        </div>
+        <br><hr><br>
+        <div id="credit">
+            <h2>Credits</h2>
+            <p>
+                This assignment was created in Spring 2020 by Arvind Yalavarti (ayalava2) and Joshua Levin (jlevin1), updated by Tiffany Nguyen (tnguye72), Neal Mahajan (nmahaja1), and Nam Do (ndo3) in Spring 2021. The accessibility component was added by Lena Cohen, Evan Dong, and Gaurav Sharma.
+            </p>
+        </div>
+            
+            
+                
+        <div class="col-md-2"></div>
+        <br><br>
+    </div>
+
+</body>
+</html>

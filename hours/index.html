@@ -1,67 +1,148 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <meta name="author" content="CS1951A">
-  <meta name="description" content="Website for Brown CS1951A">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./../js/bootstrap.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        document.getElementById('hours-nav').className += ' active';
-    });
-  </script>
-  <link rel="stylesheet" type="text/css" href="./../style/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="./../style/main.css">
-  <title>CS1951A | Hours</title>
-</head>
-<body>
-  <div id="page-container">
-  <div id="other-content-container">
-  <!-- Header-->
-   <div class="container-fluid" id="header">
-    <!-- Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="#navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <a class="navbar-brand" href="./../">cs1951a</a>
-      <div class="collapse navbar-collapse" id="navbar">
-          <div class="navbar-nav">
-              <a class="nav-item nav-link" id="home-nav" href="./../index.html">home</a>
-              <a class="nav-item nav-link" id="slides-nav" href="./../slides/index.html">lectures</a>
-              <a class="nav-item nav-link" id="assignments-nav" href="./../assignments/index.html">assignments</a>
-              <a class="nav-item nav-link" id="labs-nav" href="./../labs/index.html">labs</a>
-              <a class="nav-item nav-link" id="staff-nav" href="./../staff/index.html">staff</a>
-              <a class="nav-item nav-link" id="hours-nav" href="./../hours/index.html">hours</a>
-              <a class="nav-item nav-link" id="resources-nav" href="./../resources/index.html">documents</a>
-              <a class="nav-item nav-link" id="blogs-nav" href="./../projects/index.html">final projects</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="CS1951A" />
+    <meta name="description" content="Website for Brown CS1951A" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+      integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        document.getElementById("hours-nav").className += " active";
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="../style/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../style/main.css" />
+    <title>CS1951A | Hours</title>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="other-content-container">
+        <!-- Header-->
+        <div class="container-fluid" id="header">
+          <!-- Navbar-->
+          <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button
+              class="navbar-toggler navbar-toggler-right"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+              aria-controls="#navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">cs1951a</a>
+            <div class="collapse navbar-collapse" id="navbar">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" id="home-nav" href="../index.html"
+                  >home</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="resources-nav"
+                  href="../resources/index.html"
+                  >resources</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="slides-nav"
+                  href="../slides/index.html"
+                  >lectures</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="assignments-nav"
+                  href="../assignments/index.html"
+                  >assignments</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="labs-nav"
+                  href="../labs/index.html"
+                  >labs</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="staff-nav"
+                  href="../staff/index.html"
+                  >staff</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="hours-nav"
+                  href="../hours/index.html"
+                  >hours</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../projects/index.html"
+                  >final projects</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../archive/index.html"
+                  >archive</a
+                >
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="container" id="copy">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>calendar</h1>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <iframe
+                    id="calendar"
+                    src="https://calendar.google.com/calendar/embed?src=c_s6nlcbu7p80k63r2ntj1iblk3k%40group.calendar.google.com&ctz=America%2FNew_York"
+                    style="border: 0"
+                    width="900"
+                    height="850"
+                    frameborder="0"
+                    scrolling="no"
+                  ></iframe>
+                </div>
+                <!-- <iframe
+                  id="mobile-calendar"
+                  class="hidden-lg-up"
+                  src="https://calendar.google.com/calendar/embed?src=c_s6nlcbu7p80k63r2ntj1iblk3k%40group.calendar.google.com&ctz=America%2FNew_York"
+                  style="border-width: 0"
+                  width="300"
+                  height="600"
+                  frameborder="0"
+                  scrolling="no"
+                ></iframe> -->
+              </div>
+              <div class="col-md-2"></div>
+            </div>
           </div>
+        </div>
       </div>
-    </nav>
-  </div>
-  <div class="container" id="copy">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>calendar</h1>
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-8"><iframe id="calendar" class="hidden-md-down" src="https://calendar.google.com/calendar/embed?src=brown.edu_jf1jto56lc71qh6435g0panpps%40group.calendar.google.com&ctz=America%2FNew_York"  style="border-width:0" width="300" height="600" frameborder="0" scrolling="no"></iframe>
-          </div>
-            </iframe>
-            <iframe id="mobile-calendar" class="hidden-lg-up" src="https://calendar.google.com/calendar/embed?src=brown.edu_jf1jto56lc71qh6435g0panpps%40group.calendar.google.com&ctz=America%2FNew_York"  style="border-width:0" width="300" height="600" frameborder="0" scrolling="no"></iframe>
-          </div>
-          <div class="col-md-2"></div>
+
+      <div class="container-fluid" id="footer">
+        <div class="container">
+          <p>
+            &copy; 2021 CS1951A Staff | Computer Science Department | Brown
+            University
+          </p>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="container-fluid" id="footer">
-    <div class="container">
-      <p>&copy; 2020 CS1951A Staff | Computer Science Department | Brown University </p>
-    </div>
-  </div>
-  </div>
-</body>
+  </body>
 </html>

@@ -1,61 +1,230 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="author" content="CS1951A">
-    <meta name="description" content="Website for Brown CS1951A">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./../js/bootstrap.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="CS1951A" />
+    <meta name="description" content="Website for Brown CS1951A" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+      integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            document.getElementById("blogs-nav").className += ' active';
-        });
+      $(document).ready(function () {
+        document.getElementById("blogs-nav").className += " active";
+      });
     </script>
-    <link rel="stylesheet" type="text/css" href="../style/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../style/main.css">
-    <title>CS1951A | Final Projects </title>
-</head>
-<body>
-
+    <link rel="stylesheet" type="text/css" href="../style/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../style/main.css" />
+    <title>CS1951A | Final Projects</title>
+  </head>
+  <body>
     <div id="page-container">
-        <div id="other-content-container">
+      <div id="other-content-container">
+        <div class="container-fluid" id="header">
+          <!-- Navbar-->
+          <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button
+              class="navbar-toggler navbar-toggler-right"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+              aria-controls="#navbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="../index.html">cs1951a</a>
 
-    <div class="container-fluid" id="header">
-      <!-- Navbar-->
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="#navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <a class="navbar-brand" href="./../">cs1951a</a>
-
-        <div class="collapse navbar-collapse" id="navbar">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" id="home-nav" href="./../index.html">home</a>
-                <a class="nav-item nav-link" id="slides-nav" href="./../slides/index.html">lectures</a>
-                <a class="nav-item nav-link" id="assignments-nav" href="./../assignments/index.html">assignments</a>
-                <a class="nav-item nav-link" id="labs-nav" href="./../labs/index.html">labs</a>
-                <a class="nav-item nav-link" id="staff-nav" href="./../staff/index.html">staff</a>
-                <a class="nav-item nav-link" id="hours-nav" href="./../hours/index.html">hours</a>
-                <a class="nav-item nav-link" id="resources-nav" href="./../resources/index.html">documents</a>
-                <a class="nav-item nav-link" id="blogs-nav" href="./../projects/index.html">final projects</a>
+            <div class="collapse navbar-collapse" id="navbar">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" id="home-nav" href="../index.html"
+                  >home</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="resources-nav"
+                  href="../resources/index.html"
+                  >resources</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="slides-nav"
+                  href="../slides/index.html"
+                  >lectures</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="assignments-nav"
+                  href="../assignments/index.html"
+                  >assignments</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="labs-nav"
+                  href="../labs/index.html"
+                  >labs</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="staff-nav"
+                  href="../staff/index.html"
+                  >staff</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="hours-nav"
+                  href="../hours/index.html"
+                  >hours</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../projects/index.html"
+                  >final projects</a
+                >
+                <a
+                  class="nav-item nav-link"
+                  id="blogs-nav"
+                  href="../archive/index.html"
+                  >archive</a
+                >
+              </div>
             </div>
+          </nav>
         </div>
-      </nav>
-    </div>
+        <div class="container-fluid" id="project deadline table">
+          <br />
+          <br />
+          <br />
 
-<div class="card-deck" id="cards">
+          <h1>final project</h1>
+          <hr />
+          <br />
+          <div id="handout-announcements">
+            <h2>announcements</h2>
+            <ul>
+              <li>
+                <p>
+                  <b>
+                    Jan 27, 2021: Handout released
+                    <a
+                      class="red"
+                      href="handout/final_project.html"
+                      target="_blank"
+                      >here.</a
+                    >
+                  </b>
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <br />
+          <hr />
+          <br />
+          <div id="timeline">
+            <h2>timeline</h2>
+            <p>
+              Project groups will work closely with a TA Advisor throughout the
+              semester. The dates for checkins are approximate, and may vary
+              depending on your group's schedule and that of your advisor.
+              <!--           We also have a
+      <a href="https://drive.google.com/drive/folders/0Bx0yxN8AefGRMEljT1VnMnMtWjA">Google Drive folder</a>
+      containing an overview of the project and some examples. -->
+            </p>
+            <table class="table table-hover" id="final-project-table">
+              <thead>
+                <tr>
+                  <th>Project Checkpoint</th>
+                  <th>Due</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="" target="_blank">Project Pitch</a></td>
+                  <td>February 9</td>
+                </tr>
+
+                <tr>
+                  <td>Project Pitch Feedback</td>
+                  <td>February 12-14</td>
+                </tr>
+
+                <tr>
+                  <td><a href="" target="_blank">Data Deliverable</a></td>
+                  <td>March 7</td>
+                </tr>
+
+                <tr>
+                  <td>Data Deliverable Feedback</td>
+                  <td>March 8-10</td>
+                </tr>
+                <tr>
+                  <td><a href="" target="_blank">Analysis Deliverable</a></td>
+                  <td>April 10</td>
+                </tr>
+                <tr>
+                  <td>Analysis Deliverable Feedback</td>
+                  <td>April 11-13</td>
+                </tr>
+                <tr>
+                  <!-- <td><a href="https://cs.brown.edu/courses/csci1951-a/assignments/poster_presentation.html">Final Project Presentations</a></td> -->
+                  <td>
+                    <a href="" target="_blank">Final Project Presentations</a>
+                  </td>
+                  <td>April 18</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Please check out highlighted example projects from the handout.
+              For more example project ideas, please check out our archive!
+              <!-- Likewise, we will be posting a number of data sources and project ideas. -->
+              Additionally, you can take a look at
+              <a
+                class="red"
+                target="_blank"
+                href="https://github.com/caesar0301/awesome-public-datasets"
+                >Awesome Public Datasets</a
+              >.
+            </p>
+          </div>
+
+          <br />
+          <hr />
+          <br />
+          <div id="projects">
+            <h2>projects</h2>
+            <br />
+            Your awesome projects will go here!
+            <br /><br />
+          </div>
+        </div>
+
+        <!--  <div class="card-deck" id="cards">
     <script src="projects.js" >
     </script>
 </div>
-</div>
+</div> -->
 
-<div class="container-fluid" id="footer">
-    <div class="container">
-        <p>&copy; 2020 CS1951A Staff | Computer Science Department | Brown University </p>
+        <div class="container-fluid" id="footer">
+          <div class="container">
+            <p>
+              &copy; 2021 CS1951A Staff | Computer Science Department | Brown
+              University
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
-
-
-</body>
+  </body>
 </html>

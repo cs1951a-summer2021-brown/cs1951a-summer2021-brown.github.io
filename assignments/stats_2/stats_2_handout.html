@@ -1,0 +1,421 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Assignment 5 &laquo; Multiple Testing and Control Procedures &raquo;</title>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1> Assignment 5 <small>&laquo; Multiple Testing and Control Procedures &raquo;</small></h1>
+            </div>
+
+            <h2>Due: 11:59pm March 16, 2021 (ET)</h2>
+            <p>
+                <img src="p_hacking_meme.png" alt="Regression Joke">
+            </p>
+            <hr>
+
+            <h2>Overview</h2>
+            <p>In this assignment, you will implement five control procedures for multiple testing introduced in the lecture. Then, you will apply these procedures to a real-world dataset and reflect on their impacts on the number of rejections.  
+            </p>
+            <br>
+            <hr>
+            <div id="Setting Up">
+                <h2>Setting Up</h2><br>
+                <h3>Getting the Stencil</h3><br>
+                <p>
+                    You can click <a href="https://classroom.github.com/a/hQSMAOaF">here</a> to get the stencil code for Homework 4. Reference <a
+                        href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this
+                        guide</a> for more information about Github and Github Classroom.
+                </p>
+                <p>
+                    The data is located in the data folder. To ensure compatibility with the autograder, you should not
+                    modify the stencil unless instructed otherwise. For this assignment, please write your solutions in
+                    the respective <code>.py</code> files. Failing to do so may hinder with the autograder and result in
+                    a low grade.
+                </p>
+                <br>
+
+                <h3>Running Stats</h3><br>
+                <ul>
+                    <li>
+                        <h3>Option 1: Department Machine</h3>
+                    </li>
+                    <p> <strong>Write Code:</strong> Use whatever editer or IDE you like.</p>
+                    <p><strong>Execute Code:</strong> First,
+                        <code>ssh</code> into the department machine by running
+                        <code>ssh [cs login]@ssh.cs.brown.edu</code> and typing your password when
+                        prompted. Then, navigate to
+                        the assignment directory and activate the
+                        course virtual environment by running
+                        <code>source /course/cs1951a/venv/bin/activate</code>. You can now run your code for the
+                        assignment. To deactivate this virtual environment,
+                        simply type <code>deactivate</code>.
+                    </p>
+
+                    <li>
+                        <h3>Option 2: Your Own Device</h3>
+                    </li>
+                    <p><strong>Python requirements:</strong> Python 3.7.x. Our Gradescope Autograder uses Python 3.7.9.
+                        Using some other version of Python might lead to issues installing the dependencies for the
+                        assignment.</p>
+                    <p><strong>Virtual environment:</strong></p>
+                    <ul>
+                        <li>
+                            If you have properly installed a virtual environment using the <code>create_venv.sh</code>
+                            script in Homework 1, activate your virtual environment using <code>cs1951a_venv</code> or
+                            <code>source ~/cs1951a_venv/bin/activate</code> anywhere from your terminal. If you have
+                            installed your virtual environment elsewhere, activate your environment with
+                            <code>source PATH_TO_YOUR_ENVIRONMENT/bin/activate</code>.
+                        </li>
+                        <li>
+                            If you have not installed our course's virtual environment, you can refer to our course's <a
+                                href="https://docs.google.com/document/d/1qf0SQcVL3tjsf9iCAtNWz8vwS24l6XAq_x0hqMTJa0k/edit">virtual
+                                environment guide</a>.
+                        </li>
+                    </ul>
+                    <br>
+
+
+                    <p><strong>Write Code:</strong> Use whatever editor or IDE you like.</p>
+                    <p><strong>Execute Code:</strong> Activate the virtual environment and run your program in the
+                        command
+                        line.</p>
+
+                </ul>
+                <br>
+
+            </div>
+            <hr>
+
+            <!-- TODO:  Update everything down to match the Google Doc version of the handout. -->
+            <!-- Link to doc: https://docs.google.com/document/d/1XU5QkJOaliopRJ8Ji1djt5Rb_2dBn-Ml9-aYcLYahPY/edit?pli=1#heading=h.4ea33gu97srn -->
+            <h2>Part 0: The Problem with Multiple Testing</h2><br>
+
+
+            <h3>An Example</h3>
+            <p>You are a research scientist, and you are developing a new drug to combat a rare disease. It's a recent 
+                addition to the pipeline, so you're testing if it alleviates all 10 known symptoms of the disease. 
+                All of these tests will be conducted simultaneously.
+
+            </p>
+
+            <p>With your new statistical expertise, you get to work, selecting a significance level &alpha; of 0.05 and running your 
+                experiment on a group of volunteers as well as a control group given sugar pills. You set up 10 hypotheses:
+                <p>
+                <li>H<sub>0,i</sub>: The drug has no impact on symptom i</li>
+                <li>H<sub>a,i</sub>: The drug does alleviate symptom i</li>
+            </p>
+            </p>
+
+            <p>You analyze the experimental group and find good news! There is statistically significant evidence that the 
+                drug alleviates both nausea and muscle spasms. However, to your surprise, the sugar pills appear to treat an 
+                equal number of symptoms - treating the headaches and coughs provoked by the disease.
+
+            </p>
+
+            <p>What went wrong? Remember what the significance level means - it is the probability of rejecting the null hypothesis
+             given that it is true. With a single hypothesis, the risk of a false discovery under the null hypothesis was exactly &alpha; : 5%. 
+             Now, with 10 simultaneous tests, assuming all 10 null hypotheses in the control group, the odds of making no false discoveries is
+             0.95^10 = 60% 
+             - that's a 40% chance of having at least one false discovery! No wonder the sugar pills appeared to be so helpful.
+
+            </p>
+
+            <h3>Limiting False Discoveries</h3>
+
+
+            <p>The cure to our problem is not sugar pills - it is a remedy of various statistical techniques for handling multiple comparisons.
+            </p>
+
+
+            <p>
+                First, a look at our 4 possible outcomes and a few definitions:
+            </p><br>
+
+
+            <style>
+                table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                  margin:auto;
+                  margin-right:auto;
+                  text-align: center;
+                }
+            </style>
+                              
+            <table style="width: 80%">
+                <tr>
+                    <th> </th>
+                    <th>Null is true</th>
+                    <th>Null is false</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <th>Reject</th>
+                    <th><font color='red'>Type I error</font><br />
+                        False Positive<br />
+                        V</th>
+                        <th><font color='green'>Correct</font><br />
+                        True Positive<br />
+                    S</th>
+                    <th>Discoveries/Rejections <br />
+                        R=V+S</th>
+                </tr>
+                <tr>
+                    <th>Fail to reject</th>
+                    <th><font color='green'>Correct</font><br />
+                        True Negative<br />
+                    U</th>
+                    <th><font color='red'>Type II error</font><br />
+                        Afalse Negative<br/>
+                        T</th>
+                        <th>
+                            m-R
+                        </th>
+                </tr>
+                
+            </table><br>
+
+            <p>
+                Each hypothesis can be true or false, and it can be "accepted" (no evidence to reject) or rejected. U, V, T, S, and R are 
+                the random variables of our experiment, with R being the only observable random variable. Our goal is to limit V - the number of false discoveries.
+
+            </p>
+            <ul>
+              <li>FWER (Family-Wise Error Rate): the probability of having at least one false discovery 
+                <ul>
+                    <li><i>FWER = P(V >= 1)</li></i>
+                </ul></li>
+
+              <li>FDP (False Discovery Proportion): the proportion of rejections that are false rejections, or 0 if R=0. Note that as V is unobserved, 
+              FDP is an unobserved random variable as well.
+              <ul><li><i>FDP = V/R</i></li></ul></li>
+              <li>FDR (False Discovery Rate): As we cannot observe the FDP, we instead control for its expected value
+                <ul><li><i><math>FDR = E[FDP]</math></i></li></ul></li>
+            </ul>
+
+            <P>
+                The FWER is the older of the two methods, and controlling it is more powerful as you're controlling the probability of having any false discoveries. 
+                It is best used with a smaller number of hypotheses where a single false discovery is undesirable. However, it is not always the optimal choice, 
+                and changing technology and demands required the development of an alternative. For example, when dealing with genomes, one might have millions of 
+                hypotheses where a small number of false discoveries is acceptable. This is why methods of controlling the FDR were developed starting in the 90's.
+
+            </P>
+
+            <h2>Part 1: Control Procedure Implementation (50 pts)</h2><br>
+            <p>
+                Now that you’ve been introduced to the FWER and the FDR, you’ll try your hand at controlling them! Each has a long history of research; 
+                you’ll be coding three methods of controlling FWER and two methods of controlling FDR. 
+
+            </p>
+            <p>
+                <b>The only python library allowed in your implementation of this section is numpy.</b> You can, however, use <code>statsmodel</code> to test your code in 
+                <code>fwer_test.py</code> and <code>fdr_test.py</code>. 
+
+                <br></p>
+
+
+            <h3>FWER Control (30 pts)</h3><br>
+            <p>
+                First, you will be writing code for 3 procedures for controlling FWER: Bonferroni, Holm, and Hochberg. 
+                Please fill out each of the 3 functions in <code>fwer_control.py</code>; they each take in a list of p-values and return a list of booleans that 
+                identifies which of the hypotheses should be rejected under the procedure. Check out the docstrings for more information. 
+
+            </p>
+
+
+            <p>
+                We have prepared <code>fwer_test.py</code> with some basic tests for you to check your functions. 
+                Run <code>python fwer_test.py</code> to see your results.
+                Note that passing all the tests does not guarantee full 
+                marks for this section. Our autograder will test your implementation using randomly generated arrays. 
+                You may want to come up with more tests to ensure accuracy. 
+            </p>
+
+            <h3>FDR Control (20 pts)</h3>
+            <p>
+                After testing your FWER Control code, you will fill out the Benjamini-Hochberg and Benjamini-Yekutieli functions in <code>fdr_control.py</code>. 
+                The input and return for each will be the same as in the three FWER control functions. The implementations for the two should be similar 
+                and the only difference is that Yekutieli uses an adjusted q-value. More specific instructions on how to complete the functions are given in the 
+                docstring in <code>fdr_control.py</code>. 
+            </p>
+
+            <p>
+                To check if your functions are correct, run <code>fdr_test.py</code> and try to add your own tests to make sure your implementation is correct.
+            </p>
+
+            <h2>Part 2: Applying to the Dataset (25 pts)</h2><br>
+            <p>
+                After passing all the FDR and FWER tests, you will apply these control procedures to a real-world dataset in <code>main.py</code>! For each of the 
+                following functions, make sure you understand the docstring in the stencil before you start coding. <b>You should not use any libraries and functions 
+                that have not already been imported in <code>main.py</code>.</b>
+
+            </p>
+
+            <h3>Data Preprocessing</h3><br>
+            <p>
+                The dataset is under the data directory with file name <code>wdbc.csv</code>. It includes 569 breast cancer data points; each cancer has 30 
+                features as well as the cancer type diagnosis (i.e. malignant or benign) and id. Please refer to <code>wdbc_description.txt</code>
+                 in the data folder for more details on the dataset. 
+
+            </p>
+
+            <p>
+                Using pandas, you will load and preprocess the data in the <code>preprocess</code> function of <code>main.py</code>. In this function, you should remove 
+                the “id” column and encode the diagnosis types. Refer to the stencil for more specific instructions on this step. 
+
+            </p>
+
+            <h3>Generating the Null Hypotheses and the P-Values</h3><br>
+            <p>
+                The next step is to define the null hypotheses. For the purposes of this assignment, you will be conducting multiple correlation tests. 
+                Below are the two methods you need to implement for this step. 
+            </p><br>
+
+            <h4><code>encode_feature_with_threshold</code></h4>
+            <p>
+                In this function, you need to calculate the thresholds for a feature column that will be used to formulate the null hypotheses 
+                corresponding to this feature. There are 10 thresholds for each feature. For setting the thresholds, you should evenly divide each 
+                feature’s values into <b>(num_thresh+1)</b> sections. The function should return a numpy binary array of shape <b>(num_thresh, num_cancer)</b>. 
+                See the function’s docstring for a concrete example on how to encode the input feature. 
+            </p><br>
+
+            <h4><code>generate_pvals</code></h4>
+            <p>
+                Then, you will calculate the p values for the null hypotheses. This method takes in the preprocessed data and calls <code>encode_feature_with_threshold</code>
+                 to encode each of the 30 features. 
+
+            </p>
+
+            <p>
+                With 10 thresholds, each feature has 10 null hypotheses. For feature i, the null hypothesis j would be: 
+            </p>
+
+            <p>
+                <ul><li><b>There is no correlation between a cancer having feature i's value above  feature i's j-th threshold and the cancer being malignant.</b></li></ul>
+            </p>
+
+            <p>
+                You should use <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html"><code>scipy.stats.pearsonr</code></a>
+                 for calculating the p-values. 
+            </p>
+
+            <p>At the end, <code>generate_pvals</code> should return a 1D numpy array of length <code>num_tests</code>
+                (which is 30*10 = 300). </p>
+
+            <h3>Naive Multiple Testing</h3><br>
+            <p>
+                Let’s implement <code>naive_multiple_testing</code> so that we can compare its results with the ones returned by the procedures with FDR or FWER controls. 
+                This function’s structure is similar to the control procedures you have implemented already. But this time we are not adding any controls. 
+            </p>
+
+            <p>
+                Then, follow the instructions in <code>main</code> and fill in this method. 
+                After this, you should be able to see the changes in the number of rejections when you apply 1) no control at all, 2) FWER control, and 3) FDR control. 
+            </p>
+
+
+            <p>
+                Based on your results, which type of control is more stringent, FDR or FWER? Why does that happen? 
+What accounts for the differences in the results from the procedures of the same type of control? 
+            </p>
+
+
+            <p>
+                In written_questions.md, save your results (i.e., the number of rejections for each procedure) and answer the previous questions. 
+                We are looking for a high-level explanation of the differences among the procedures and between the two control types. 
+                Your answer should base on the results from your implementation. If your results appear to deviate from the theories we learned in class, explain why you think that's the case.
+            </p>
+
+
+
+
+
+            <h2>Part 3: Written Questions (25 pts)</h2><br>
+            <h3>Type of guarantee and selected scenario </h3>
+
+            <ol>
+                <li>(5 pts)
+                    Consider a scenario where we aim to use a statistical testing procedure to evaluate the results of a clinical trial over a small number of 
+                patients (<100). The hypotheses being tested study whether the presence of some genetic mutations and the use of some therapeutic experimental 
+                drug are related to the patient exhibiting cancer remission. Imagine the outcome of this analysis will be used as indication to assign funding or 
+                assess the validity of a new therapy. 
+                </li>
+                <br>
+                <p> What kind of control and which procedure would you recommend to be used? Justify your answer.</p>
+
+                <li> (5 pts)
+                    You are starting a new streaming service. As the market is very competitive, quality of service is of paramount importance. You want to focus on deploying a great system to recommend content. Since you are a Data Scientist, you approach the problem as a multiple hypotheses testing scenario: for each set of 3 items among the available titles you want to evaluate whether users which liked these items are going to also enjoy another different title. You have a large sample to be used (~10000 samples). The number items offered on your platform is in the millions, which brings the number of hypotheses to be considered to ~10^(6x3). 
+                </li>
+
+                <br>
+                 <p>
+                    What kind of control and which procedure would you recommend to be used? Justify your answer.
+                </p>
+
+                <li> (10 pts)
+                    To reduce the quarantine-induced boredroom two roommates Alice and Bob have decided to start deciding who is responsible for each day house chores by flipping a coin. In particular Bob gets to pick one out of 1000 coins and then Alices decides whether to pick heads or tails. While the game started as good fun, after 10 weeks in a row of toilet cleaning duty Bob is suspicious that Alice may be tricking him. As Bob is a lover of rigorous analysis he decides to try to detect which coins may not be fair using hypothesis testing. Bob can only evaluate properties of the coins by flipping them. Assume that, as Bob is a graduate student, and he is busy doing chores all the time, he can flip each coin at most 20 times.
+                <ol>
+                    <br>
+                    <li>Recommend a testing procedure that Bob should use and motivate your suggestion. (Which test should he use, which kind of control, and which procedure).</li>
+                    <li>Would your answer be different if Bob only wanted to decide whether there is <b>any</b> biased coin being used?</li>
+                </ol>
+                </li>
+
+            </ol>
+        <h3>Socially Responsible Computing Section (5 pts) </h3>
+		<p> Beyond multiple testing, data scientists make many decisions throughout the analysis process that can lead to a variety of results. Read the Intro and Part 1 of <a href="https://fivethirtyeight.com/features/science-isnt-broken/#part1">this</a> article and experiment with the "Hack Your Way To Scientific Glory" interactive. Manipulate the variables to get "Publishable" and “Unpublishable” results for each political party.
+		
+		
+		<br>
+        <ol>		
+		<li> Write a short analysis (a few sentences) of takeaways from your experiment with different variable combinations. These takeaways could be specific to the data or broadly applicable to people working with statistics. </li>
+		<li> What should you avoid or emphasize if you present or publish the results of this data analysis? </li>
+		
+     
+</p>
+		</ol>
+		
+            <br>
+            <hr><br>
+            <h2>Handing In</h2><br>
+            <p>
+                After finishing the assignment, run <code>python zip_assignment.py</code> in the command line from your assignment directory, and fix any issues brought up by the script.
+            </p>
+            <p>
+                After the script has been run successfully, you should find the file
+                <code>stats2-submission-1951A.zip</code> in your assignment directory. Please submit this zip file on
+                Gradescope under the respective assignment.
+            </p>
+
+            <br>
+            <h2>Credits</h2>
+            <p>
+                Made by CS1951A Staff in Spring 2021.
+                <ul>
+                    <li>Coding questions: Sunny Deng, Richard Hill, Yuchen Hua, and Kei Nawa. </li>
+                    <li>Written questions: Dr. Lorenzo De Stefani (theory section) and Lena Cohen and Gaurav Sharma (STA section).  </li>
+                    <li>Infrastructure and autograder: Sunny Deng and Nam Do</li>
+                    <li>Breast Cancer Dataset: https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
+                    </li>
+                </ul>
+            </p>
+            <p>
+            </p>
+            <div class="col-md-2"></div>
+            <br><br>
+        </div>
+
+            <br>
+            
+</body>
+
+</html>

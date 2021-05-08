@@ -1,0 +1,597 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project - 1951A</title>
+    <!-- Code to collapse stuff -->
+    <script>
+        function collapse(divid, buttonid) {
+            ele = document.getElementById(divid);
+            butt = document.getElementById(buttonid);
+            if(ele.style.display=='none') {
+                // Then this will be shown
+                ele.style.display='block';
+                if(butt.innerHTML=='Show Section') {
+                    butt.innerHTML='Collapse Section';
+                }
+                if(butt.innerHTML=='Show Subsection') {
+                    butt.innerHTML='Collapse Subsection';
+                }
+            } else {
+                // Then this will be hidden on click
+                ele.style.display='none';
+                // and the button will change text to be "collapse"
+                if(butt.innerHTML=='Collapse Section') {
+                    butt.innerHTML='Show Section';
+                } else {
+                    butt.innerHTML='Show Subsection';
+                }
+            }
+            // and the button will change text to be "collapse"
+            
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="page-header center">
+            <h1>Final Project</h1>
+            <p><b>Update logs:</b> (This handout will be updated as we iron out the logistics for the final project.)</p>
+            <ul>
+                <li><b>January 27th, 2021</b>: Release.</li>
+            </ul>
+            <p><b>Jump to:</b> <a href="#important-dates">Important Dates</a>, <a href="#learning-goals">Learning Goals</a>, <a href="#project-types">Project Types</a>, <a href="#project-requirements">Project Requirements</a>, <a href="#stages">Stages</a>, <a href="#rubric">Rubric</a></p>
+        </div>
+        <h2 id="important-dates">Important Dates</h2>
+        <button id="important-dates-hide-butt" onclick="collapse('important-dates-collapsible', 'important-dates-hide-butt')">Collapse Section</button>
+        <div id="important-dates-collapsible" style="display:block;">
+            <!-- don't worry about filling in this part yet! -->
+        <p>
+            <ul>
+                <li>Groups + Proposals Due: <strong> 11:59pm 02/09/2021 ET</strong> <a href="https://forms.gle/MHVFu8PBh95MJAmU6" target="_blank">Form</a></li>
+                <li> TA Check-in (proposal): <strong> Feb. 12-14, 2021 </strong></li>
+                <li>Data Deliverable Due: <strong> 11:59pm 03/07/2021 ET</strong>
+                <li>TA Feedback (data): <strong> Mar. 8-10, 2021 </strong></li>
+                <li>Analysis Deliverable Due: <strong> 11:59pm 04/10/2021 ET</strong>
+                <li>TA Feedback (analysis): <strong> Apr. 11-13 2021 </strong></li>
+    <!--            <li>Viz Due:<strong> 11:59pm 04/14/2020 </strong>  <code>cs1951a_handin project_viz</code></li>-->
+                <li>Final Deliverable + Poster Due:<strong> 11:59pm 04/18/2021 ET </strong> 
+                <!-- <li>Presentations:<strong> 5/7-5/11 </strong> </li> -->
+    <!--            <li>Poster Fair:<strong> 5/8 </strong> </li>-->
+            </ul>
+            </p>
+        </div>
+        
+        
+        <hr>
+
+        <h2 id="learning-goals">Learning Goals</h2>
+        <button id="learning-goals-hide-butt" onclick="collapse('learning-goals-collapsible', 'learning-goals-hide-butt')">Collapse Section</button>
+        <div id="learning-goals-collapsible" style="display:block;">
+            <p></p>
+            <p>
+                The final project is a way for you to explore and gather insights from some dataset(s) of your choosing as an actual data scientist would.
+                In groups of four, you will extract, process, analyze and create visualizations of your data and present the insights from your work at a symposium at the end of the semester.
+                Along the way, you will deliver small reports on aspects of your project. Each group will
+                be assigned a mentor TA who will evaluate and guide each team. Group proposals and final presentations will be
+                given to Lorenzo and the HTAs.
+                <br>
+                <br>
+                The goal of the project is for each group to properly define a hypothesis or engineering project and explore
+                a dataset fully.
+            </p>
+        </div>
+        <hr>
+        
+        <h2 id="project-types">Project Types</h2>
+        <button id="project-types-hide-butt" onclick="collapse('project-types-collapsible', 'project-types-hide-butt')">Collapse Section</button>
+        <div id="project-types-collapsible" style="display:block;">
+            <p></p>
+            <p> Generally speaking, projects fall into one of two categories: <em>hypothesis-testing and prediction</em>. We provide a general rubric meant to encompass both types of projects, but keep in mind that you will be evaluated on the appropriateness of the tools you use, given your stated goal. E.g. projects which aim to test a hypothesis should use different ML/stats techniques than projects which aim to make predictions. The expectation is that you present a <B>coherent, motivated final product</B>.</p>
+        <br>
+    <h4>Hypothesis-Testing Projects</h4>
+	<p>The goal of the project is to make a generalizable claim about the world. Your hypothesis should be based on some prior observation or informed intuition. The best projects in this category are motivated by existing theories, evidence, or models from other scientific disciplines (e.g. public health, political science, sociology).
+	Before pitching the project, you should ask yourself: <b>Why is this hypothesis interesting? Who would care about the conclusions of my study? How would these findings potentially affect our understanding of the world at large?</b> Successful projects from last year which fall into this category are below:</p>
+                <ul>
+			<li><a href="project_example_1.pdf" target="_blank"> Emoji Anaylsis  </a>
+			looked at how emoji use differed across languages.
+			</li>
+			<li><a href="project_example_2.pdf" target="_blank"> College Data Anaylsis </a>
+			looked at how demographic trends have shifted across universities.
+			</li>
+        </ul>
+    <br>
+    <h4>Prediction Projects</h4>
+	<p>The goal of the project is to make accurate predictions about future/unseen events. The best projects in this category are motivated by useful commercial or social applications. "If we could predict X, we'd be able to do Y better."
+	
+	Before pitching the project, you should put yourself in the role of a data science consultant and ask yourself: <b>Who would be hiring me to do this project? Why would the stakeholders care about my ability to do this well? What is the realistic setting in why my predictions will be used, and can I make my evaluation match that setting?</b> Successful projects from last year which fall into this category are below:</p>
+                <ul>
+                    <li>RideShare Analysis tried to predict, for a new city with no bike share program, where would be the best locations to place new bike hubs, and how would demand change as a function of e.g. weather or day.</li>
+		    <li>Music Recommendation Systems (there were several) tried to generate playlists based on individuals' past music preferences and/or natural language descriptions of their tastes.</li>
+        </ul>
+        <br>
+        <h4>Capstone Projects</h4>
+	    <p>Groups which are doing capstone can do either a hypothesis-testing or a prediction project, but will be required to have a substantial engineering and UI/interactive component. The project pitch should define a clear system or software product spec. The end project should include something "demoable", e.g. a web application or local application that interacts with users in real time.</p>
+        </div>
+        
+
+        <hr>
+        <h2 id="project-requirements">Project Requirements</h2>
+        <button id="project-requirements-hide-butt" onclick="collapse('project-requirements-collapsible', 'project-requirements-hide-butt')">Collapse Section</button>
+        <div id="project-requirements-collapsible" style="display:block;">
+            <p></p>
+            <p>Note that every project will be required to meet a minimal threshold in each of three components: a data component, an ML/stats component, and a visualization component. But not every project will invest equally in all three sections. Projects which take on more ambitious data scraping/cleaning efforts will be forgiven for having skimpier visualizations. Projects with ambitious visualizations or UIs will be forgiven if their statistics are more basic. But the project still needs to be complete--you have to <i>understand</i> your data, and be able to answer intelligently when asked about the limitations of your methods and/or findings.</p>
+        <ul>
+            <li>Group of 4 students</li>
+            <li>Project must have a clear hypothesis or prediction goal, and have the ability to answer the questions laid out in the section above.</li>
+            <li>Each project must create a database, and perfom some non-trivial data collection and cleaning in order to do so. You may either scrape your own data or use existing data/APIs. If you use existing data/APIs, you will be required to join at least two datasets to create your database. </li>
+            <li>Each project must have a minimum of 5 analysis aspects</li>
+            <ul>
+                <li> Use at least <strong>two</strong> machine learning or statistical analysis techniques to analyze your data, explain what you did, and talk about the inferences you uncovered.
+                </li>
+                <li> Provide at least <strong>two</strong> distinct visualizations of your data or final results. This means two different techniques. If you use bar charts to analyze one aspect of your data, while you may use bar charts again, the second use will not count as a distinct visualization
+                </li>
+                <li> The additional <strong> one</strong> technique can be either stats/ml or graphs
+            </ul>
+            <li>Every project will be hosted on the course <a href="https://cs1951a-s21-brown.github.io/projects/index.html">website</a>. Each deliverable will be posted
+            as a link on the page and final posters will be shown there. </li>
+            <li>Each group will be paired with another group who will ask each other questions and give feedback later in the semester. </li>
+            <li>Ethical Considerations:</li>
+                <ul>
+                    <li>Throughout the final project process, you will be expected to think critically and write about where your data is coming from, how you're analyzing and visualizing your data, and potential positive or negative consequences of your results.</li>
+                </ul>
+            <li><strong>Capstone Requirements:</strong></li>
+                <ul>
+                    <li>All group members must agree to be held to that capstone standard. Even if not everyone in the group is taking the course as a capstone, the entire project will receive the capstone evaluation and be graded accordingly.</li>
+                    <li>If you choose to use this course as a capstone, you will extend your project to have a full-fledged
+                        web application with an interactive component. For example, previous capstones have included web
+                        UIs for plotting roadtrips across the United States and restaurant recommendation apps.</li>
+                </ul>
+            <li>You will be given a Github Classroom repository that you will use with your team for the entire project, which will be available shortly after the proposals are due. To submit things for the final project, you just need to push your changes before the deadline. In the repository, we will include stencil HTML files that you can use for your write ups for each deliverable.</li>
+            <li>Please see each section below for more details on each deliverable!</li>
+            <!-- <li>We have included a stencil HTML file you can use for each deliverable <a href="stencil.html"> here </a></li> -->
+        </ul>
+        </div>
+        
+        <hr>
+        <h2 id="stages">Stages</h2>
+        <button id="stages-hide-butt" onclick="collapse('stages-collapsible', 'stages-hide-butt')">Collapse Section</button>
+        <div id="stages-collapsible" style="display:block;">
+            <h3>Proposal + Mentor TA Check-in</h3>
+            <button id="stages-proposal-hide-butt" onclick="collapse('stages-proposal-collapsible', 'stages-proposal-hide-butt')">Collapse Subsection</button>
+            <div id="stages-proposal-collapsible" style="display:block;">
+                <h4>Final Project Proposal due: <strong> 11:59pm 02/02/2021 ET</strong></h4>
+        <h4>TA Check-in: <strong> Feb. 5-7 </strong></h4>
+        <h4>Handin: <a href="https://forms.gle/MHVFu8PBh95MJAmU6" target="_blank">Form</a></h4>
+        <p>
+            Each group will meet with their assigned mentor TA to discuss their project proposal. Groups should be prepared to talk about their project ideas and discuss the questions outlined below. 
+
+        <p>The final project proposal will need to contain a summary of the following:</p>
+	    <ul>
+		    <li> What is the project goal? If a hypothesis-testing project: what is the hypothesis, what is the motivation behind it? If a prediction project: what are you trying to predict, who would be the stakeholders/who cares if you do this well, and how do you measure your success?
+		    <li> Where do you plan to get your data? It's okay if this is not a sure-thing, as long as you have an idea of where to start.
+		    <li> What are the major technical challenges you anticipate?
+		    <li> What ethical problems could you foresee arising (either in the course of doing the project or, if you succeed, in the existence of the technology/result itself)?
+        </ul>
+            After the TA check-in, the group should make the necessary adjustments (if needed), and <strong>re-submit the final project proposal in the handin form.</strong>
+        </p>
+            </div>
+        
+
+        <h3>Data Deliverable + TA Feedback</h3>
+        <button id="stages-data-deliverable-hide-butt" onclick="collapse('stages-data-deliverable-collapsible', 'stages-data-deliverable-hide-butt')">Collapse Subsection</button>
+        <div id='stages-data-deliverable-collapsible' style="display:block;">
+            <h4>Data due:<strong> 11:59pm 03/07/2021 ET</strong> </h4>
+        <h4>TA Feedback:<strong> Mar. 8-10 </strong> </h4>
+        <h4>Handin:  Github </h4>
+        <p>
+            After you had the mentor check-in to discuss the project proposal, you should have an idea of how you'll collect and clean your data. For different projects
+            this will vary. If you are scraping, you should write and run your scraper for the data deliverable (exceptions apply if your project requires the scraper to run continuously e.g. to get updated data throughout the semester).
+            If you are using existing datasets, you should clean, join, or organize anything you need to. In either case, you should submit the data in some clean access method like SQL,
+            Pandas, JSON, or similar datastore, to be in a position to begin analysis and/or modeling. 
+            <br>
+            <br>
+            Along with your data, you should submit a Socio-historical Context and Impact Report for your project. Instructions for this report are described in detail below.
+            <br>
+            <br>
+            Concretely, you should have the following on your submission:
+            <ul>
+                <li><b>A complete data spec</b> describing your collected data. This can be in the form of a README/simple text file, but it should describe the full data format, including assumptions about data types, assumptions about keys and cross-references, whether fields are "required" or optional, etc. For example <a href="http://cs.brown.edu/people/epavlick/subjclueslen1-HLTEMNLP05.README">this</a> is an example of a good README for data in a CSV format (description of corresponding data is <a href="https://mpqa.cs.pitt.edu/lexicons/subj_lexicon/"=>here</a>) and <a href="https://github.com/decompositional-semantics-initiative/DNC/">this repo</a> has a good example of README for data in JSON format. </li>
+                <li>A <b>link to your full data in downloadable form</b>. Any distribution method is okay, pick what makes sense for your project. E.g. Google drive, DropBox, GitHub, or link from personal website are all fine.</li>
+                <li>A <b>sample of your data</b> (e.g. 10 - 100 rows) that we can easily open and view on our computers.</li>
+                <li>A <b>concise tech report</b> in html format (in the <code>README.md</code> file located at <code>data_deliverable/reports/tech_report</code> in your GitHub repo), answering the following questions:</li>
+                    <ul>
+                        <li> Where is the data from?
+                            <ul>
+                                <li>How did you collect your data?</li>
+                                <li>Is the source reputable?</li>
+                                <li>How did you generate the sample? Is it comparably small or large? Is it representative or is it likely to exhibit some kind of sampling bias?</li>
+                                <li> Are there any other considerations you took into account when collecting your data? This is open-ended based on your data; feel free to leave this blank. (Example: If it's user data, is it public/are they consenting to have their data used? Is the data potentially skewed in any direction?)
+                            </ul>
+                    <li>How clean is the data? Does this data contain what you need in order to complete the project you proposed to do? (Each team will have to go about answering this question differently, but use the following questions as a guide. Graphs and tables are highly encouraged if they allow you to answer these questions more succinctly.)</li>
+                            <ul>
+                        <li>How many data points are there total? How many are there in each group you care about (e.g. if you are dividing your data into positive/negative examples, are they split evenly)? Do you think this is enough data to perform your analysis later on?</li>
+                        <li>Are there missing values? Do these occur in fields that are important for your project's goals?</li>
+                        <li>Are there duplicates? Do these occur in fields that are important for your project's goals?</li>
+                        <li>How is the data distributed? Is it uniform or skewed? Are there outliers? What are the min/max values? (focus on the fields that are most relevant to your project goals)</li>
+                        <li>Are there any data type issues (e.g. words in fields that were supposed to be numeric)? Where are these coming from? (E.g. a bug in your scraper? User input?) How will you fix them?
+                        <li>Do you need to throw any data away? What data? Why? Any reason this might affect the analyses you are able to run or the conclusions you are able to draw?
+                            </ul>
+                        </li>
+                        <li>Summarize any challenges or observations you have made since collecting your data.
+                            Then, discuss your next steps and how your data collection has impacted the
+                            type of analysis you will perform. (approximately 3-5 sentences)</li>
+                    </ul>
+                <li> A <b>Socio-historical Context and Impact Report</b>, in the <code>README.md</code> file located in your Github repo. Instructions for this report are described in detail below. The goal of this report is to:
+                <ul>
+                    <li>Put your data in context with the socio-historical factors surrounding your research questions. 
+                    </li>
+                    <li>Think about how this context should affect the framing of your question, analysis of your data, and interpretation of your results. 
+                    </li>
+                    <li>Critically analyze the potential impact of your project. 
+                    </li>
+                </ul></li>
+            <div id="socio-historical-context-and-impact-report">
+                <h4>Socio-historical Context and Impact Report</h4>
+                <h5>Task:</h5>
+                <p>Your Social Context and Impact Report should include two sections: <b>socio-historical context</b> and <b>ethical considerations</b>. 
+                    Each section should be about 1-2 paragraphs. 
+                    Below, we've listed guiding questions that you should address in each section. Not all questions may be relevant to all projects.</p>
+                
+                <p>
+                    This report will require you to research information beyond your data. <b>Consult at least 3 outside sources.</b> 
+                    List your sources in a <b>works cited section</b> at the end of your report. Your sources and works cited section can be in any format.
+                </p>
+                
+                <p>
+                    Please reach out to the STAs (Lena and Gaurav) via Piazza if you’re struggling with finding relevant information for your project.
+                    We’ll release a guide soon about how to approach research and how we’ll grade these reports.
+                </p>
+                
+                <h5>Socio-historical Context</h5>
+                <p>Research and describe how your project interacts with its socio-historical context. 
+                    This section should address at least 3 out of the 4 bullet points below.</p>
+                    <ul>
+                        <li>Research the socio-historical context of your project to identify a few societal factors that could affect your data, prediction goal, and/or hypothesis. These factors might include current or historical policies, events, social conditions, larger societal systems, and more. Describe a few of the broader societal issues and their relationship to your data, prediction goal, and/or hypothesis.
+                        </li>
+                        <li>Who are the major stakeholders in this project? What is your relationship to these stakeholders? Stakeholders are those who may be affected by or have an effect on your project topic. Some examples of stakeholders are a particular demographic group, residents of a particular geographic area, and people experiencing or at risk for a particular problem. Consider the following questions to help identify stakeholders:
+                            <ul>
+                                <li>Who does this project topic currently affect? 
+                                </li>
+                                <li>Who might be harmed by your research findings?
+                                </li>
+                                <li>Who might benefit from your research findings?
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Summarize the most relevant technical or non-technical research that has already been conducted about your project topic. If relevant, what was the societal impact of existing research?
+                        </li>
+                        <li>Discuss the impact of your socio-historical research findings on your project. Consider the following questions to help identify at least one impact: 
+                            <ul>
+                                <li>How does this context affect how you should frame your question?</li>
+                                <li>How does this context affect how you should analyze your data?</li>
+                                <li>How does this context affect how you should interpret your findings?</li>
+                                <li>How does this context affect how you should present your results?</li>
+                            </ul>
+                        </li>
+        
+                    </ul>
+                <br>
+                <h5>Ethical Considerations</h5>
+                <p>
+                    Discuss a few ethical and societal issues related to your data and analysis. 
+                    This section should address at least 4 out of the 6 bullet points below. 
+                    Focus on the questions that feel most relevant to your project.
+                </p>
+                <ul>
+                    <li>What kind of underlying historical or societal biases might your data contain? How can this bias be mitigated?
+                        <ul>
+                            <li>Were the systems and processes used to collect the data biased against any groups? </li>
+                        </ul>
+                    </li>
+                    <li>What biases might exist in your interpretation of the data? 
+                        <ul>
+                            <li>What assumptions might influence your decision-making across the data life cycle (choices about which data sources to use, how to deal with missing data, etc.)? 
+                            </li>
+                            <li>How does your identity, prior knowledge, and perspective inform your analysis? 
+                            </li>
+                        </ul>
+                    </li>
+                    <li>How could an individual or particular community’s privacy be affected by the aggregation or analysis of your data? 
+                    </li>
+                    <li>Is data being used in a manner agreed to by the individuals who provided the data?
+                    </li>
+                    <li>What are possible misinterpretations or misuses of your project results and what can be done to prevent them?
+                    </li>
+                    <li>Add your own: if there is an ethical or societal issue about your project you would like to discuss or explain further, feel free to do so. 
+                    </li>
+                </ul>
+            </div>
+            </ul>
+        </p>
+            
+
+            <!-- <h4>Handin:</h4>
+            TBA -->
+            <!-- You should make a directory: <code>~/course/cs1951a/project_data</code>
+            In this directory should have a file <code>data.html</code> that contains your answers to the above
+            questions and presents your data. Any other relevant graphs, data, or needed materials should
+            be included in the directory.
+            <br>
+            <br>
+            After you have handed in your <code>data.html</code> confirm the handin worked by seeing your
+            page on the course <a href="https://cs.brown.edu/courses/csci1951-a/projects/">website</a>. Your mentor TA will reach out to schedule a 15
+            minute check in to review your submission and give you feedback. 
+             -->
+        </div>
+
+        <h3>Analysis + Feedback</h3>
+        <button id="stages-analysis-feedback-hide-butt" onclick="collapse('stages-analysis-feedback-collapsible', 'stages-analysis-feedback-hide-butt')">Collapse Subsection</button>
+        <div id="stages-analysis-feedback-collapsible" style="display:block;">
+            <h4>Analysis due:<strong> 11:59pm 04/10/2021 ET</strong> </h4>
+        <h4>TA Feedback:<strong> Apr. 11-13 </strong> </h4>
+        <h4>Handin:  Github</h4>
+        <p>
+            Now that you have your data ready, the group will use statistics or machine learning techniques to 
+            answer one of their primary questions. Coupled with this is 
+            it is expected that you create a vizualization of this result. The visualization may be a table, graph or some other means for conveying the result of the question.
+            We expect that you will not be able to provide a complete solution for any prediction
+            or hypothesis goal with a single ML or statistical model.
+            Concretely you should have the following on your project page:
+            <ul>
+                <li>A defined hypothesis or prediction task, with clearly stated metrics for success.</li>
+                <li>Why did you use this statistical test or ML algorithm? Which other tests did you consider or
+                    evaluate? How did you measure success or failure? Why that metric/value? What challenges did you
+                    face evaluating the model? Did you have to clean or restructure your data?</li>
+                <li>What is your interpretation of the results? Do accept or deny the hypothesis, or
+                    are you satisfied with your prediction accuracy? For prediction projects, we expect you
+                    to argue <i>why</i> you got the accuracy/success metric you have. Intuitively,
+                    how do you react to the results? Are you confident in the results?</li>
+                <li>For your visualization, why did you pick this graph? What alternative ways might you communicate the result?
+                    Were there any challenges visualizing the results, if so, what where they?
+                    Will your visualization require text to provide context or is it standalone
+                    (either is fine, but it's recognize which type your visualization is)? </li>
+                <li><strong>Full results + graphs (at least 1 stats/ml test and at least 1 visualization). </strong> 
+                    You should push your visualizations to the <code>/analysis_deliverable/visualizations</code> folder in your repo.
+                    Depending on your model/test/project we would ideally like you to show us your full process
+                    so we can evaluate how you conducted the test!</li>
+                <li>If you did a statistics test, are there any confounding trends or variables you might be observing?</li>
+                <li>If you did a machine learning model, why did you choose this machine learning technique? Does your data have any sensitive/protected attributes that could affect your machine learning model?</li>
+                <li>Discussion of visualization/explaining your results on a poster and a discussion of future directions.</li>
+            </ul>
+            <strong>NOTE: </strong> Please make sure to address <strong>every</strong> question listed in your report. Failing to do so may result in a low grade.
+            <br>
+
+            <!-- <h4>Handin:</h4>
+            TBA -->
+            <!-- <br>
+            You should have a directory: <code>~/course/cs1951a/project_analysis</code>
+            This directory should have a file <code>analysis.html</code> that contains your answers to the above
+            questions and presents your data. Any other relevant graphs, data, or needed materials should
+            be included in the directory.
+            <br>
+            <br>
+            After you have handed in your <code>analysis.html</code> confirm the handin worked by seeing your
+            page on the course <a href="https://cs.brown.edu/courses/csci1951-a/projects/">website</a>. Your mentor TA will reach out to schedule a 15
+            minute check in to review your submission and give you feedback. They will also tell you which partner group you will be providing feedback to. 
+            Please send at least 2 pieces of feedback or questions to your partner group within 5 days of your meeting. 
+            Be sure to CC your mentor TA. -->
+            <!-- Unlike previous deliverables, we will not be requiring peer feedback given the challenges presented by the pandemic. -->
+	    </p>
+        </div>
+
+        <h3>Final Presentation Materials</h3>
+        <button id="stages-final-presentation-mat-hide-butt" onclick="collapse('stages-final-presentation-mat-collapsible', 'stages-final-presentation-hide-butt')">Collapse Subsection</button>
+        <div id="stages-final-presentation-mat-collapsible" style="display:block;">
+        <h4>Presentations:<strong> 11:59pm 04/18/2021 ET </strong> </h4>
+        <h4>Poster Due:<strong> 11:59pm 04/18/2021 ET </strong> </h4>
+        <h4>Handin:<strong> Github </strong></h4>
+
+        <h4>Overview</h4>
+        <p>
+            You are required to complete:
+            <ol>
+                <li>PDF Poster (see details below)</li>
+                <li>One Page Abstract (see details below)</li>
+                <li>A Recorded Video Presentation (see details below)</li>
+                <li>Interactive code (only if capstone)</li>
+            </ol>
+        </p>
+        <!-- TODO: Add these during the semester -->
+        <!-- <h4>Additional Relevant Rubrics/Discussion/Notes on Grading:</h4>
+        <a href="https://docs.google.com/document/d/17CWe1Qz9fgjoKzql7SDVY1TXeDby8PIuAd-2UIoL7Uk/edit?usp=sharing">Presentation Rubric</a>
+        <br>
+        <a href="https://piazza.com/class/k5h89a3pcse6s0?cid=1012">Final Project Expectations</a>
+        <br>
+        <a href="https://piazza.com/class/k5h89a3pcse6s0?cid=278">General Project Expectations</a> -->
+        <h4>Poster Requirements</h4>
+        <p>
+        <ul>
+            <li>42 inches x 31.5 inches</li>
+            <li>PDF format</li>
+            <li>at least 300 dpi</li>
+        </ul>
+        Your poster presentation is a chance for you to share your findings and accomplishments with your peers!
+        When preparing a poster, it is important to remember that although your group has spent a lot of time and effort becoming familiar with the domain knowledge necessary to understand your results, many others in the class do not necessarily share this background.
+        It is important to design your posters to communicate your results in a clear, concise way.
+        <br>
+        <br>
+            Making a good academic poster that quickly and effectively delivers the key points about your project takes careful planning.
+            Here are some links about making a good academic poster that we found helpful:
+        <ul>
+            <li><a href="http://guides.nyu.edu/posters">This</a> link from NYU </li>
+            <li><a href="http://colinpurrington.com/tips/poster-design">This</a> comprehensive list of do's and don'ts  </li>
+            <li>Two nice examples from last year's final projects: <a href="https://cs1951a-s20-brown.github.io/projects/project_poster/minuscule%20data%20energy/poster.pdf">Example 1</a>, <a href="https://cs1951a-s20-brown.github.io/projects/project_poster/The%20Commission/poster.pdf">Example 2</a></li>
+        </ul>
+
+	<!--Correct resolution is your responsibility. You may use any software you wish to make your poster, but please make sure that the resolution you are making it in is the resolution it will be printed in (42"x31.5"). This is very important: if your resolution is too low, it will be blurry and we won't be able to re-print it.-->
+
+<!--	We recommend using Photoshop because it is very easy to set the size of & resize the canvas using this program. You can also use Powerpoint, just please make sure you double check your resolution.-->
+
+        Your poster should contain:
+        <ul>
+            <li>A name for your project</li>
+            <li>The names of your group members</li>
+            <li>Dataset information and collection details</li>
+            <li>Problem statement / hypothesis</li>
+            <li>Methodology</li>
+            <li>Results &amp; visualization</li>
+            <li>Potential significance/ramifications on the field your data is coming from and/or relevant limitations of the analysis</li>
+        </ul>
+        It is important that your presentation tells a good story and focuses on the most interesting aspects of your project. We are evaluating how well you are able to articulate clear claims (positive or negative) and back up those claims with sound data scientific analysis.
+        </p>
+
+        <h4>Abstract Requirements</h4>
+        <p>
+            We want every group to write a summary of their work which could be sent out as a one-page standalone document.
+            We provide two example formats below and encourage you to follow these templates exactly.
+            The goals here are:
+            <ul>
+                <li>Speak to a 3rd party audience who has not seen your project yet</li>
+                <li>Motivate your project goal</li>
+                <li>Clearly define claims or questions</li>
+                <li>Present the answers you found for those claims/questions</li>
+            </ul>
+            This document can be written in latex, word, or any other medium. It should be titled <code>abstract.pdf</code>.
+
+            Here are examples we have for hypothesis and prediction projects.
+            <ul>
+                <li>Hypothesis Example: <a href="hypothesis_example.pdf" target="_blank">here</a></li>
+                <li>Prediction Example: <a href="prediction_example.pdf" target="_blank">here</a></li>
+                <li>Hypothesis Stencil: <a href="hypothesis_template.docx" target="_blank">here</a></li>
+                <li>Prediction Stencil: <a href="prediction_template.docx" target="_blank">here</a></li>
+            </ul>
+
+        </p>
+
+        <h4>Capstone Requirements</h4>
+        <p>
+            If you are completing the capstone requirements, you should handin the code for your interactive tool with your poster.
+            To reiterate, your interactive element can be anything that takes user input and updates/adjusts.
+            It can be commandline, webapp, D3, or any other interface.
+
+            You will be expected to demo this element as part of your presentation.
+        </p>
+
+        <!-- <h4>Handin</h4> -->
+        <!-- <strong>Late posters will not be accepted. It is very important you turn these in on time so the HTAs
+        can print them in time for the fair.</strong> -->
+        <!-- TBA
+        </div> -->
+        
+        <!-- You should have a directory:
+        <code>~/course/cs1951a/project_poster</code>
+        This directory should have the following files:
+        <ul>
+            <li><code>poster.pdf</code></li>
+            <li><code>abstract.pdf</code></li>
+            <li>Any other files you think are necessary to turn in</li>
+        </ul>
+        
+        <br>
+        After you have handed in your <code>poster.pdf</code> confirm the handin worked by seeing your
+        poster on the course <a href="https://cs.brown.edu/courses/csci1951-a/projects/">website</a>.
+        <br> -->
+
+        <h3>Presentation</h3>
+        <button id="stages-final-presentation-hide-butt" onclick="collapse('stages-final-presentation-collapsible', 'stages-final-presentation-hide-butt')">Collapse Subsection</button>
+        <div id="stages-final-presentation-collapsible" style="display:block;">
+            <p>
+            Due to the logistics of the semester, we will not have live presentations of the projects this year. Rather we ask you to submit a video recording of such a presentation.
+            <ul>
+                <li>For standard projects, the video should be 10 minutes long.</li>
+                <li>For capstone-level projects, the video can be up to 13 minutes long.</li>
+            </ul>
+
+            A good poster pitch takes only 4-5 min and should use the poster
+            to underline your main points. Do not make the judge just read the poster.
+            A good poster presentation is like telling a story and engages the listener.
+            Focus on motivating your project, followed by defining your hypothesis or prediction,
+            explain how you came to your metric of success or test, and then present your conclusion.
+            Throughout you should note any outliers, controls, or interesting aspects that contributed to your final project.
+            Be prepared to answer questions from the HTAs + Lorenzo regarding your results, process, and accomplishments.
+            <br><br>
+            For capstone-level projects, you will be expected to demo your interactive element as part of your presentation.
+            <br><br>
+            If you are unsure on how to record the video, you may consider using the recording feature of Zoom/Google Meets alongside the screensharing function.
+            </p>
+            <!-- <p>The HTAs will make a piazza post to schedule your poster presentation. You will be presenting
+        your poster for 5-10 minutes. A good poster pitch takes only 4-5 min and should use the poster
+        to underline your main points. Do not make the judge just read the poster.
+        A good poster presentation is like telling a story and engages the listener.
+        Focus on motivating your project, followed by defining your hypothesis or prediction,
+        explain how you came to your metric of success or test, and then present your conclusion.
+        Throughout you should note any outliers, controls, or interesting aspects that contributed to your final project.</p> -->
+
+        <h3>Rubric</h3>
+        Below is the rubric that will be used to evaluate your project during the final presentation:
+            <table cellpadding="10px">
+                <tbody>
+<tr><td> 60	</td><td>big problems, e.g. missing large portions of deliverable</td></tr>
+<tr><td>70	</td><td>The team's analysis suggests misunderstanding of the dataset and/or problem, usually in one of the following ways: 1) the methods chosen do not make sense given the stated goal of the problem (e.g. proposed to test a hypothesis but then focus effort on training a classifier) 2) the techniques used are significantly misused (e.g. testing on training data, interpreting r^2 as evidence for/against a hypothesis) 3) presentation of the results raises many questions that go unanswered (see examples listed in description of 75) 4) discussion of results/descriptions of methods are flatly incorrect 5) other errors that similarly indicate a lack of understanding.</td></tr>
+<tr><td>75	</td><td>The team is familiar with the data and/or problem, but hasn't demonstrated a clear understanding of both in conjunction (e.g. how dataset properties/processing decisions relate to the problem). The team knows how to apply applicable techniques from class to test hypothesis/demonstrate model performance, but the some discussion or presentation of the results raises many questions that go unanswered. E.g. charts show gaps/skews/outliers that are not discussed or addressed, metrics take extreme values that are not explained, results behave unintuitively (test acc > train acc) and no comment is made or explanation provided, pvals/coefficients are misinterpreted, etc. Discussion overall is weak.</td></tr>
+<tr><td>80	</td><td>The team is familiar with the data and/or problem, but hasn't demonstrated a clear understanding of both in conjunction (e.g. how dataset properties/processing decisions relate to the problem). The team knows how to apply applicable techniques from class to test hypothesis/demonstrate model performance, but rationale isn't entirely clear or convincing. Results are not clearly discussed in relation to the overall goal of the project, and/or discussion feels "out of the box". Team has a plan for where to go next.</td></tr>
+<tr><td>85	</td><td>The team is familiar data and the problem, and knows how to apply applicable techniques from class to test hypothesis/demonstrate model performance with rationale as to why those technique are chosen. Results are related to the overall goal of the project, but the discussion feels "out of the box" and/or lacks depth. Team has a good plan for where to go next.</td></tr>
+<tr><td>90</td><td>	The team understands the data and the problem, and knows how to run the first most logical test needed to test hypothesis/demonstrate model performance. Results are interpreted in relation to the overall goal of the project, but maybe not as deeply as would be ideal (e.g. some outliers/data quirks are not commented on). Interpretation is precise and scientific, claims are evidence-based or hedged appropriately. Team has a good, informed plan for where to go next.</td></tr>
+<tr><td>95	</td><td>Clear demonstration that the team understands the data and the problem, and knows how to run not just the first most logical test, but also a logical follow up (including motivation for follow-up analysis, refinement of question when needed). Obvious weirdness in data (e.g. outliers, skews) are noted and explained. Results are interpreted "one level up" from the literal output of the test, and discussed in relation to the overall goal of the project. Interpretation is precise and scientific, claims are evidence-based or are hedged appropriately. Good plan for next steps.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+<hr>
+    <h2 id="rubric">Rubric</h2>
+    <button id="rubric-hide-butt" onclick="collapse('rubric-collapsible', 'rubric-hide-butt')">Collapse Section</button>
+    <div id="rubric-collapsible" style="display:block">
+        <p></p>
+        <p>Below is an approximate breakdown of the weight of the project deliverable components. However, your project will be graded holistically. If your final product is A-level, you can recieve an A on the project overall, even if earlier components were weak. (The point of early feedback is to learn and grow, afterall.) Focus on doing good work, and you will be fine.</p>
+
+            <table cellpadding="10px">
+                <thead>
+                <tr>
+                    <th>Points</th>
+                    <th>Component</th>
+                    <th>Grader</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>Project Proposal</td>
+                    <td>Lorenzo + HTAs</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Data Deliverable</td>
+                    <td>Lorenzo + HTAs</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Analysis Deliverable</td>
+                    <td>Lorenzo + HTAs</td>
+                </tr>
+                <tr>
+                    <td>50</td>
+                    <td>Poster Presentation to Lorenzo + HTAs</td>
+                    <td>Lorenzo + HTAs</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Mentor TA Evaluation</td>
+                    <td>Mentor TA</td>
+                </tr>
+                </tbody>
+            </table>
+        <br>
+</div>
+    
+</div>
+</body>
+</html>
