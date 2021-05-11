@@ -361,7 +361,8 @@ body {
   font-weight: normal;
   line-height: 1.5;
   color: #292b2c;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-image: url("ascii-doge-face.png");
 }
 
 [tabindex="-1"]:focus {
@@ -463,6 +464,7 @@ figure {
 
 img {
   vertical-align: middle;
+  transform: translate(200px, -20px)
 }
 
 [role="button"] {
