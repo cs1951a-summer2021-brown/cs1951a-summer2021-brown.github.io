@@ -464,6 +464,11 @@ figure {
 
 img {
   vertical-align: middle;
+  /* transform: translate(200px, -20px) */
+}
+
+img-home {
+  vertical-align: middle;
   transform: translate(200px, -20px)
 }
 

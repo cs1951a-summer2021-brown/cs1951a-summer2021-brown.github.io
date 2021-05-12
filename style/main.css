@@ -109,6 +109,14 @@ a:visited:active {
   filter: brightness(1.25);
 }
 
+#home-img {
+  transform: translate(200px, -20px);
+  /* position: float;
+  left: 0;
+  bottom: 0;
+  filter: brightness(1.25); */
+}
+
 #copy {
   margin-top: 40px;
   /* background-color: white; */
