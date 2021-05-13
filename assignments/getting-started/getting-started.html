@@ -1,0 +1,161 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 0 &laquo; Getting Started &raquo;</title>
+</head>
+
+<body>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="page-header center">
+        <h1>Assignment 0 <small>&laquo; Getting Started &raquo;</small></h1>
+      </div>
+
+      <h3>Due: May 25, 11.59PM ET</h3>
+      <p>
+        <img src="ascii_meme.jpeg" alt="SQL Joke" style="border:solid black 1px;margin-top:10px">
+      </p>
+      <hr><br>
+      <h2>Welcome to Data Science!</h2>
+      <p>Ellie and your TAs are really looking forward to getting to know you this semester :) </p>
+      <p>In this assignment, we will ask you to get your computer set up, as well as get comfortable with the technologies that we are using in the course: Python, Github, and the Terminal/Command Prompt. It's important that <i>all</i>
+        of this makes sense and works for you to make sure that you don't run into issues when we dive into the course content.</p>
+      <p>If you have questions, please ask your TAs! Office hours are listed on the website <a href="TODO">here</a>.</p>
+      <p>This assignment is designed to take 2-3 hours to complete.</p>
+      <br><hr><br>
+      <h2>Part 1: Joining Course Resources</h2>
+      <br>
+      <ol>
+        <li>Read thoroughly and then sign the <a href="https://forms.gle/1BrgzrUDGmxQCKWK7">collaboration policy</a>. We
+          cannot grade any of your assignments until this is complete. <i>(5 min)</i></li>
+        <li>Join the <a href="https://piazza.com/brown/summer2021/csci1951a">course's Piazza</a>. We'll be using
+          Piazza throughout the semester to make announcements and answer questions, so make sure to adjust your email
+          notifications how you prefer. <i>(2 min)</i></li>
+        <li>Sign up or log into <a href="https://www.gradescope.com/">Gradescope</a> with your <i>Brown email</i>.
+          Then, join this course with the code <code>WYDZ2V</code>. You'll be using Gradescope to submit your
+          assignments and to receive feedback and grades. <i>(2 min)</i></li>
+        <li><p>If you aren't familiar with Github or Github Classroom, read through
+          <a href="https://docs.google.com/document/d/1tSxfUIn-Ro6Pr1X4y21BbYKdsiK-nlWW3pGDfyh7SQ8/edit">the CS15 Github
+            guide</a> and set up a Github account. Then, read through <a href="https://browncsci1430.github.io/webpage/resources/github_guide/" target="_blank">the CS1430 guide</a> (skipping the <i>Branches</i> section) to find out more about Github Classroom, and Github Desktop (if you perfer a visual way of interacting with Github over the command line). In this course, you will be using Github Classroom to get your stencil at the beginning of each
+          assignment and to store all of your work. For the final project, you will use Github version control to collaborate with your final project group. These links will come in <b>very handy</b> for later parts of this assignment, and we recommend getting comfortable using Github - maybe starting with this <a href="https://www.youtube.com/watch?v=0fKg7e37bQE" target="_blank">Youtube video tutorial</a>. <i>(15-20 min)</i></p>
+        </li>
+      </ol>
+      <br>
+      <hr><br>
+      <h2>Part 2: Configuring Your Computer</h2>
+      <br>
+      <h3>1. Setting Up Python and Java JDK8 <i>(15 min)</i></h3>
+      <p>Please follow the CS16 instructions <a href="http://cs.brown.edu/courses/csci0160/local.html" target="_blank">here</a> to set up (1) Python 3.7, (2) Java JDK8, and (3) a code editor of your choice (we recommend Visual Studio Code - VSCode). If you have any trouble setting up these technologies, please refer to the Sunlab consultants at <code>consultants@cs.brown.edu</code>.</p>
+      <h3>2. Setting Up Your Course Directory <i>(5 min)</i></h3>
+      <p>We recommend making a course directory on your personal computer to keep all the directories of your projects in one place.</p>
+      <p>This is a good chance to practice with the Command Prompt/Terminal. If you have not had experience with the Command Prompt (Windows) or Terminal (MacOS, Linux) before, check out
+        <a href="https://www.ionos.com/help/email/troubleshooting-mail-basicmail-business/access-the-command-prompt-or-terminal/#:~:text=Click%20Start%20and%20search%20for,cmd%22%20and%20then%20click%20OK." target="_blank">this resource</a>
+        for instructions for how to open the Terminal/Command Prompt. Also, check out <a href="https://docs.google.com/document/d/1PDKcm9M3ht2YESN5RLcKLiOFAx2poZXaiygtcI2o2Gc/edit" target="_blank">
+          this awesome resource</a> (from CS15) on commands that are helpful.</p>
+        <p><b>Practice:</b> Using your terminal, navigate to a directory in which you want to store all the work for this class. Then, use <code>mkdir</code> to create a folder named "1951A".
+          Navigate inside the folder "1951A", and print out the directory. This could look something like <code>/Users/ndo3/Desktop/1951A</code> (MacOS) if your folder is on your Desktop, for example.</p>
+
+      <h3>3. Setting Up a Python Virtual Environment on your computer <i>(10 min)</i></h3>
+      <p>It is important to install the Python Virtual Environment on your computer and run your Python programs for this course using our virtual environment so that you won't have do deal with many missing package errors in the course of the class.</p>
+      <p>Now that we are comfortable with navigating the terminal, let's use the terminal to set up the course's virtual environment.</p>
+      <h4>Getting the Stencil</h4>
+      <p>First of all, let's get the stencil for this assignment. You can <a href="https://classroom.github.com/a/LkeQT8US" target="_blank">click here</a> to get the stencil for this homework. Navigate to the directory that you created above to store all the folders for the projects in this class, and do <code>git clone [LINK]</code> (replacing <code>[LINK]</code> with the link to the Github repository that was just created for you - refer to the Github Classroom guide mentioned in 1.1).</p>
+      <p>You will be using these steps to get the stencil code for all the projects this semester, so if you do run into any issues with the process of getting the stencil files for this assignment, please reach out to us on Piazza so we can troubleshoot for you.</p>
+      <h4>Setting up a Python Virtual Environment</h4>
+      <p>Using the terminal/command prompt, navigate inside the stencil directory that you just cloned to your computer. Using an <code>ls</code> command, you should be able to find the files <code>create_venv.sh</code> and <code>requirements.txt</code> in the directory.</p>
+      <ul>
+        <li><b>MacOS/Linux users</b>: <ul>
+          <li>First, to make sure that you have correctly installed Python 3.7, you should use the command line to run <code>which python3.7</code> and <code>python3.7 --version</code>. If the command <code>which python3.7</code> does not print out a path-like string in your terminal, or if the command <code>python3.7 --version</code> does not print out <code>Python 3.7.x</code>, you may want to reach out to the Sunlab consultants to get help getting the set up correct.</li>
+          <li><p>Second, in your terminal from your assignment directory, run <code>chmod 775 create_venv.sh</code>. Then, run <code>./create_venv.sh</code> from your assignment directory.</p>
+            <p>If nothing is printed out in your terminal besides the message "<i>created cs1951a environment</i>," congratulations! You have successfully installed the virtual environment for the course on your machine. <b>If any error message is printed out, please utilize TA Hours / Piazza as a resource to resolve the issue(s).</b></p>
+            <p>From now on, whenever you want to activate your local virtual environment for our assignments, you can simply type <code>cs1951a_venv</code> or <code>source /course/cs9151a/venv/bin/activate</code>.</p>
+          </li>
+        </ul>
+        <li>
+          <b>Windows users</b>: <ul>
+            <li>First, to make sure that you have correctly installed Python 3.7, you should use the command line to run <code>py -3.7 --version</code>. From now on, whenever the assignment refers to a command that says <code>python3.7 [some-file-name-here]</code>, you will run <code>py -3.7 [some-file-name-here]</code> instead.</li>
+            <li>Navigate to this assignment's directory, and run <code>py -3.7 -m venv cs1951a_venv</code>. This command should create a new directory called <code>cs1951a_venv</code> that contains your new virtual environment. Then, run <code>source ./cs1951a_venv/bin/activate</code> to activate your virtual environment.</li>
+            <li>If you have successfully activated your new virtual environment, your command prompt line will now begin with <code>(cs1951a_venv)</code> to let you know that the virtual environment is now active.</li>
+            <li>Now, run <code>py -3.7 -m pip install --upgrade pip</code>, then run <code>py -3.7 -r requirements.txt</code>. Note that this must be done while your virtual environment is activated.</li>
+            <li>If you have successfully installed your virtual environment, from now on, you can just navigate to the directory of this homework, and activate the virtual environment like the instruction above.</li>
+            <li><b>If setting up your virtual environment does not work out on your computer, we recommend speaking to a Sunlab consultant.</b> Alternatively, we strongly recommend running your assignment on the department machine. The recommended workflow for each assignment would then be: (1) to work on your assignment locally, (2) use either version control (Git) or SCP/PuTTY to transfer your files to the department machine, then (3) run your assignments on the department machine with the course virtual environment on (see part 3.3). Refer to this <a href="https://docs.google.com/document/d/1Opd4438n_BH1GfGwx69wfkfFGolhacOiOlCvGD-HcfE/edit#" target="_blank">resource</a> for more
+            support regarding file transfer, and the links in Part 1.4 for version control.</li>
+          </ul>
+        </li>
+      </li>
+      </ul>
+      
+      <h3>3. Running programs over SSH <i>(5 min)</i></h3>
+      <p>On the department system, we have already configured a virtual environment that will be able to run all the code necessary for the course. If you have not set up SSH in the past, we recommend reaching out to the Sunlab consultants. You can also refer to the departmental guide to connect to SSH <a href="https://cs.brown.edu/about/system/connecting/ssh/" target="_blank">here</a>.</p>
+      <p>Once you are on the department SSH, run the <code>echo "alias cs1951a_venv='source /course/cs1951a/venv/bin/activate'" >> ~/.bashrc</code> and <code>source ~/.bashrc</code>.</p>
+      <p>From now on, whenever you want to run your code on the department SSH, you can simply type <code>cs1951a_venv</code> to activate the course's virtual environment. Alternatively, you can also run <code>source /course/cs1951a/venv/bin/activate</code>.</p>
+      <br>
+      <hr><br>
+      <h2>Part 3: Python Primer</h2>
+      <br>
+      <h3>Conceptual <i>(1-1.5 hours)</i></h3>
+      <p>If you are unsure about your Python experience level, you can check out the course's Python pre-quiz, as well as our list of Python resources on the 
+        <a href="https://cs1951a-summer2021-brown.github.io/resources/index.html" target="_blank">resources page on the course website</a>.</p>
+      
+      <p>Additionally, we strongly recommend using <a href="http://cs.brown.edu/courses/csci0160/assignments.html" target="_blank">CS16's Python Lab</a> to get yourself comfortable with working in Python. All our assignments will be in Python, and so the more comfortable you are with Python, the better your experience learning the materials in this course will be.</p>
+      <p>We also recommend taking a look at the <a href="https://browncsci1430.github.io/webpage/resources/python_tutorial/" target="_blank">CS1430 Python Tutorial</a> - sections <i>Syntax with Whitespace</i> and <i>Debugging</i> (and not anything else, as it will not be too relevant to the things that we're going to do in our course). You can also check out videos similar to <a href="https://www.youtube.com/watch?v=UPNyz5IWiXU" target="_blank">this one</a> to get more comfortable with Python.</p>
+      <p>While we unfortunately do not formally teach Python in this course, we will have Python/Terminal/Github hours for the first three weeks (subject to change) of the course to give you the support that you need on Python. Additionally, the hours on the course calendar (can be found on the course website) during the span of this assignment will be dedicated to supporting you with any Python questions that you have (in addition to your set up questions), so be sure to utilize our resources to get yourself the most comfortable with Python!</p>
+      <br>
+      <h3>Coding <i>(0.5-1 hour)</i></h3>
+      <p>Refer to the file <code>student.py</code> in the stencil code that you pulled in Part 2.3. You are asked to do some quick Python exercises, just to make sure that everyone is familiar with Python syntax (and with submitting their work onto Gradescope and using the autograder). You are asked to do the following:</p>
+      <ul>
+        <li>Import packages that will be used in the program: <i>os, datetime, numpy, matplotlib, pandas</i></li>
+        <li>Implement a few basic functions in Python (<code>increment_each_by_one</code>, <code>add_odd_elements</code>, <code>filter_even_numbers</code>)</li>
+        <li>Debug a few given functions (<code>add_one_to_x</code>, <code>function_to_debug</code>)</li>
+        <li>Print out some data (<code>my_np_array</code>, <code>my_pandas_table</code>) to get comfortable with some Data Science tools that we will use beyond native Python types like lists</li>
+        <li>Make sure that your code runs (without any errors)</li>
+      </ul>
+      <p>We have left comments in <code>student.py</code> to provide you with more details on what you need to do.</p>
+      <p>To run <code>student.py</code> and any Python file in the future, you can use <code>python3.7 [file-name]</code> (e.g., <code>python3.7 student.py</code>). If you are using windows, instead of <code>python3.7</code>, do <code>py -3.7</code>.</p>
+      <p>It is important that you run all the Python files in this course (including <code>student.py</code>) using the virtual environment. Please refer to Part 2 for instructions on how to set up and activate your virtual environment.</p>
+      <p>In <code>student.py</code>, we have also included some functions (<code>check_mapreduce_installation_correct</code> and <code>plot_silly_graph</code>), which are meant to evaluate whether you have set up Python, Java, and your virtual environment correctly. If you have any issues running these functions, or with any part in the coding component, please reach out for help at hours or on Piazza!</p>
+      <h5>>> Checking your code on Gradescope >></h5>
+      <p>We do provide autograders for all homework assignments in this course. This means that you can just submit your code onto Gradescope, and Gradescope will run your code against our tests. After the tests have finished running, you can see the amount of points that you receive, in addition to the names of the tests that you passed/failed. This will come in handy when working on your homework assignments.</p>
+      <p>You can hand in as many times as you like onto Gradescope (and hence check your work as many times as you want), but submissions after the deadline of a homework will be marked as late. Please refer to the Handing in section to find instructions on how to hand in.</p>
+      <br>
+      <hr><br>
+      <h2>Part 4: Socially Responsible Data Science</h2>
+      <br>
+      <p>It is important to keep data ethics principles in mind as we navigate the world of Data Science this semester. Please check out <a href="https://medium.com/greater-than-experience-design/data-ethics-in-tech-heres-why-it-s-so-hard-b3e0d8f0a108" target="_blank">this article</a> to find out what data ethics mean, and why they are important and incredibly hard to achieve at the same time.</p>
+      <br>
+      <hr><br>
+      <h2>Part 5: Wrapping Up</h2><br>
+      <p>Fill out <a href="https://forms.gle/CfQevAAMvnrMMyUr7">this form</a> to help us with bookkeeping and getting to know you as we get started with the semester. The information provided in this form is crucial for us to assign you to weekly lab sessions, to match your work to your identity, and to determine how we should best allocate resources to support you this upcoming semester.</p>
+      <br>
+      <hr><br>
+      <h2>Handing in</h2><br>
+      <p>For this assignment, the concrete required deliverables are:</p>
+        <ul>
+          <li>Your submission to the collaboration policy form in Part 1,</li>
+          <li>Your code from Part 3 onto Gradescope, and</li>
+          <li>Your submission to the student information form in Part 5.</li>
+        </ul>
+        <p>We do expect that you complete all the other tasks in this assignment (i.e. setting things up), as we will not deliver any additional support on setting things up after this assignment is due.</p>
+        <p>To submit your code from this assignment (and any assignment in the future) onto Gradescope, follow these steps:</p>
+        <ul>
+          <li>Navigate to your assignment directory, run <code>python3 zip_assignment.py</code> in the command line, and fix any issues brought up by the script.</li>
+          <li>After the script has been run successfully, you should find the file <code>[HOMEWORK-NAME]-submission-1951A.zip</code> (in this homework assignment, that would be <code>getting-started-submission-1951A.zip</code>). Please submit this zip file on Gradescope under the respective assignment.</li>
+        </ul>
+      <br>
+      <hr><br>
+      <h2>Credits</h2><br>
+      <p>
+        Made with &hearts; by Nam, Julia, and Evan.
+      </p>
+      <div class="col-md-2"></div>
+      <br><br>
+    </div>
+
+</body>
+
+</html>
