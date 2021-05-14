@@ -36,7 +36,7 @@
         <li>Join the <a href="https://piazza.com/brown/summer2021/csci1951a">course's Piazza</a>. We'll be using
           Piazza throughout the semester to make announcements and answer questions, so make sure to adjust your email
           notifications how you prefer. <i>(2 min)</i></li>
-        <li>Sign up or log into <a href="https://www.gradescope.com/">Gradescope</a> with your <i>Brown email</i>.
+        <li>Sign up or log into <a href="https://www.gradescope.com/">Gradescope</a> (<i>Brown email</i> preferred, but whatever works best for you).
           Then, join this course with the code <code>WYDZ2V</code>. You'll be using Gradescope to submit your
           assignments and to receive feedback and grades. <i>(2 min)</i></li>
         <li><p>If you aren't familiar with Github or Github Classroom, read through
@@ -79,9 +79,9 @@
         <li>
           <b>Windows users</b>: <ul>
             <li>First, to make sure that you have correctly installed Python 3.7, you should use the command line to run <code>py -3.7 --version</code>. From now on, whenever the assignment refers to a command that says <code>python3.7 [some-file-name-here]</code>, you will run <code>py -3.7 [some-file-name-here]</code> instead.</li>
-            <li>Navigate to this assignment's directory, and run <code>py -3.7 -m venv cs1951a_venv</code>. This command should create a new directory called <code>cs1951a_venv</code> that contains your new virtual environment. Then, run <code>source ./cs1951a_venv/bin/activate</code> to activate your virtual environment.</li>
+            <li>Navigate to this assignment's directory, and run <code>py -3.7 -m venv cs1951a_venv</code>. This command should create a new directory called <code>cs1951a_venv</code> that contains your new virtual environment. Then, run <code>C:\[PATH-TO-YOUR-REPOSITORY]\cs1951a_venv\Scripts\activate.bat</code> (or, <code>PS C:\[PATH-TO-YOUR-REPOSITORY]\cs1951a_venv\Scripts\Activate.ps1</code> in Powershell) to activate your virtual environment.</li>
             <li>If you have successfully activated your new virtual environment, your command prompt line will now begin with <code>(cs1951a_venv)</code> to let you know that the virtual environment is now active.</li>
-            <li>Now, run <code>py -3.7 -m pip install --upgrade pip</code>, then run <code>py -3.7 -r requirements.txt</code>. Note that this must be done while your virtual environment is activated.</li>
+            <li>Now, run <code>py -3.7 -m pip install --upgrade pip</code>, then run <code>py -3.7 -m pip install -r requirements.txt</code>. Note that this must be done while your virtual environment is activated.</li>
             <li>If you have successfully installed your virtual environment, from now on, you can just navigate to the directory of this homework, and activate the virtual environment like the instruction above.</li>
             <li><b>If setting up your virtual environment does not work out on your computer, we recommend speaking to a Sunlab consultant.</b> Alternatively, we strongly recommend running your assignment on the department machine. The recommended workflow for each assignment would then be: (1) to work on your assignment locally, (2) use either version control (Git) or SCP/PuTTY to transfer your files to the department machine, then (3) run your assignments on the department machine with the course virtual environment on (see part 3.3). Refer to this <a href="https://docs.google.com/document/d/1Opd4438n_BH1GfGwx69wfkfFGolhacOiOlCvGD-HcfE/edit#" target="_blank">resource</a> for more
             support regarding file transfer, and the links in Part 1.4 for version control.</li>
