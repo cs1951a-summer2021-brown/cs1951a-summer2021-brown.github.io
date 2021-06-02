@@ -14,18 +14,7 @@
             <div class="page-header center">
                 <h1>Assignment #2 <small>&laquo; Data Scraping and Cleaning &raquo;</small></h1>
             </div>
-            <h3>Due: 11:59pm 02/16/2021 ET</h3>
-            <!-- <h2>Brief</h2> -->
-            <!-- don't worry about filling in this part yet! -->
-                <!-- <p>
-                    <ul>
-                        <li>Due date: February 16, 2021 at 11:59pm EST</li>
-                        <li>Stencil: <code> Github Link </code></li>
-                        <li>Handin: <code> Gradescope Link </code></li>
-                        <li>Files to submit: <code>assignment.py</code>, <code>written_questions.txt</code>, and all SQL queries</li>
-                    </ul>
-                </p>
-            <hr> -->
+            <h3>Due: 11:59pm 06/08/2021 ET</h3>
 
             <h2>Overview</h2>
 
@@ -44,7 +33,7 @@
             <h3>Getting the Stencil</h3>
             <br>
                 <p>
-                  You can click <a href = https://classroom.github.com/a/ZaNR_VVA>here</a> to get the stencil code for Homework 2. Reference <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this guide</a> for more information about Github and Github Classroom.
+                  You can click <a href = https://classroom.github.com/a/IfenDk45 >here</a> to get the stencil code for Homework 2. Reference <a href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this guide</a> for more information about Github and Github Classroom.
                 </p>
                 
                 <p>
@@ -70,7 +59,7 @@
                     </p>
 
                     <p>Before scraping, you'll need your code to access this webpage.
-                    You should make use of the <code>requests</code> library to make an HTTP request and collect the HTML. If you're not familar with the <code>requests</code> library, you can read about it <a href="https://2.python-requests.org/en/master/">here</a>.<p>
+                    You should make use of the <code>requests</code> library to make an HTTP request and collect the HTML. If you're not familiar with the <code>requests</code> library, you can read about it <a href="https://2.python-requests.org/en/master/">here</a>.<p>
 
                     <p>Once you have accessed the HTML and assigned it to some variable, you'll want to scrape it, collecting the following for each stock in the table and storing it in a data structure.
                         <ul>
@@ -123,7 +112,7 @@ items = soup.find(ul).find_all("li")
               You’ll make requests to this API using Python’s <code>requests</code> library.
               IEX Trading offers an API with various endpoints that offer information about stocks.
               <a href="hw_create_account.html">Click here for a walkthrough</a> on creating a free account.</p>
-              <p><strong>Note: </strong>You have a limited number of API calls you can make with a free account. You'll start receiving 402 errors if you reach the limit - if this happens, use a different email address to make a new (free) account (A sneaky trick is to add a suffix to your email address using a "+". For example, if your email is lorenzo_destefani@brown.edu, you can sign up with lorenzo_destefani+1@brown.edu, lorenzo_destefani+2@brown.edu, and so on. This means you don't have to make any new email accounts for this, you can just use the one you already have to generate infinitely many new free accounts.). You probably won't reach the limit, but to check if you're close, you can click the "Message Use" tab on the left side of the API console site. Free accounts give you 50,000 messages - 1 API call usually costs more than 1 message.</p>
+              <p><strong>Note: </strong>You have a limited number of API calls you can make with a free account. You'll start receiving 402 errors if you reach the limit - if this happens, use a different email address to make a new (free) account (A sneaky trick is to add a suffix to your email address using a "+". For example, if your email is ellie_pavlick@brown.edu, you can sign up with ellie_pavlick+1@brown.edu, ellie_pavlick+2@brown.edu, and so on. This means you don't have to make any new email accounts for this, you can just use the one you already have to generate infinitely many new free accounts.). You probably won't reach the limit, but to check if you're close, you can click the "Message Use" tab on the left side of the API console site. Free accounts give you 50,000 messages - 1 API call usually costs more than 1 message.</p>
 
             <p>We’re going to want to collect two pieces of information for each stock in investing.com's most active stock table:</p>
 
@@ -137,8 +126,8 @@ items = soup.find(ul).find_all("li")
             <strong>IMPORTANT:</strong> Set the parameter "chartCloseOnly" to <code>True</code> when you request from the chart endpoint to avoid immediately reaching your API call limit! (Read about URL parameters <a href="https://en.wikipedia.org/wiki/Query_string">here</a>.)</p>
 
             <p>Using the <a href="https://iexcloud.io/docs/api/#news">news endpoint</a>, you should get the articles for a specific stock. Then, you should count how many articles were returned by the API.
-                We will define recently as <strong>since February 1, 2021 00:00:00 (GMT) </strong>. The news API includes
-                the unix epoch time for each article in <strong>milliseconds</strong>. You should calculate the epox time of February 1, 2021 00:00:00 (GMT) and convert to milliseconds (multiply by 1000).
+                We will define recently as <strong>since May 25, 2021 00:00:00 (GMT) </strong>. The news API includes
+                the unix epoch time for each article in <strong>milliseconds</strong>. You should calculate the epox time of May 25, 2021 00:00:00 (GMT) and convert to milliseconds (multiply by 1000).
                 Feel free to hardcode this value and use websites to calculate it rather than calculate it by hand.
             </p>
 
@@ -209,14 +198,14 @@ c.execute('INSERT INTO person VALUES (?, ?)', (some_variable, another_variable))
 
             <ul>
                 <li>Write a SQL statement to return the symbol and name of the stock with the biggest percent gain relative to its five day average price. This should be calculated as the current price divided by the average price.</li>
-                <li>Write a SQL statement to return the name of the stock with the highest price that has less than 10 articles.</li>
+                <li>Write a SQL statement to return the name of the stock with the highest price that has less than 11 articles.</li>
                 <li>Write a SQL statement to return the symbol and name of all stocks with prices above $35 and where the absolute difference between the current price and 5 day average price is less than $5. Your results should be sorted by the absolute difference between current price and 5 day average price, in ascending order. </li>
                 <li>Write a SQL statement to return each state and number of companies headquartered in that state (no need to include states not in your dataset). Order alphabetically by state (A -> Z).</li>
             </ul>
 
             <br><hr><br>
             <h2>Part 5: Socially-Responsible Web Scraping</h2>
-            <h3> 10 points </h3>
+            <h3> 15 points </h3>
 		CS1951a wants to help you identify and grapple with societal consequences at each stage of the data lifecycle. There are many ethical considerations data scientists should take into account before 		collecting data through web scraping, even if the data is publicly available.
         <br> 
         <br>
@@ -227,8 +216,9 @@ c.execute('INSERT INTO person VALUES (?, ?)', (some_variable, another_variable))
 	    </ul>
 	    <h4> Task </h4>
 		<ul>
-		<li> Read <a href="https://cfiesler.medium.com/spiders-and-crawlers-and-scrapers-oh-my-law-and-ethics-of-researchers-violating-terms-of-service-27496894f6de">Spiders and crawlers and scrapers, oh my! The law and ethics of researchers violating terms of service</a> </li>
-		<li> Read <a href="https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135">Scientists Like Me Are Studying Your Tweets—Are You OK With That?</a></li>
+		<li> Read <a href="https://cfiesler.medium.com/spiders-and-crawlers-and-scrapers-oh-my-law-and-ethics-of-researchers-violating-terms-of-service-27496894f6de" target="_blank">Spiders and crawlers and scrapers, oh my! The law and ethics of researchers violating terms of service</a> </li>
+		<li> Read <a href="https://howwegettonext.com/scientists-like-me-are-studying-your-tweets-are-you-ok-with-that-c2cfdfebf135" target="_blank">Scientists Like Me Are Studying Your Tweets—Are You OK With That?</a></li>
+        <li> Read <a href="https://www.technologyreview.com/2020/12/03/1012797/fair-value-fixing-the-data-economy/" target="_blank">Fair value? Fixing the Data Economy</a>, describing the trade and use of data that private companies collect on their users.</li>
 		<li> Answer the questions below in <code>writeup.txt</code>. Each response should be thoughtful, provide justification for your claims, and be concise but complete. See the <a href="https://docs.google.com/document/d/1hXGxoW8DQzIBh1yW2989fZhOIBgJ4w8BMN6lXjbnY-U/edit">response guide</a> for more guidance. </li>
 		</ul>
 	    <h4> Questions </h4>
@@ -256,6 +246,9 @@ c.execute('INSERT INTO person VALUES (?, ?)', (some_variable, another_variable))
 		</li>
 		</ol>		
 		</li>
+        <li>
+            The concept of a “data economy” comes with the perspective that data is a form of economic resource and capital. To what, if any, standards of social responsibility should we hold researchers, companies, and other entities that use data to turn a profit? Which opinions do you agree and disagree with in the article? Justify your opinion.
+        </li>
 		</ol>
 
             <br><hr><br>
@@ -271,7 +264,7 @@ c.execute('INSERT INTO person VALUES (?, ?)', (some_variable, another_variable))
 
             <h2>Credits</h2>
                 <p>
-                    Made with &hearts; by Jacob Meltzer and Tanvir Shahriar (2019 TAs), updated by Natalie Delworth and Nazem Aldroubi (2020 TAs), and again by Daniela Haidar, Daniel Civita Ramirez, JP Champa and Nam Do (2021 TAs).
+                    Made with &hearts; by Jacob Meltzer and Tanvir Shahriar (2019 TAs), updated by Natalie Delworth and Nazem Aldroubi (2020 TAs); Daniela Haidar, Daniel Civita Ramirez, JP Champa and Nam Do (2021 Spring TAs), and again by Aakansha Mathur and Nam Do (2021 Summer TAs).
                 </p>
         <div class="col-md-2"></div>
         <br><br>
