@@ -1,0 +1,337 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+             tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+         });
+    </script>
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+    <title>Assignment 4 &laquo; Regression and Statistics &raquo;</title>
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="page-header center">
+                <h1>Assignment 4 <small>&laquo; Regression and Statistics &raquo;</small></h1>
+            </div>
+
+            <h3>Due: 11:59PM ET, June 24, 2021</h3>
+            <!-- <ul>
+                <li><h4><u>Code</u>: 11:59PM ET, June 17, 2021</h4></li>
+                <li><h4><u>STA First Deliverable</u>: 11:59PM ET, June 15, 2021</h4></li>
+                <li><h4><u>STA Second Deliverable</u>: 11:59PM ET, June 17, 2021</h4></li>
+            </ul> -->
+            <br>
+            <p>
+                <img src="regression_meme.jpg" alt="Statistics Meme">
+            </p>
+            <br>
+            <hr><br>
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <div id="Overview">
+                <h2>Overview</h2><br>
+                <p>In this assignment, you will be given statistical problems associated with two different datasets, and determine the right statistical tools to come up with the answer.</p>
+
+                <p>
+                    In Part 1 of this assignment, you will use Python modules related to Linear Regression to determine the relationship between independent and dependent variables in a bike sharing dataset.
+                </p>
+
+                <p>
+                    In Part 2 of this assignment, you will use Python modules for t-test and chi-square tests to come up with answers for certain statistical questions.
+                </p>
+
+            </div>
+
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <br>
+            <hr><br>
+            <div id="Setting Up">
+                <h2>Setting Up</h2><br>
+                <h3>Getting the Stencil</h3><br>
+                <p>
+                    You can click <a href="https://classroom.github.com/a/X3YfuTZi">here</a> to get the stencil code for Homework 4. Reference <a
+                        href="https://docs.google.com/document/d/1v3IQrC_0pFxsRBXsvCEzKBDAmYjzuSJCvXhkg8ewDn0/edit">this
+                        guide</a> for more information about Github and Github Classroom.
+                </p>
+                <p>
+                    The data is located in the data folder. To ensure compatibility with the autograder, you should not
+                    modify the stencil unless instructed otherwise. For this assignment, please write your solutions in
+                    the respective <code>.py</code> files and <code>writeup.md</code>. Failing to do so may hinder with the autograder and result in
+                    a low grade.
+                </p>
+                <br>
+
+                <h3>Running Stats</h3><br>
+                <ul>
+                    <li>
+                        <h3>Option 1: Department Machine</h3>
+                    </li>
+                    <p><strong>Execute Code:</strong> First,
+                        <code>ssh</code> into the department machine by running
+                        <code>ssh [cs login]@ssh.cs.brown.edu</code> and typing your password when
+                        prompted. Then, navigate to
+                        the assignment directory and activate the
+                        course virtual environment by running
+                        <code>source /course/cs1951a/venv/bin/activate</code>. You can now run your code for the
+                        assignment. To deactivate this virtual environment,
+                        simply type <code>deactivate</code>.
+                    </p>
+
+                    <li>
+                        <h3>Option 2: Your Own Device</h3>
+                    </li>
+                    <p>
+                        <b>Python requirements:</b> Python 3.7.x. Our Gradescope Autograder uses Python 3.7.9. Using some other version of Python might lead to issues installing the dependencies for the assignment.
+                    </p>
+                    <p>
+                        <b>Virtual environment:</b>
+                        <ul>
+                            <li>
+                                If you have properly installed a virtual environment using the <code>create_venv.sh</code> script in Homework 0, activate your virtual environment using <code>cs1951a_venv</code> or <code>source ~/cs1951a_venv/bin/activate</code> anywhere from your terminal. If you have installed your virtual environment elsewhere, activate your environment with <code>source PATH_TO_YOUR_ENVIRONMENT/bin/activate</code>.
+                            </li>
+                            <li>
+                                Please refer to Homework 0 to install your virtual environment if you have not already.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        <b>Execute Code:</b> After activating your virtual environment, you are free to run your program in the command line.
+                    </p>
+                </ul>
+                <br>
+                <h3>Editing Markdown File</h3>
+                <p>
+                    A significant portion of this assignment is going to be done in <code>writeup.md</code>. You can check out <a href="https://stackedit.io/" target="_blank">StackEdit</a>, <a href="https://dillinger.io/" target="_blank">Dillinger</a>, or <a href="https://typora.io/" target="_blank">Typora</a> as possible tools to edit and view Markdown files. You can refer to <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">this guide</a> for more information on Markdown syntax.
+                </p>
+                <br>
+            </div>
+            <!--  -->
+            <!--  -->
+            <!--  -->
+            <br><hr><br>
+            <h2>Assignment</h2>
+            <p>
+                In <code>writeup.md</code>, we have presented you with different questions, divided into three parts: Regression, Statistical Tests, and Socially Responsible Computing. Many of the questions require you to write and run some code (in <code>regression.py</code>, <code>run_tests.py</code>, and <code>stats_tests.py</code>) to come up with the answer.
+            </p>
+            <p>In addition to completing all the TODOs in the code files aforementioned, you will need to write down your answer to the questions in <code>writeup.md</code>. As per usual, you will submit your code and write up files onto Gradescope.</p>
+
+            <br>
+            <hr><br>
+            <h2>Part 1: Regression</h2>
+            <h3>40 points</h3>
+            <br>
+            <details id="linear-regression">
+                <summary>
+                    <h4>▶ Linear Regression Background Information (click to expand)</a></h4>
+                </summary>
+                <h4>Linear Regression </h4><br>
+                <p>Regression is used to predict numerical values given inputs. Linear regression attempts
+                    to model the line of best fit that explains the relationship between two or more variables
+                    by fitting a linear equation to observed data.
+                    One or more variables are considered to be the independent (or explanatory) variables,
+                    and one variable is considered to be a dependent (or response) variable.
+                    In simple linear regression, there is one independent variable
+                    and in multiple linear regression, there are two or more independent variables.
+                </p>
+                <p>Before attempting to fit a linear model to observed data, a modeler should first determine whether or
+                    not there is a linear relationship between the variables of interest. This does not necessarily imply
+                    that one variable causes the other. Remember, <i>correlation does not necessarily imply causation</i>.
+                    For example, moderate alcohol consumption is correlated to longevity. This doesn’t necessarily mean that
+                    moderate alcohol consumption causes longevity. Another independent characteristic of moderate drinkers
+                    (extrovert lifestyle) might be responsible for longevity. Regardless, there is some association between
+                    the two variables.
+                    The goal in linear regression is to tease apart whether a correlation is likely to be a causal
+                    relationship, by controlling for these other variables/characteristics that might be confounding the
+                    analysis.
+                </p>
+                <p>In simple linear regression, <a href="http://www.stat.yale.edu/Courses/1997-98/101/scatter.htm"> scatter
+                    plot</a> can be a helpful
+                    tool in visually determining the strength of the relationship between two variables. The independent
+                    variable is typically plotted on the x-axis and the dependent variable is typically plotted on the y-axis.
+                    If there appears to be no association between the proposed explanatory and dependent variables (i.e., the
+                    scatter plot does not indicate any clear increasing or decreasing trends), then fitting a linear regression
+                    model to the data probably will likely not provide a useful model. (Note this is not always the case--just 
+                    as confounding variables might lead a correlation to appear stronger than it is, it might also lead a 
+                    relationship to appear weaker than it is.)
+                </p>
+                <p>Shown in the picture below, in simple regression, we have a single feature x and weights w0 for the
+                    intercept and w1 for slope of the line. Our goal is to find the line that minimizes the vertical
+                    offsets, otherwise known as residuals.
+                    In other words, we define the best-fitting line as the line that minimizes the residual sum of squares
+                    (SSR or RSS) between our target variable y and our predicted output over all samples i in our training
+                    examples n.
+                </p>
+                <img src="simple_regression.png">
+                <p>A valuable numerical measure of association between two variables is the <a
+                    href="http://www.stat.yale.edu/Courses/1997-98/101/correl.htm"> correlation coefficient </a>, which
+                    is a value between -1 and 1 indicating the strength of the association of the observed data for the two
+                    variables. A simple linear regression line has an equation of the form <b>Y = a + bX</b>, where <b>X</b>
+                    is the independent (explanatory) variable and <b>Y</b> is the dependent variable. The slope of the line
+                    is <b>b</b>, and <b>a</b> is the intercept (the value of y when x = 0). A multiple linear regression
+                    line has an equation of the form <b>Y = a + b_1X_1 + b_2 X_2 + … + b_n X_n</b> for n independent
+                    variables.</p>
+                    <p>Another useful metric is the <b>R-squared</b> value. This tells us how much of the variation in Y can be
+                        explained by the variation in X. The value for R-squared ranges from 0 to 1, and the closer to 1, the
+                        greater proportion of the variability in Y is explained by the variability in X.
+                        For more explanation on R-squared and how to calculate it, read <a
+                        href="https://online.stat.psu.edu/stat501/lesson/1/1.5"> here </a> (this will be very helpfulf)</p>
+
+            <p>Do not confuse correlation and regression. Correlation is a numerical value that quantifies the degree to
+                which two variables are related. Regression is a type of predictive analysis that uses a <b>best fit
+                    line (Y = a + bX)</b> that predicts Y given the value of X).</p>
+                </p>
+            </details>
+            <br>
+            <h4>
+                Data & Functions Overview
+            </h4>
+            <p>
+                Inside the data folder, <code>bike-sharing.csv</code> contains data of a two-year historical log corresponding to years 2011 and 2012 from Capital Bikeshare system, Washington D.C., USA. There are 11 different independent variables that you are attempting to predict and one dependent variable (the <code>cnt</code> of use of bike.)
+            </p>
+            <p>
+                In this part of the assignment, you will need to edit <code>regression.py</code> and <code>writeup.md</code>. In particular, you will need to:
+                <ol>
+                    <li>Complete the function <code>regression()</code>. Details on the input and output of the function, as well as what you need to do to complete the function, can be found in the code file. </li>
+                    <li>
+                        Write your own code to run the function <code>regression</code> on the bike sharing dataset, using your own defined dependent variable and set of independent variables. We have provided you with a helper function, <code>train_test_split</code> (imported from <code>util.py</code>) that you can use to help with this part of the assignment.
+                    </li>
+                    <li>Answer all Part 1 questions in <code>writeup.md</code>, with reference to the results from the regression models that you run on the bike sharing dataset.</li>
+                </ol>
+            </p>
+            <p>
+                You can go into the file and edit the list of independent variables that you want to run the program on. Then, you will call <code>python3 regression.py</code> (after activating the environment) to run your code. If you have implemented the function <code>regression()</code> properly, it should print out the summary of your regression model, which will help with your write up in <code>writeup.md</code>.
+            </p>
+            <p>
+                In <code>util.py</code>, we have provided some functions that might be useful for you while writing the code in <code>regression.py</code>. In particular, the function <code>train_test_split()</code> will help you with splitting your dataset DataFrame into a
+                train DataFrame and a test DataFrame, which can be use as inputs to your <code>regression()</code> function.
+            </p>
+            <p>
+                
+            </p>
+            <br>
+            <hr><br>
+            <h2>Part 2: Hypothesis Testing</h2>
+            <h3>60 points</h3><br>
+
+            <h4>Data & Functions Overview</h4>
+            <p>
+                Also inside the data folder, <code>college-data.csv</code> contains a constructed dataset of 435 students enrolled at a university in the United States. You can read more about the attributes available in this dataset in <code>README-college-data.md</code>.
+            </p>
+            <p>
+                In <code>writeup.md</code>, we have presented you with five different scenarios, where for each type of t-test (one sample, two sample, and paired), there would be exactly one scenario that would be best mapped to that scenario. The remaining two is best suited for a chi-square test for independence.
+            </p>
+            <p>In this part of the assignment, you will need to modify <code>stats_tests.py</code>, <code>run_tests.py</code>, and <code>writeup.md</code>. In particular, you will need to (in this particular order):
+                <ol>
+                    <li>
+                        Use Scipy statistics package (imported with the file), as well as some pandas function, to complete the functions: <code>one_sample_ttest</code>, <code>two_sample_ttest</code>, <code>paired_ttest</code>, and <code>chisquare_independence_test</code>. Details on the input and output of the function, as well as what you need to do to complete the function, can be found in the code file (<code>stats-tests.py</code>).
+                    </li>
+                    <li>
+                        <p>In <code>run_tests.py</code>, there are five different functions according to each presented scenario presented in <code>writeup.md</code>: <code>scenario_one</code>, <code>scenario_two</code>, ..., <code>scenario_five</code>. In each of these, you will need to make a decision on what kind of test function to run, construct the necessary variables to pass into the test function calls, and return the test statistics and the p-values that come from the tests.</p>
+                        <p>
+                            To run the tests that you have written for each scenario, you can use the following command format after activating the virtual environment: <code>python3 run_tests.py -d /PATH/TO/DATA.csv -s SCENARIO</code>. <code>SCENARIO</code> should be a string that is in this list: <code>["one", "two", "three", "four", "five", "all"]</code>, and if you select <code>"all"</code>, all the tests for all the scenarios will be run. By default, the flag <code>-d</code> is set to be <code>./../data/college-data.csv</code>, and you most likely will not need to modify the path. Therefore, the command that you can execute can look something like: <code>python3 run_tests.py -s one</code>, or <code>python3 run_tests.py -s all</code>.
+                        </p>
+                    </li>
+                    <li>
+                        In <code>writeup.md</code>, answer all Part 2 questions. After having written your t-test and chi-square tests, print out the necessary data (e.g., test statistics and p-values) to support your answers in the writeup.
+                    </li>
+                </ol>
+            </p>
+            <p>
+                In <code>util.py</code>, we have provided some functions that might be useful for you while writing the code in <code>run_tests.py</code>. In particular, <code>drop_incomplete_rows</code> helps with dropping rows in a DataFrame that contains either null values or
+                an empty string. You may want to call this to filter out unwanted rows before performing any statistical tests. <code>timestr_to_seconds</code> helps with converting time periods of a string format <code>hh:mm:ss</code> (e.g., <code>00:01:17</code>) to be in seconds insted (e.g., 77). These functions
+                will come in handy when you are preparing the variables to pass into the statistical test functions that you have prepared.
+            </p>
+            <br>
+            <hr><br>
+
+            <h2>Part 3: Socially Responsible Computing</h2>
+            Please write your answers to the following questions in <code>writeup.md</code>.
+            <h3>20 points </h3>
+
+            <h3>
+                Same Data, Different Story
+            </h3>
+            <p>While performing regression analysis, data scientists make several choices that require more than the data alone. Understanding the context of data is necessary to avoid statistical misinterpretation (along with many other issues!).</p>
+            <p>
+                The goal of the following questions is to:
+                <ul>
+                    <li> Recognize how technical choices in an analysis can be used to generate different conclusions </li>
+                    <li> Demonstrate the importance of context to decisions during the data analysis process </li>
+                </ul>
+            </p>
+            <br>
+        <p style="font-style: italic;">Your responses should be thoughtful, provide justification for your claims, and be concise but complete. See the <a href="https://docs.google.com/document/d/1hXGxoW8DQzIBh1yW2989fZhOIBgJ4w8BMN6lXjbnY-U/edit">response guide</a> for more guidance.</p>
+
+        <h4> Questions </h4>
+        <ol>
+            <li> (5 points) Read <a href="https://towardsdatascience.com/simpsons-paradox-how-to-prove-two-opposite-arguments-using-one-dataset-1c9c917f5ff9">this article</a> explaining a statistical phenomenon called Simpson's Paradox. Explain how Simpson's Paradox occurs in the context of the exercise vs. disease example. Why should we choose to separate the data into 2 groups for this specific dataset/question?</li>
+            <li> (7 points) Beyond multiple testing, data scientists make many decisions throughout the analysis process that can lead to a variety of results. Read the Intro and Part 1 of <a href="https://fivethirtyeight.com/features/science-isnt-broken/#part1">this article</a> and experiment with the "<a href="https://projects.fivethirtyeight.com/p-hacking/">Hack Your Way To Scientific Glory</a>" interactive. By manipulating the variables to get "Publishable" and “Unpublishable...” </li>
+                <ol type = "a">
+                    <li> In a few sentences, present and justify statistical results supporting the claim that “Democrats are bad for the economy.” </li>
+                    <li> In a few sentences, present and justify statistical results supporting the claim that “Republicans are bad for the economy.” </li>
+                    <li> Write a short reflection about your above experiments with different variable combinations and political claims. Whether specific to the data or broadly applicable to statistical analysis of all kinds, what should you avoid or emphasize if you present or publish the results of such an analysis? </li>
+                </ol>
+            <li> 
+                (6 points) Read <a href="https://www.urban.org/urban-wire/three-ways-bikeshare-can-counteract-not-reinforce-dcs-disparities">“Three ways bikeshare can counteract, not reinforce, DC's disparities”</a> and answer the questions below. 
+                If you’re interested in more context, (optionally) read <a href="https://www.bloomberg.com/news/articles/2017-07-14/explaining-the-diversity-and-equity-gap-in-bike-sharing">this analysis of the lack of diversity in bikeshare programs</a> and <a href="https://d21xlh2maitm24.cloudfront.net/wdc/cabi-2012surveyreport.pdf?mtime=20161206135939%20">this 2012 Capital Bikeshare Member Survey Report</a>.
+                <ol type = "a">
+                    <li> What factors might be influencing the <code>bike-sharing.csv</code> data that are not being shown in the dataset? List at least 3 possible factors. The factors could be additional variables or factors that are not quantifiable. </li>
+                    <li> List one category for which it could be helpful to separate the <code>bike-sharing.csv</code> data into groups before analyzing it. This category may or may not be represented in the existing dataset. Describe a context (project, question, goals, etc.) for which separating the data by that category is important and explain why separating the data is the right choice for that context. </li>
+                    <li> 
+                        Explain at least one way that information in the bikeshare reading impacts how you should interpret <code>bike-sharing.csv</code> or present your findings.
+                    </li>
+                </ol>
+            </li>
+            <li> (2 points) Fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSempkWgECNhzIHYYiNnCV20eQUU0eZtR6cz7BKiYLr8buIr4w/viewform?usp=sf_link">this <b>anonymous</b> mid-semester feedback form</a> for the Socially Responsible Computing (SRC) component of assignments. Follow instructions at the end of the form to get credit for filling it out.</li>
+        </ol>
+
+            <h3>
+                Additional Information
+            </h3>
+            <p> There are a plethora of other statistical mishaps and manipulations beyond what can reasonably fit in one assignment. If you're interested in further reading, consider learning more: </p>
+                <ul>
+                    <li> <a href="https://gking.harvard.edu/files/gking/files/0314policyforumff.pdf">The Parable of Google Flu: Traps in Big Data Analysis </a> </li>
+                    <li> <a href="https://towardsdatascience.com/simpsons-paradox-how-to-prove-two-opposite-arguments-using-one-dataset-1c9c917f5ff9">Simpson’s Paradox: How to Prove Opposite Arguments with the Same Data </a> </li>
+                    <li> <a href="https://theconversation.com/the-seven-deadly-sins-of-statistical-misinterpretation-and-how-to-avoid-them-74306">The seven deadly sins of statistical misinterpretation, and how to avoid them </a> </li>
+                </ul>
+
+                
+
+                <br>
+                <hr><br>
+                <h2>Handing In</h2><br>
+                <p>After finishing the assignment, run <code>python3 zip_assignment.py</code> in the command line from
+                    your
+                    assignment directory, and fix any issues brought up by the script.</p>
+                <p>
+                    After the script has been run successfully, you should find the file
+                    <code>stats-submission-1951A.zip</code> in your assignment directory. Please submit this zip
+                    file on
+                    Gradescope under the respective assignment.
+                </p>
+                <br><hr><br>
+                <h2>Credits</h2><br>
+                <p>
+                    Made by Qian Zhang, Aakansha Mathur, Evan Dong, and Nam Do in Summer 2021, with the first part and most of the STA component being adapted from the previous iterations of the course.
+                </p>
+                <p>
+                    Bike Sharing Dataset: Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, doi:10.1007/s13748-013-0040-3.
+                </p>
+                <div class="col-md-2"></div>
+                <br><br>
+        </div>
+
+</body>
+
+</html>
