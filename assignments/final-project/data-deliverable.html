@@ -74,11 +74,11 @@
  that we need for analysis.
 </code></pre>
 <p>Just imagine you being a complete alien to this project - ask yourself whether you would feel confident that you could replicate this data collection procedure based on your description for this question.</p>
-<p><strong>Please limit your response to this question to under 200 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 200 words</strong>.</p>
 </li>
 <li>
 <p>Also in Step 1 of <code>data-deliverable-report.md</code>, answer: How reputable is the source of your data? Are there any other considerations you took into account when collecting your data? This is open-ended based on your data; feel free to leave this blank. (Example: If it’s user data, is it public/are they consenting to have their data used? Is the data potentially skewed in any direction?)</p>
-<p><strong>Please limit your response to this question to under 150 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 200 words</strong>.</p>
 </li>
 </ol>
 <h3 id="step-2-define-your-data-schema">Step 2: Define your data schema</h3>
@@ -87,10 +87,10 @@
 <ul>
 <li><strong>Data types/assumption of data types</strong>: For <strong>each attribute of your interest</strong> in your dataset, what type do you expect your attribute to be? E.g. int? float? str? VARCHAR? What does this attribute represent? You don’t have to list out the data types and the meaning of every single variables in your dataset - you can just focus on the attributes that you think would matter the most in your exploratory phase later.</li>
 <li><strong>Keys/cross-references</strong>: What are the keys (primary keys, foreign keys) of your datasets? Even if your data is not in a SQL database, it is important to clearly define this, as you would want to know exactly which attribute to join your different data tables on, or which feature(s) to use to identify unique instances of data.</li>
-<li><strong>Required/Optional fields</strong>: Which fields in your data is required? Which is optional?</li>
+<li><strong>Required/Optional fields</strong>: Which fields in your data is required? Which are optional?</li>
 </ul>
 <p>You can refer to <a href="http://cs.brown.edu/people/epavlick/subjclueslen1-HLTEMNLP05.README">this</a> or <a href="https://github.com/decompositional-semantics-initiative/DNC/">this</a> example of README for data (in <code>.csv</code> and <code>.json</code> formats, respectively) for some inspiration.</p>
-<p><strong>Please limit your response to this question to under 300 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 300 words</strong>.</p>
 <h3 id="step-3-clean--process-your-data">Step 3: Clean &amp; Process your data</h3>
 <p><strong>TODO</strong>:</p>
 <ol>
@@ -104,7 +104,7 @@
 <li>Are there any data type issues (e.g. words in fields that were supposed to be numeric)? Where are these coming from? (E.g. a bug in your scraper? User input?) How will you fix them?</li>
 <li>Are you joining some tables together? How many rows from each table will be joined together, and on which attributes?</li>
 </ul>
-<p><strong>Please limit your response to this question to under 250 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 250 words</strong>.</p>
 </li>
 <li>
 <p>Clean your data based on the your expectations and observations in Step 2 and Step 3, Part 1. Include all the code that you use to clean your data in the code <code>.zip</code> file that you will submit to the Google Form. Some things you might want to consider:</p>
@@ -119,18 +119,18 @@
 <li>
 <p>In the second part of Step 3 of <code>data-deliverable-report.md</code>, describe your data cleaning process and outcome. You can include:</p>
 <ul>
-<li>For each step that you took to clean and process<strong>If a join results in many fewer rows than the input tables, they should</strong> the data: what is the step? How many samples are you left with after each step? What are some examples of the samples that are being removed? Why did you make this data cleaning decision?</li>
+<li>For each step that you took to clean and process <strong>If a join results in many fewer rows than the input tables, they should</strong> the data: what is the step? How many samples are you left with after each step? What are some examples of the samples that are being removed? Why did you make this data cleaning decision?</li>
 <li>At the end, how many samples are you left with? Do you think this is enough data to perform your analysis later on? Are the samples that you’re left with representative, or is it likely to exhibit some sort of sampling bias?</li>
 <li>Was the data that was lost important/noteworthy in any way (i.e., did it affect the distribution of your data meaningfully)?</li>
 </ul>
-<p><strong>Please limit your response to this question to under 250 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 250 words</strong>.</p>
 </li>
 </ol>
 <h3 id="step-4-define-a-held-out-test-set">Step 4: Define a held out test set</h3>
 <p><strong>TODO</strong>:</p>
 <ol>
 <li>
-<p>Construct a held out test set that you will use to test your hypotheses or evaluate your models later on. Include all the code that you use to perform this in the code <code>.zip</code> file that you’ll submit.</p>
+<p>Construct a held out test set that you will use to test your hypotheses or evaluate your models later on. The way you choose to do this will depend on the problem domain, so if you aren’t sure how to do it, don’t guess! Talk with your mentor TA or with Ellie early to get advice on what makes sense for your problem. Include all the code that you use to perform this in the code <code>.zip</code> file that you’ll submit.</p>
 </li>
 <li>
 <p>In Step 4 section of <code>data-deliverable-report.md</code>, be sure to include the following information:</p>
@@ -139,7 +139,7 @@
 <li>What is the way with which you chose the test set? Did you do random sampling on the entire dataset, or did you do something more intricate to select the test samples? Why did you make this choice?</li>
 </ul>
 <p>Similar to what you did in Step 1, be sure to describe your train-test split in a manner accessible to a complete stranger – making it super easy for them to replicate the work that you have done in this step.</p>
-<p><strong>Please limit your response to this question to under 250 words</strong>.</p>
+<p><strong>Please aim for a response to this question that is at most around 250 words</strong>.</p>
 </li>
 </ol>
 <h3 id="step-5-socio-historical-context--impact-report">Step 5: Socio-historical Context &amp; Impact Report</h3>
@@ -152,7 +152,7 @@
 </ol>
 <h3 id="step-6-team-report">Step 6: Team Report</h3>
 <p><strong>TODO</strong>: In Step 6 section of <code>data-deliverable-report.md</code>, include your answer to the following questions:</p>
-<ol>
+<ol start="5">
 <li>
 <p><strong>What are the major technical challenges that you anticipate with your project?</strong> This can be on anything - from getting more/better data, to building your models.</p>
 </li>
@@ -181,15 +181,19 @@
 </tr>
 <tr>
 <td>80-89</td>
-<td>Only three out of four criteria above were met.</td>
+<td>Only three out of four criteria above were fully met.</td>
 </tr>
 <tr>
 <td>70-79</td>
-<td>Only two out of four criteria above were met.</td>
+<td>Only two out of four criteria above were fully met.</td>
 </tr>
 <tr>
 <td>60-69</td>
-<td>Only one criterion was met.</td>
+<td>Only one criterion was fully met.</td>
+</tr>
+<tr>
+<td>below 60</td>
+<td>None of the above criteria were fully met.</td>
 </tr>
 </tbody>
 </table><h3 id="last-words">Last words</h3>
