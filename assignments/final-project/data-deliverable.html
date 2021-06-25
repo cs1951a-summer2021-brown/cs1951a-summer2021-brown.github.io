@@ -34,7 +34,7 @@
 <p>In this stage of the final project, you are expected to prepare the necessary data for your exploratory stage.</p>
 <h2 id="logistics">Logistics</h2>
 <h3 id="stencil--handin">Stencil &amp; Handin</h3>
-<p>We provide one stencil file, <a href="https://drive.google.com/file/d/1TlTfHFob0-nNJiv0rV3-XwxlckXX8TzJ/view?usp=sharing">data-deliverable-report.md</a>. Your group is to fill out this report, as well as submit your code and data samples in <a href="https://forms.gle/sGYpbdHEhnBpo6tg7" target="_blank">this form</a>. Specifically:</p>
+<p>We provide one stencil file, <a href="https://drive.google.com/file/d/1TlTfHFob0-nNJiv0rV3-XwxlckXX8TzJ/view?usp=sharing">data-deliverable-report.md</a>. Your group is to fill out this report, as well as submit your code and data samples in <a href="https://forms.gle/sGYpbdHEhnBpo6tg7">this form</a>. Specifically:</p>
 <ul>
 <li><strong>Code</strong>: You need to compress all the code (e.g., <code>.py</code> or <code>.ipynb</code> files) that you used to collect and process your data and upload your .zip file in the form. You will also need to provide us with a link to your collected &amp; processed data.</li>
 <li><strong>Data</strong>: You need to compress all your data samples (e.g., <code>.csv</code>, <code>.tsv</code>, <code>.db</code> files) that are a subset (10-100 samples) of the big dataset that you will collect in this assignment. More details below.</li>
@@ -49,7 +49,7 @@
 <li>Voicing concern over the dynamic in your team (unequal distribution of work, one being left out, toxic work environment, etc.) and over the final project requirements/guidelines</li>
 <li>And literally anything!</li>
 </ul>
-<p>Please be nice to your TA – they have a lot of things on their plate as well. This means that, please (1) try to reach out in advance to schedule your meeting with them, (2) (concisely) share with them as much information as possible when you reach out so they can get to know your project, research in-depth prior to the meeting with you so as to be of the most helpful for you, and (3) please do your research and try your best before reaching out to them for help.</p>
+<p>Please try to reach out to your TA in advance to schedule your meeting with them. Concisely share with them as much information as possible when you reach out so they can get to know your project, research in-depth prior to the meeting with you so they can be the most helpful for you. Last but not least - make sure to do your part and try your best before reaching out to them for help.</p>
 <p>Along the way, if you have not reached out to them and its getting close to each deadline, they might reach out to you just to check in if you need any help or feedback – feel free to utilize them as a resource!</p>
 <h3 id="github-repository">Github Repository</h3>
 <p>Your group should create and work together on a Github repository. If you need any support creating a Github repository, please feel free to reach out to your HTA, or your final project TA, to get help with getting started with a Github repository.</p>
@@ -91,7 +91,7 @@
 </ul>
 <p>You can refer to <a href="http://cs.brown.edu/people/epavlick/subjclueslen1-HLTEMNLP05.README">this</a> or <a href="https://github.com/decompositional-semantics-initiative/DNC/">this</a> example of README for data (in <code>.csv</code> and <code>.json</code> formats, respectively) for some inspiration.</p>
 <p><strong>Please limit your response to this question to under 300 words</strong>.</p>
-<h3 id="step-3-clean-your-data">Step 3: Clean your data</h3>
+<h3 id="step-3-clean--process-your-data">Step 3: Clean &amp; Process your data</h3>
 <p><strong>TODO</strong>:</p>
 <ol>
 <li>
@@ -102,6 +102,7 @@
 <li>Are there duplicates? Do these occur in fields that are important for your project’s goals?</li>
 <li>How is the data distributed? Is it uniform or skewed? Are there outliers? What are the min/max values? (focus on the fields that are most relevant to your project goals)</li>
 <li>Are there any data type issues (e.g. words in fields that were supposed to be numeric)? Where are these coming from? (E.g. a bug in your scraper? User input?) How will you fix them?</li>
+<li>Are you joining some tables together? How many rows from each table will be joined together, and on which attributes?</li>
 </ul>
 <p><strong>Please limit your response to this question to under 250 words</strong>.</p>
 </li>
@@ -118,7 +119,7 @@
 <li>
 <p>In the second part of Step 3 of <code>data-deliverable-report.md</code>, describe your data cleaning process and outcome. You can include:</p>
 <ul>
-<li>For each step that you took to clean the data: what is the step? How many samples are you left with after each step? What are some examples of the samples that are being removed? Why did you make this data cleaning decision?</li>
+<li>For each step that you took to clean and process<strong>If a join results in many fewer rows than the input tables, they should</strong> the data: what is the step? How many samples are you left with after each step? What are some examples of the samples that are being removed? Why did you make this data cleaning decision?</li>
 <li>At the end, how many samples are you left with? Do you think this is enough data to perform your analysis later on? Are the samples that you’re left with representative, or is it likely to exhibit some sort of sampling bias?</li>
 <li>Was the data that was lost important/noteworthy in any way (i.e., did it affect the distribution of your data meaningfully)?</li>
 </ul>
@@ -151,7 +152,7 @@
 </ol>
 <h3 id="step-6-team-report">Step 6: Team Report</h3>
 <p><strong>TODO</strong>: In Step 6 section of <code>data-deliverable-report.md</code>, include your answer to the following questions:</p>
-<ol start="1">
+<ol>
 <li>
 <p><strong>What are the major technical challenges that you anticipate with your project?</strong> This can be on anything - from getting more/better data, to building your models.</p>
 </li>
@@ -164,7 +165,34 @@
 <p>Please some samples (10-100 rows) of the data that you will be using in the exploratory phase. If you are planning on using multiple files of data in the exploratory phase, generate the samples for each of the file that you will be using. Compress all the data sample files into one <code>.zip</code> file and submit it on the Google Form.</p>
 <h3 id="compressing-all-the-code-that-you-used">Compressing all the code that you used</h3>
 <p>As mentioned above, please compress all the code that you used in one <code>.zip</code> file and also submit it on the Google Form.</p>
-<h3 id="last-words">Last words</h3>
+<h3 id="rubric">Rubric</h3>
+
+<table>
+<thead>
+<tr>
+<th>Score range</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90-100</td>
+<td>(1) The group has looked into/sanity checked the data that they retrieved. There should be evidence that the students understand the source and what the attributes are in the data - their types, their values, what the distribution of data is, what the outliers are, and how the different datasets can relate to each other. (2) There should be evidence that the students have looked into things that may need to be changed/removed from the dataset. If some data were removed, students should comment on what was removed and how that may impact the distribution of data. If a join results in many fewer rows than the input tables, they should comment on what was dropped and the impact. (3) The group’s construction of the train and test sets were meaningful, and they are aware of the quantity, quality and distribution of samples in the dataset &amp; each of the train/test set. (4) The group has critically thought about the socio-historical context and impact of using their data, and has a good distribution of work among members of the group.</td>
+</tr>
+<tr>
+<td>80-89</td>
+<td>Only three out of four criteria above were met.</td>
+</tr>
+<tr>
+<td>70-79</td>
+<td>Only two out of four criteria above were met.</td>
+</tr>
+<tr>
+<td>60-69</td>
+<td>Only one criterion was met.</td>
+</tr>
+</tbody>
+</table><h3 id="last-words">Last words</h3>
 <p>Good luck! Please utilize the course staff - ask questions whenever you are confused, or whenever you want some feedback!</p>
 
     </div>
