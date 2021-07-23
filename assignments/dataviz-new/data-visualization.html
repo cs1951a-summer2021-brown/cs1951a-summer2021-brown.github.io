@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data-visualization</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#assignment-6---data-visualization">Assignment 6 - Data Visualization</a>
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#visualization-scenarios">Visualization Scenarios</a></li>
+<li><a href="#socially-responsible-computing">Socially Responsible Computing</a></li>
+<li><a href="#handing-in">Handing In</a></li>
+<li><a href="#parting-words">Parting words</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#appendix">Appendix</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      <h1 id="assignment-6---data-visualization">Assignment 6 - Data Visualization</h1>
+<p><strong>Due</strong>: 11:59PM Eastern Time, <strong>July 30th</strong>, 2021</p>
+<p><img src="https://cs1951a-s21-brown.github.io/assignments/data_viz/dataviz_meme.png" alt="data visualization meme"></p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="getting-the-stencil">Getting the stencil</h3>
+<p>You can click <a href="https://classroom.github.com/a/QltvyijU">this link</a> to get the stencil for this assignment.</p>
+<p><strong>Important</strong>: Please view <a href="#appendix-a-stencil-code-structure">Appendix A</a> for the stencil code structure.</p>
+<h3 id="python-data-visualization-modules">Python Data Visualization Modules</h3>
+<p>In this assignment, you may use packages that have not been installed on our course virtual environment. Please refer to <a href="#appendix-b-how-to-install-a-new-package-in-your-own-virtual-environment">Appendix B</a> for instructions on how to install new modules on your virtual environment. You will not have the write access to install packages on the our course virtual environment on the department filesystem, so please let the HTA know if there is any Python module that is yet available in the course environment and you think should be added to the official course virtual environment.</p>
+<p>Some modules that we recommend using in this assignment are: <code>Pandas</code>, <code>Matplotlib</code>, <code>Seaborn</code>, <code>Plotly</code>, and <code>Sklearn</code> (for your Machine Learning models, and for <a href="https://mljar.com/blog/visualize-decision-tree/">decision tree visualization</a>).</p>
+<h3 id="before-you-start...">Before you start…</h3>
+<p>Firstly, we recommend finishing the lab first before working on the assignment.</p>
+<p>We also care about accessible data visualization. Before you start designing your dashboard, we want you to read the following articles about accessible Data Visualization:</p>
+<ul>
+<li>“<a href="https://www.tableau.com/about/blog/examining-data-viz-rules-dont-use-red-green-together">5 tips on designing colorblind-friendly visualizations</a>” (also covered in lab)</li>
+<li>“<a href="https://medium.com/nightingale/accessibility-is-at-the-heart-of-data-visualization-64a38d6c505b">Why Accessibility Is At The Heart of Data Visualization</a>” - particularly, pay attention to the <em>Design equivalent experiences for all your readers</em> section.</li>
+<li>“<a href="https://www.betterment.com/resources/accessible-data-visualization/">A Comprehensive Guide to Accessible Data Visualization</a>” - the article should provide you with specific suggestions to make data visualization accessible to people with visual impairments.</li>
+</ul>
+<p>Additionally, we hope that you will utilize the following tools:</p>
+<ul>
+<li><a href="https://www.color-blindness.com/coblis-color-blindness-simulator/">Colorblindness Simulator</a>, where you can upload a photo (e.g., of a graph that you made), and it will output how the graph would look like if you have a certain type of colorblindness.</li>
+<li><a href="https://dev.to/stephencweiss/markdown-image-titles-and-alt-text-5fi1">Guide: Including Alt Text in Markdown files</a> - this will give you some guide on how to include alt texts in your <code>writeup.md</code> report.</li>
+</ul>
+<p>Keep the principles from the readings in mind as you design and implement your dashboard. You should try your best to utilize these best practices in your graphs for this assignment, and note the times during your design and implementation process where you <em>could</em> <strong>and</strong> <em>could not</em> act on suggestions in the readings. You will answer questions about your observations after having produced all the visualizations.</p>
+<p>We hope that this will be a fun assignment and will closely resemble future data science work!</p>
+<h3 id="gradescope-autograder--collaboration">Gradescope Autograder &amp; Collaboration</h3>
+<p>Due to the free-form nature of the assignment, we do not have an autograder configured on Gradescope. Feel free to talk to your friends or come to TA hours to get feedback on your graphs (e.g., “<em>does it make sense that I use graph X to communicate this information?</em>” or “<em>how do you feel about my design for graph Y</em>”). However, you should be the one who determines the design choices and comes up with the code to produce the graphs.</p>
+<p>We have been and will continue to use Gradescope on our assignments to check for code similarity between submissions.</p>
+<h2 id="visualization-scenarios">Visualization Scenarios</h2>
+<p><em>(80 points)</em></p>
+<p>In this assignment, there is no one way to do things: <strong>You are the person to make the design choices to visually analyze your data/your models.</strong> The design choices that you will make in this assignment include:</p>
+<ul>
+<li>What are the questions that I will graphically analyze?</li>
+<li>What kinds of plot will I produce to analyze my questions? Why?</li>
+<li>Out of the many Python visualization tools/packages, what will I use to produce the plots? How can I use it to make my graphs the most informative and accessible?</li>
+</ul>
+<p>In response to the scenarios posed in this assignment, all the code that you write to produce the the answer plots should go in their respective files (as noted in each section). In <code>writeup.md</code>, you will have to include the produced plots, and write your answer to each question that you decide to analyze. Particularly, be sure to mention:</p>
+<ul>
+<li><strong>Question</strong>: What is the question/aspect you want to analyze?</li>
+<li><strong>Graph &amp; Analysis</strong>: Include the graph(s) that you use to analyze the question/aspect. How should we interpret the graph(s)? How should we use this information to judge the model/the dataset, or to decide the next steps in our data analysis?</li>
+</ul>
+<p>If you are ever in doubt about whether an aspect of analysis is “valid,” feel free to reach out to your TAs for help!</p>
+<p>We will go through your code file to make sure that the code that you wrote correspond to the graphs that you produce, so please make sure to structure your code in the cleanest way possible so we can give you credit. We expect best design for your graphs. This means:</p>
+<ul>
+<li>Your graphs have to have clear graph titles, axis labels, and need to generally communicate information properly.</li>
+<li>Your graph needs to follow accessible graph design principles - e.g., think colors, sizes, or alt texts. Please refer to the lab and to the accessible design tools/articles above for more information regarding accessible visualization.</li>
+<li>Your graph communicates information well on its own, but you also do a good job with analyzing your graphs (refer to the questions mentioned above).</li>
+</ul>
+<p>You are free to use any kinds of plots, packages, etc. - as long as you include your graphs in the <code>graphs</code> folder (and in the <code>writeup.md</code>) file.</p>
+<h3 id="data">Data</h3>
+<p>We will use two datasets in this assignment: The RI Traffic Stops Dataset, and the Banknote Authentication Dataset. The datasets and their details (features, source, acknowledgements) can be found in the <code>data/</code> folder.</p>
+<p>The data is labeled. More specifically:</p>
+<ul>
+<li><strong>RI Traffic Stops Dataset</strong>: By default, the name of the target feature is <code>stop_outcome</code>, and the names of the features are the rest of the attributes.</li>
+<li><strong>Banknote Authentication Dataset</strong>: By default, the name of the target feature is <code>Class</code>, and the names of the features are the rest of the attributes.</li>
+</ul>
+<h3 id="stage-1-data-visualization-in-data-exploration">Stage 1: Data Visualization in Data Exploration</h3>
+<p><em>(30 points)</em></p>
+<p>Your code in this section goes into <code>stage_one.py</code>. You are expected to explore <strong>three aspects of your choice</strong> of your data (with at least one accompanying graph for each aspect). This applies to either of the provided datasets, which means that you only have to produce graphs to explore three aspects for both of the datasets, instead of having to address six aspects.</p>
+<p>Some questions you might want to think about when exploring a dataset:</p>
+<ol>
+<li>
+<p>You want to build a Machine Learning model on the datasets, but as a stellar data scientist, you realize that you need to explore how the data distribution looks like first. What kinds of graphs will you produce to explore your data before you dive into building the model?</p>
+<p><strong>Hint</strong>: To build a good model, you may want to look at the distribution of the fields (of your interest) that exist in your dataset. For example:</p>
+<ul>
+<li>If a field consists of continuous numerical values: How are the values in this field distributed? What is the range, the median and standard deviation of the values in this field?</li>
+<li>If a field consists of categorical values: How many distinct categories can the values be divided into, if applicable?</li>
+<li>If your dataset has true target labels: Are the classes in your dataset are balanced (meaning, roughly the same amount of samples for each class)?</li>
+<li>Looking at multiple different fields, what is does the breakdown of the data look like? For example: looking at fields <code>A</code> and <code>B</code>, how many samples have: <code>(A,B) = (a_1, b_1)</code>? <code>(a_1, b_2)</code>? (<code>a_2, b_1</code>)?  And so on…</li>
+</ul>
+</li>
+<li>
+<p><s>A picture is worth a thousand words</s> A graph is worth a thousand numbers. Before we decide what to do next with the data - e.g., which machine learning model to use - it is important to visualize the dataset (and not just each feature’s statistics).</p>
+<p>In a supervised context where the dataset that you’re provided contains the target labels, you can just plot your data points from your original data and see if they are in " natural clusters" already. (<em>Hint: Take a look at the functions <code>plot_multiclass_fig_2D</code>, <code>plot_fig_3D</code>, <code>plot_linear_line</code>,  and <code>plot_linear_plane</code> in <code>sample.py</code>!</em>) You may want to explore if your data is linearly separable or are already clustered into almost distinct clusters - if it is, then you can just use super simple Machine Learning models - e.g., SVM with Linear Kernels, Logistic Regression, etc. - on your dataset, but if not, you’ll have to use more complex ones - e.g. SVM with more complex kernels, or deep neural networks.</p>
+<p><strong>Hint</strong>: For a dataset with many different attributes, it might be hard for us to plot more than 3 dimensions at once. To handle this problem, you can reduce the dimensionality of your dataset to be either 2-dimensional or 3-dimensional (using methods such as Principal Component Analysis, or regression and picking the “most important” subsets of variables). You can visualize one graph of your most important features, or you can produce a few different graphs to visualize different subset of features to derive your conclusions about the data.</p>
+</li>
+</ol>
+<p><strong>Some examples of aspects that you can analyze</strong>:</p>
+<ul>
+<li>In the RI Transit Stops Dataset, how many examples (rows) are of each class? What are we to make of the kind of Machine Learning models that we should use on this dataset?</li>
+<li>In the Banknote Authentication Dataset, are the data points linearly separable / almost linearly separable? What are we to make of the kind of Machine Learning models that we should use on this dataset?</li>
+<li>In the RI Transit Stops Dataset, what does the breakdown of the data look like when looking specifically at the features <code>'driver_race'</code> and <code>'search_conducted'</code> ? How about <code>'driver_race'</code> and <code>'stop_outcome'</code>, or <code>'driver_race'</code> and <code>'is_arrested'</code>? What can we say about the relationship between our features of interest, if at all?</li>
+<li>How does the number of traffic stops change through the years in the Transit Stops Dataset?</li>
+<li>What is the distribution of the continuous variables in the Banknote Authentication Dataset?</li>
+</ul>
+<h3 id="stage-2-data-visualization-for-model-exploration">Stage 2: Data Visualization for Model Exploration</h3>
+<p><em>(30 points)</em></p>
+<p>Your code in this section goes into <code>stage_two.py</code>. You are expected to explore <strong>three aspects of your choice</strong> of your Machine Learning models - again, with at least one accompanying graph for each aspect.</p>
+<p>In <code>utils.py</code>, we have built the code to build <strong>four</strong> different Machine Learning models (decision tree, k-nearest neighbor, logistic regression, <strong>and</strong> dummy classifier) – examples for how to use our code to get the trained models can be found in <code>sample.py</code>. Feel free to build your own ML models, change the code that we have provided for you in <code>utils.py</code>, etc. – whatever that helps you produce the graphs!</p>
+<p><strong>Some examples of aspects that you can analyze</strong>:</p>
+<ul>
+<li>What are the true positive, false positive, true negative and false positive rates in each model? What can we say about the the performance of each model using this? You may find plotting <a href="https://medium.com/@dtuk81/confusion-matrix-visualization-fc31e3f30fea">confusion matrix</a> useful to support your answer.</li>
+<li>What is the change in performance as you tweak your models? That is, how does changing the <code>k</code> in the k-nearest neighbor algorithm impact the accuracy? What is the accuracy of a model that is trained using only 3 features, in comparison to those that use 4 or 5 features?</li>
+<li>How do your models do in comparison to a baseline/<em>dummy</em> model (a model that predicts using super simple heuristics like random guessing or most-likely-outcome guessing)?</li>
+<li>What is the decision making process that your model used to make the predictions? What were <a href="https://mljar.com/blog/visualize-decision-tree/">the splits that your decision tree made</a>), or what are the coefficients that your model assigned to each features? What can we say about these significant features in these models?</li>
+</ul>
+<p><strong>Note</strong>:</p>
+<ul>
+<li>In our ML models, we use sklearn’s <code>OneHotEncoder</code> to encode our non-numerical, categorical features. You can read more about OneHotEncoder <a href="https://scikit-learn.org/dev/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder">here</a> if you are not familiar, and the TAs are here to help!</li>
+</ul>
+<h3 id="stage-3-data-visualization-for-sick-applications">Stage 3: Data Visualization for <em>SICK</em> Applications</h3>
+<p><em>(20 points)</em></p>
+<p>Code in this section goes into <code>stage_three.py</code>.</p>
+<p>In this section, you will produce a geographic map to visualize the traffic stop data per county in Rhode Island. We recommend that you use Plotly (and we have an example for you in <code>sample.py</code>). You are expected to produce <strong>at least one geographic map</strong> of your choice!</p>
+<p><strong>Some examples of graphs that you can make:</strong></p>
+<ul>
+<li>What is the total number of traffic stops through from 2005 - 2015 per each county?</li>
+<li>What does the disparity in traffic stops look like in each county? Think the difference between the number of traffic stops on drivers of some race versus some other (dividing by the number of traffic stops in that county).</li>
+</ul>
+<p>We recognize that it is hard to have the hover effects that Plotly interactive graphs provide when just downloading and including a static image in the writeup. Therefore, you can just include a static graph in your writeup, and we will check your code to see your Plotly graph(s) on our machines later – no penalty at all!</p>
+<h3 id="stage-n-extra-credit">Stage N: Extra Credit</h3>
+<p><em>(15 points)</em></p>
+<p>Code in this section goes into <code>stage_n.py</code></p>
+<p>You can analyze <strong>up to three additional aspects</strong> of your choice, and we will give you <strong>at most five extra credit points per each</strong> additional aspect that you analyze. You will receive 2.5 points for producing a good graph (clear, accessible, makes sense for your goal of analysis, and clear graph analysis), and an extra 2.5 if the graph is unique to the other graphs that you have produced in this assignment, for a total of 5 points max per each graph.</p>
+<p>For this section, we will give at most 15 points as extra credit towards the assignment.</p>
+<h2 id="socially-responsible-computing">Socially Responsible Computing</h2>
+<p><em>(20 points)</em></p>
+<ol>
+<li>
+<p><em>(3 points)</em> Please list at least three examples of accessible practices in data visualization.</p>
+</li>
+<li>
+<p><em>(10 points)</em> Evaluate the accessibility of the graphs that you produced. Specifically:</p>
+<ul>
+<li>What kinds of users might find your graphs accessible?</li>
+<li>Who might have more difficulty accessing your graphs?</li>
+<li>What further actions might you take to make this dashboard more accessible to a wider audience?</li>
+</ul>
+<p>Your response should refer to at last one of the readings.</p>
+</li>
+<li>
+<p><em>(7 points)</em> Reflect on the stages of your design and implementation process.</p>
+<ul>
+<li>What did you find easy about factoring accessible visualization practices into your graphs?</li>
+<li>Think about the steps that you could not take/that you found hard to make your graphs more accessible. What are some factors that kept you from taking these steps?</li>
+<li>What do you think are some things everyone should do to make accessible design the norm?</li>
+</ul>
+</li>
+</ol>
+<h2 id="handing-in">Handing In</h2>
+<p>As per usual, please run <code>python3 zip_assignment.py</code> to zip the assignment and submit onto Gradescope. The script will include all the files in your directory (e.g., all the code <code>.py</code> files, all your graphs, and the <code>writeup.md</code> of your report), <strong>except for</strong> the files in the <code>data</code> folder.</p>
+<p>After submitting, please make sure that your Gradescope submission includes your filled-out <code>writeup.md</code> report and all the code that you use to produce the graphs in your report.</p>
+<p><strong>Note</strong>: Manually zipping your files risks (1) not including some files that will be used as part of our grading, and (2) your code not upholding our anonymous grading policy. Please use the <code>zip_assignment.py</code> script to zip and submit, or directly submit through Github.</p>
+<h2 id="parting-words">Parting words</h2>
+<p>Congratulations on finishing your last homework assignment in the course! We hope that our course has been educational and fun. We truly believe that you’re set to becoming an amazing data scientist.</p>
+<p>We’d love to <a href="https://forms.gle/LKtYJHyFYo3vzwjN8">hear any constructive feedback</a> about our course, negative or positive.</p>
+<p>Last but not least, we hope that you enjoy <a href="https://open.spotify.com/playlist/4oGhCa70z7BlUr5IVHrPoZ?si=34607be01b47465d">our parting gift</a>.</p>
+<h2 id="credits">Credits</h2>
+<p>This assignment was made by Nam (ndo3) in Summer 2021.</p>
+<h2 id="appendix">Appendix</h2>
+<h3 id="appendix-a-stencil-code-structure">Appendix A: Stencil Code Structure</h3>
+<p>The structure of the stencil is as follows:</p>
+<ol>
+<li>
+<p><code>code/</code>: Folder that contains all the code. You can make as many helper <code>.py</code> files as you want here, and they will all be included in the submission.</p>
+<ul>
+<li><code>stage_*.py</code>: the respective Python files in which you will write your code to produce the answers for the assignment.</li>
+<li><code>utils.py</code>: the helper functions that we have written for you, which you can import in your <code>stage_*.py</code> files using the following syntax: <code>from utils import *</code>. The functions include:
+<ul>
+<li><code>get_ri_stops_df</code> and <code>get_banknote_df</code>: Functions to load the data (as a DataFrame)</li>
+<li><code>get_trained_model</code>: Function to get trained ML models (Logistic Regression, Decision Tree, K-Nearest Neighbors, and dummy baseline classifier)</li>
+<li><code>get_model_accuracy</code>: Function to evaluate trained ML models</li>
+</ul>
+</li>
+<li><code>sample.py</code>: This contains examples for how you can draw certain kinds of plots using <code>Matplotlib</code> and <code>Plotly</code>, as well as for how you can use the functions in <code>utils.py</code></li>
+</ul>
+</li>
+<li>
+<p><code>data/</code>: Folder that contains all the data (<code>.csv</code> files) and their README files (which contains information on what each attribute means and the data type).</p>
+</li>
+<li>
+<p><code>graphs/</code>: Folder that should contain all the graphs that you will (1) include in <code>writeup.md</code>, and (2) submit to us.</p>
+</li>
+<li>
+<p><code>writeup.md</code>: You will include the graphs that you made in this assignment and your response to each stage in this file. Answers to the Socially Responsible Computing questions also go here.</p>
+</li>
+</ol>
+<h3 id="appendix-b-how-to-install-a-new-package-in-your-own-virtual-environment">Appendix B: How to install a new package in your <em>own</em> virtual environment</h3>
+<p><strong>Note</strong>: The instructions below only work on your own virtual environment. If you are using the official course virtual environment <em>on the department machine</em> (e.g. at <code>/course/cs1951a/venv</code>), you will not have the write permission to install new packages in the virtual environment – please reach out to the HTA if the package that you’re interested in using for the assignment is not available and you think should be added to the official course virtual environment.</p>
+<p><strong>Step by step instructions:</strong> If you run into any roadblock following these steps, feel free to come to TA hours for more support!</p>
+<p>Suppose you are trying to import a package <code>X</code> to use in your Python program. In this example, we will use Seaborn package as <code>X</code> - using the import statement <code>import seaborn as sns</code>. However, Python is not happy about you using that statement, and gives you the error message <code>ModuleNotFoundError: No module named X</code> (in this case, <code>ModuleNotFoundError: no module named 'seaborn'</code>)</p>
+<p><img src="https://cs1951a-summer2021-brown.github.io/assignments/dataviz-new/assets/seaborn_error.png" alt="ModuleNotFoundError"></p>
+<ul>
+<li>
+<p><strong>Step 1</strong>: Activate your course virtual environment (e.g., using the <code>cs1951a_venv</code> command that we have set up in Homework 0, our using <code>source PATH/TO/YOUR/VIRTUAL/ENVIRONMENT/bin/activate</code>). Try Googling how to activate your virtual environment (<a href="https://stackoverflow.com/questions/14604699/how-to-activate-virtualenv-in-linux">this page might be helpful</a>) if you don’t know how to.</p>
+<p>This step is to make sure that your module is installed to the virtual environment with which you will run your code for the assignment.</p>
+</li>
+<li>
+<p><strong>Step 2</strong>: In your terminal, type in <code>pip3 install &lt;NAME-OF-MODULE&gt;</code> or <code>python3 -m pip install &lt;NAME-OF-MODULE&gt;</code>.</p>
+<p>In the example above, the command would be <code>pip3 install seaborn</code> or <code>python3 -m pip install seabon</code>.</p>
+<p>After you have successfully installed the module, the last line/one of the last lines displayed in your terminal should say <code>"Successfully installed &lt;MODULE-NAME&gt;-&lt;MODULE-VERSION&gt;"</code> (in my case, that would be <code>seaborn-0.11.1</code>)</p>
+</li>
+<li>
+<p><strong>Step 3</strong>: See whether the module is successful installed on your machine by running your program (that contains the import line again). If it does not (the <code>ModuleNotFoundError</code> shows up again), feel free to come to TA hours for help! Be sure that you are in the virtual environment when installing the module and when running the code that contains the module import statements.</p>
+</li>
+</ul>
+
+    </div>
+  </div>
+</body>
+
+</html>
